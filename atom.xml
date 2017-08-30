@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xuxin123.com/"/>
-  <updated>2017-08-23T03:42:26.606Z</updated>
+  <updated>2017-08-30T10:00:57.885Z</updated>
   <id>http://xuxin123.com/</id>
   
   <author>
@@ -14,6 +14,51 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>垂直居中-文本篇</title>
+    <link href="http://xuxin123.com/2017/08/26/vertical/"/>
+    <id>http://xuxin123.com/2017/08/26/vertical/</id>
+    <published>2017-08-26T07:49:54.000Z</published>
+    <updated>2017-08-30T10:00:57.885Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="http://ouzdb04w7.bkt.clouddn.com/image/2017/08/26/main.png" alt="hello"><br>拖延症太强，每次想写点东西的时候总是会想着明天写，今天强行克服了，总算是动工了，好吧，我的第一篇技术博客。<br>说真的css这玩意儿，很多人认为写写就行了，但在我看来这东西的复杂程度不下于js，写好真的是很难很难，各种布局都有不同的写法，写这个的原因是把常写的东西总结一下，希望给大家参考参考，同时也是对我自己的一个学习总结吧，见识不足，还请谅解。</p>
+<h2 id="html统一样式"><a href="#html统一样式" class="headerlink" title="html统一样式"></a>html统一样式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;text&quot;&gt;</div><div class="line">	&lt;span class=&quot;pox&quot;&gt;&lt;/span&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<h3 id="知道高度"><a href="#知道高度" class="headerlink" title="知道高度"></a>知道高度</h3><h5 id="1-绝对定位absolute"><a href="#1-绝对定位absolute" class="headerlink" title="1.绝对定位absolute"></a>1.绝对定位absolute</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">//父标签用相对定位		</div><div class="line">.text1&#123;</div><div class="line">	position: relative;</div><div class="line">	height: 400px;</div><div class="line">&#125;</div><div class="line"></div><div class="line">//子标签用绝对定位，然后top:50%;margin-top:负的高度的一半，ok，垂直居中达成</div><div class="line">.pox1&#123;</div><div class="line">	line-height: 30px;</div><div class="line">	position: absolute;</div><div class="line">	top: 50%;				</div><div class="line">	margin-top: -30px;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="http://ouzdb04w7.bkt.clouddn.com/image/2017/08/26/1.png" alt="1.绝对定位absolute"></p>
+<h5 id="2-单行文本-这个简单"><a href="#2-单行文本-这个简单" class="headerlink" title="2.单行文本,这个简单"></a>2.单行文本,这个简单</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">//父标签行高=父标签行高度，ok了;	</div><div class="line">.text4&#123;</div><div class="line">	line-height:400px;	</div><div class="line">	height: 400px;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="http://ouzdb04w7.bkt.clouddn.com/image/2017/08/26/4.png" alt="2.单行文本"></p>
+<h3 id="不知道高度"><a href="#不知道高度" class="headerlink" title="不知道高度"></a>不知道高度</h3><h5 id="1-table-cell-把div作为一个表格单元格使用-单元格垂直居中？so-easy-用vertical-align-middle"><a href="#1-table-cell-把div作为一个表格单元格使用-单元格垂直居中？so-easy-用vertical-align-middle" class="headerlink" title="1.table-cell,把div作为一个表格单元格使用,单元格垂直居中？so easy,用vertical-align: middle."></a>1.table-cell,把div作为一个表格单元格使用,单元格垂直居中？so easy,用vertical-align: middle.</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">父标签	</div><div class="line">.text2&#123;</div><div class="line">	display: table-cell;	</div><div class="line">	vertical-align: middle;		</div><div class="line">	height: 400px;  </div><div class="line">&#125;</div><div class="line"></div><div class="line">子标签</div><div class="line">.pox2&#123;</div><div class="line">	display: inline-block;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="http://ouzdb04w7.bkt.clouddn.com/image/2017/08/26/2.png" alt="1.table-cell"></p>
+<h5 id="2-table-原理同上"><a href="#2-table-原理同上" class="headerlink" title="2.table,原理同上"></a>2.table,原理同上</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">父标签	</div><div class="line">.text3&#123;</div><div class="line">	display: table;	</div><div class="line">	height: 400px;  	</div><div class="line">&#125;</div><div class="line"></div><div class="line">子标签</div><div class="line">.pox3&#123;</div><div class="line">	display: table-cell;</div><div class="line">	vertical-align: middle;	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="http://ouzdb04w7.bkt.clouddn.com/image/2017/08/26/3.png" alt="2.table"></p>
+<h5 id="3-妙用-after占位居中-让-after占据全部高度-然后使用vertical-align-middle与-after竖直居中对齐-由于-after宽为0-看不见-就表现为pox5垂直居中了"><a href="#3-妙用-after占位居中-让-after占据全部高度-然后使用vertical-align-middle与-after竖直居中对齐-由于-after宽为0-看不见-就表现为pox5垂直居中了" class="headerlink" title="3.妙用:after占位居中,让:after占据全部高度,然后使用vertical-align:middle与:after竖直居中对齐,由于:after宽为0,看不见,就表现为pox5垂直居中了"></a>3.妙用:after占位居中,让:after占据全部高度,然后使用vertical-align:middle与:after竖直居中对齐,由于:after宽为0,看不见,就表现为pox5垂直居中了</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">父标签	</div><div class="line"> .text5&#123;</div><div class="line">   height: 400px;</div><div class="line">&#125;</div><div class="line">.text5:after&#123;</div><div class="line">   content:&apos;&apos;;</div><div class="line">   width:0;</div><div class="line">   height:100%;</div><div class="line">   display:inline-block;</div><div class="line">   vertical-align:middle;</div><div class="line">&#125;</div><div class="line"></div><div class="line">子标签</div><div class="line">.pox5&#123;</div><div class="line">   vertical-align:middle;</div><div class="line">   display:inline-block;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="http://ouzdb04w7.bkt.clouddn.com/image/2017/08/26/5.png" alt="3.妙用:after占位居中"></p>
+<h5 id="4-display-flex-这玩儿说起来就多了-弹性盒子布局-布局爽到飞起，就是兼容性有点问题，不过加上-webkit-后能适应绝大部分游览器"><a href="#4-display-flex-这玩儿说起来就多了-弹性盒子布局-布局爽到飞起，就是兼容性有点问题，不过加上-webkit-后能适应绝大部分游览器" class="headerlink" title="4.display:flex,这玩儿说起来就多了,弹性盒子布局,布局爽到飞起，就是兼容性有点问题，不过加上-webkit-后能适应绝大部分游览器"></a>4.display:flex,这玩儿说起来就多了,弹性盒子布局,布局爽到飞起，就是兼容性有点问题，不过加上-webkit-后能适应绝大部分游览器</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">父标签		</div><div class="line">.text6&#123;	</div><div class="line">	display: -webkit-flex;	</div><div class="line">	display: flex;</div><div class="line">	height: 400px;</div><div class="line">	-webkit-align-items: center;</div><div class="line">	align-items: center;</div><div class="line">&#125;</div><div class="line">	</div><div class="line">子标签</div><div class="line">.pox6&#123;</div><div class="line">	-webkit-flex: 1;</div><div class="line">	flex: 1;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="http://ouzdb04w7.bkt.clouddn.com/image/2017/08/26/6.png" alt="4.display:flex"></p>
+<h5 id="5-display-webkit-box-这个是flex的旧版本-同上"><a href="#5-display-webkit-box-这个是flex的旧版本-同上" class="headerlink" title="5.display:-webkit-box,这个是flex的旧版本,同上"></a>5.display:-webkit-box,这个是flex的旧版本,同上</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">父标签	</div><div class="line">.text7&#123;</div><div class="line">	display: -webkit-box;	</div><div class="line">	-webkit-box-align:center;	</div><div class="line">	height: 400px;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="http://ouzdb04w7.bkt.clouddn.com/image/2017/08/26/7.png" alt="5.display:-webkit-box"></p>
+<h5 id="6-transform-利用translateY-50-translateY-50-其实就是垂直向上偏移物体自身高度的一半-效果和margin-top-负的高度的一半差不多-不过不需要知道具体高度-浏览器自己计算"><a href="#6-transform-利用translateY-50-translateY-50-其实就是垂直向上偏移物体自身高度的一半-效果和margin-top-负的高度的一半差不多-不过不需要知道具体高度-浏览器自己计算" class="headerlink" title="6.transform,利用translateY(-50%);translateY(-50%)其实就是垂直向上偏移物体自身高度的一半,效果和margin-top:负的高度的一半差不多,不过不需要知道具体高度,浏览器自己计算."></a>6.transform,利用translateY(-50%);translateY(-50%)其实就是垂直向上偏移物体自身高度的一半,效果和margin-top:负的高度的一半差不多,不过不需要知道具体高度,浏览器自己计算.</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">父标签	</div><div class="line">.text8&#123;</div><div class="line">	position: relative;</div><div class="line">	height: 400px;</div><div class="line">&#125;</div><div class="line"></div><div class="line">字标签</div><div class="line">.pox8&#123;</div><div class="line">	position: absolute;</div><div class="line">	top: 50%;</div><div class="line">	transform: translateY(-50%);</div><div class="line">	left: 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="http://ouzdb04w7.bkt.clouddn.com/image/2017/08/26/8.png" alt="6.transform"></p>
+<p>css的妙处就是可以用很多种方法实现同一个效果,本文代码地址:<a href="https://github.com/xuxingeren/blog.git" target="_blank" rel="external">链接</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;http://ouzdb04w7.bkt.clouddn.com/image/2017/08/26/main.png&quot; alt=&quot;hello&quot;&gt;&lt;br&gt;拖延症太强，每次想写点东西的时候总是会想着明天写，今天强行克服了，总算是动工了，好吧，我的第一篇技术博
+    
+    </summary>
+    
+      <category term="前端" scheme="http://xuxin123.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="css" scheme="http://xuxin123.com/tags/css/"/>
+    
+      <category term="那些年我们常写的css" scheme="http://xuxin123.com/tags/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E4%BB%AC%E5%B8%B8%E5%86%99%E7%9A%84css/"/>
+    
+      <category term="垂直居中" scheme="http://xuxin123.com/tags/%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD/"/>
+    
+  </entry>
   
   <entry>
     <title>陈岱孙</title>
