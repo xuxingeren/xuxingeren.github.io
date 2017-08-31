@@ -5,7 +5,7 @@
     
   <url>
     <loc>http://xuxin123.com/2017/08/31/ring/</loc>
-    <lastmod>2017-08-31T08:36:33.128Z</lastmod>
+    <lastmod>2017-08-31T08:59:26.859Z</lastmod>
     <data>
         <display>
         <title>Circle 进度环--css篇</title>
@@ -29,6 +29,26 @@
     </url>
 
     
+    
+  <url>
+    <loc>http://xuxin123.com/2017/08/21/Hello/</loc>
+    <lastmod>2017-08-31T08:35:22.717Z</lastmod>
+    <data>
+        <display>
+        <title>第一个博客</title>
+        <pubTime>2017-08-21T10:49:54.000Z</pubTime>
+        
+        <tag>闲谈</tag>
+         
+         
+           
+             
+              <breadCrumb title="文章" url="http://xuxin123.com/categories/%E6%96%87%E7%AB%A0/"/>
+          
+        </display>
+    </data>
+    </url>
+
     
   <url>
     <loc>http://xuxin123.com/2017/08/26/vertical/</loc>
@@ -79,24 +99,4 @@
 
     
     
-    
-  <url>
-    <loc>http://xuxin123.com/2017/08/21/Hello/</loc>
-    <lastmod>2017-08-22T09:26:28.949Z</lastmod>
-    <data>
-        <display>
-        <title>第一个博客</title>
-        <pubTime>2017-08-21T10:49:54.000Z</pubTime>
-        
-        <tag>闲谈</tag>
-         
-         
-           
-             
-              <breadCrumb title="文章" url="http://xuxin123.com/categories/%E6%96%87%E7%AB%A0/"/>
-          
-        </display>
-    </data>
-    </url>
-
 </urlset>
