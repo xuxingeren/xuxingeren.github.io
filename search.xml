@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Circle 进度环--css篇]]></title>
+    <url>%2F2017%2F08%2F31%2Fring%2F</url>
+    <content type="text"><![CDATA[网上有各种进度，进度条啊，进度环，进度条做起来简单，可是有很多时候需要的是进度环，本篇是用css3的效果结合js完成进度环的。废话不多说了，上结构html:12345&lt;div class=&quot;loading&quot;&gt; &lt;div class=&quot;left&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt; &lt;div class=&quot;right&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt; &lt;div class=&quot;progress&quot;&gt;&lt;span&gt;0&lt;/span&gt;%&lt;/div&gt;&lt;/div&gt; 大概结构是这样的（图烂勿怪，我画图烂的有一手，(ノへ￣、)）css:12345678910111213141516171819202122232425262728293031323334353637383940414243.loading&#123; margin: 10px auto; width: 150px; height: 150px; position: relative; background-color: #FFF;&#125;.progress&#123; position: absolute; top: 50%; left: 50%; width: 120px; height: 120px; transform: translate(-50%,-50%); color: red; line-height: 120px; text-align: center; background-color: #FFF; border-radius: 50%;&#125;.left,.right&#123; float: left; width: 50%; height: 100%; position: relative; overflow: hidden;&#125;.left span,.right span&#123; display: block; position: absolute; width: 100%; height: 100%; background-color: red; transition: all 0.4s;&#125;.left span&#123; border-radius:150px 0 0 150px; transform-origin: right;&#125;.right span&#123; border-radius:0 150px 150px 0; transform-origin: left;&#125; 主要的原理就是让.left，.right的span通过transform: rotateZ旋转角度，一开始.left span旋转180度到.right那边，然后通过overflow: hidden使其超过的隐藏，此时.left span完全在.left外面，完全隐藏了，然后通过减小.left span的旋转角度，让其在.left中显现出来，.right span同理。其实本来显示的会是一个扇形，但是由于有.progress这个白色的圆覆盖在.loading上面，就变成了圆环。 实现效果如下，可以在输入框输入：（本人对颜色极其不敏感，红色不好看就不要吐槽了，自己改） 本文代码地址:链接]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>小实例</tag>
+        <tag>js</tag>
+        <tag>css3</tag>
+        <tag>进度环</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[垂直居中-文本篇]]></title>
     <url>%2F2017%2F08%2F26%2Fvertical%2F</url>
     <content type="text"><![CDATA[拖延症太强，每次想写点东西的时候总是会想着明天写，今天强行克服了，总算是动工了，好吧，我的第一篇技术博客。说真的css这玩意儿，很多人认为写写就行了，但在我看来这东西的复杂程度不下于js，写好真的是很难很难，各种布局都有不同的写法，写这个的原因是把常写的东西总结一下，希望给大家参考参考，同时也是对我自己的一个学习总结吧，见识不足，还请谅解。 html统一样式123&lt;div class=&quot;text&quot;&gt; &lt;span class=&quot;pox&quot;&gt;&lt;/span&gt;&lt;/div&gt; 知道高度1.绝对定位absolute12345678910111213//父标签用相对定位 .text1&#123; position: relative; height: 400px;&#125;//子标签用绝对定位，然后top:50%;margin-top:负的高度的一半，ok，垂直居中达成.pox1&#123; line-height: 30px; position: absolute; top: 50%; margin-top: -30px;&#125; 2.单行文本,这个简单12345//父标签行高=父标签行高度，ok了; .text4&#123; line-height:400px; height: 400px; &#125; 不知道高度1.table-cell,把div作为一个表格单元格使用,单元格垂直居中？so easy,用vertical-align: middle.1234567891011父标签 .text2&#123; display: table-cell; vertical-align: middle; height: 400px; &#125;子标签.pox2&#123; display: inline-block;&#125; 2.table,原理同上1234567891011父标签 .text3&#123; display: table; height: 400px; &#125;子标签.pox3&#123; display: table-cell; vertical-align: middle; &#125; 3.妙用:after占位居中,让:after占据全部高度,然后使用vertical-align:middle与:after竖直居中对齐,由于:after宽为0,看不见,就表现为pox5垂直居中了1234567891011121314151617父标签 .text5&#123; height: 400px;&#125;.text5:after&#123; content:&apos;&apos;; width:0; height:100%; display:inline-block; vertical-align:middle;&#125;子标签.pox5&#123; vertical-align:middle; display:inline-block;&#125; 4.display:flex,这玩儿说起来就多了,弹性盒子布局,布局爽到飞起，就是兼容性有点问题，不过加上-webkit-后能适应绝大部分游览器1234567891011121314父标签 .text6&#123; display: -webkit-flex; display: flex; height: 400px; -webkit-align-items: center; align-items: center;&#125; 子标签.pox6&#123; -webkit-flex: 1; flex: 1;&#125; 5.display:-webkit-box,这个是flex的旧版本,同上123456父标签 .text7&#123; display: -webkit-box; -webkit-box-align:center; height: 400px;&#125; 6.transform,利用translateY(-50%);translateY(-50%)其实就是垂直向上偏移物体自身高度的一半,效果和margin-top:负的高度的一半差不多,不过不需要知道具体高度,浏览器自己计算.12345678910111213父标签 .text8&#123; position: relative; height: 400px;&#125;字标签.pox8&#123; position: absolute; top: 50%; transform: translateY(-50%); left: 0;&#125; css的妙处就是可以用很多种方法实现同一个效果,本文代码地址:链接]]></content>

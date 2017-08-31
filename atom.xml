@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xuxin123.com/"/>
-  <updated>2017-08-30T10:00:57.885Z</updated>
+  <updated>2017-08-31T08:36:33.128Z</updated>
   <id>http://xuxin123.com/</id>
   
   <author>
@@ -14,6 +14,39 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Circle 进度环--css篇</title>
+    <link href="http://xuxin123.com/2017/08/31/ring/"/>
+    <id>http://xuxin123.com/2017/08/31/ring/</id>
+    <published>2017-08-31T03:39:23.000Z</published>
+    <updated>2017-08-31T08:36:33.128Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="http://ouzdb04w7.bkt.clouddn.com/image/2017/8/31/1.png" alt="css进度环"><br>网上有各种进度，进度条啊，进度环，进度条做起来简单，可是有很多时候需要的是进度环，本篇是用css3的效果结合js完成进度环的。<br>废话不多说了，上结构<br>html:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;loading&quot;&gt;</div><div class="line">    &lt;div class=&quot;left&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;</div><div class="line">    &lt;div class=&quot;right&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;</div><div class="line">	&lt;div class=&quot;progress&quot;&gt;&lt;span&gt;0&lt;/span&gt;%&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<p>大概结构是这样的（图烂勿怪，我画图烂的有一手，<code>(ノへ￣、)</code>）<br><img src="http://ouzdb04w7.bkt.clouddn.com/image/2017/8/31/2.png" alt="结构"><br>css:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">.loading&#123;</div><div class="line">	margin: 10px auto;</div><div class="line">	width: 150px;</div><div class="line">	height: 150px;</div><div class="line">	position: relative;</div><div class="line">	background-color: #FFF;</div><div class="line">&#125;</div><div class="line">.progress&#123;</div><div class="line">	position: absolute;</div><div class="line">	top: 50%;</div><div class="line">	left: 50%;</div><div class="line">	width: 120px;</div><div class="line">	height: 120px;</div><div class="line">	transform: translate(-50%,-50%);</div><div class="line">	color: red;</div><div class="line">	line-height: 120px;</div><div class="line">	text-align: center;</div><div class="line">	background-color: #FFF;</div><div class="line">	border-radius: 50%;</div><div class="line">&#125;</div><div class="line">.left,.right&#123;</div><div class="line">	float: left;</div><div class="line">	width: 50%;</div><div class="line">	height: 100%;</div><div class="line">	position: relative;</div><div class="line">	overflow: hidden;</div><div class="line">&#125;</div><div class="line">.left span,.right span&#123;</div><div class="line">	display: block;</div><div class="line">	position: absolute;</div><div class="line">	width: 100%;</div><div class="line">	height: 100%;</div><div class="line">	background-color: red;</div><div class="line">	transition: all 0.4s;</div><div class="line">&#125;</div><div class="line">.left span&#123;				</div><div class="line">	border-radius:150px 0 0 150px; 	</div><div class="line">	transform-origin: right;</div><div class="line">&#125;</div><div class="line">.right span&#123;</div><div class="line">	border-radius:0 150px 150px 0;</div><div class="line">	transform-origin: left;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>主要的原理就是让<code>.left</code>，<code>.right</code>的<code>span</code>通过<code>transform: rotateZ</code>旋转角度，一开始<code>.left span</code>旋转180度到<code>.right</code>那边，然后通过<code>overflow: hidden</code>使其超过的隐藏，此时<code>.left span</code>完全在<code>.left</code>外面，完全隐藏了，然后通过减小<code>.left span</code>的旋转角度，让其在<code>.left</code>中显现出来，<code>.right span</code>同理。其实本来显示的会是一个扇形，但是由于有<code>.progress</code>这个白色的圆覆盖在<code>.loading</code>上面，就变成了圆环。</p>
+<p>实现效果如下，可以在输入框输入：（本人对颜色极其不敏感，红色不好看就不要吐槽了，自己改）</p>
+<iframe src="/code/ring.html" width="100%" height="455px" frameborder="0" allowfullscreen></iframe>
+<h5 id="本文代码地址-链接"><a href="#本文代码地址-链接" class="headerlink" title="本文代码地址:链接"></a>本文代码地址:<a href="https://github.com/xuxingeren/blog/blob/master/%E5%B0%8F%E5%AE%9E%E4%BE%8B/%E5%9C%86%E7%8E%AF.html" target="_blank" rel="external">链接</a></h5>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;http://ouzdb04w7.bkt.clouddn.com/image/2017/8/31/1.png&quot; alt=&quot;css进度环&quot;&gt;&lt;br&gt;网上有各种进度，进度条啊，进度环，进度条做起来简单，可是有很多时候需要的是进度环，本篇是用css3的效果结合
+    
+    </summary>
+    
+      <category term="前端" scheme="http://xuxin123.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="小实例" scheme="http://xuxin123.com/tags/%E5%B0%8F%E5%AE%9E%E4%BE%8B/"/>
+    
+      <category term="js" scheme="http://xuxin123.com/tags/js/"/>
+    
+      <category term="css3" scheme="http://xuxin123.com/tags/css3/"/>
+    
+      <category term="进度环" scheme="http://xuxin123.com/tags/%E8%BF%9B%E5%BA%A6%E7%8E%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>垂直居中-文本篇</title>
