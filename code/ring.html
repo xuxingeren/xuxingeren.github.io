@@ -145,6 +145,7 @@
 				this.set();
 			},
 			set:function(){
+				this.Percentage = Number(Percentage) || this.Percentage;
 				this.lef = this.Percentage > (this.Total/2) ? this.Percentage - (this.Total/2) : 0;
 				this.rig = this.Percentage > (this.Total/2) ? (this.Total/2) : this.Percentage;
 				this.getdom("left").style.transform = "rotateZ("+this.setdeg(this.lef)+"deg)";
@@ -163,9 +164,7 @@
 		var val = document.getElementById("num");
 		val.onchange = function(){
 			val.value = Number(val.value) >100 ? 100 : Number(val.value);
-			rin.init({
-				Percentage:val.value
-			});
+			rin.set(val.value);
 		}
 		function add(){
 			val.value = Number(val.value)+10 >100 ? 100 : Number(val.value)+10;

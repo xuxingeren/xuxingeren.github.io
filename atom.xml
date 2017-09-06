@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xuxin123.com/"/>
-  <updated>2017-08-31T08:59:26.859Z</updated>
+  <updated>2017-09-06T09:49:37.807Z</updated>
   <id>http://xuxin123.com/</id>
   
   <author>
@@ -14,6 +14,42 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>图片上传那些事-图片预览篇</title>
+    <link href="http://xuxin123.com/2017/09/06/imgfile1/"/>
+    <id>http://xuxin123.com/2017/09/06/imgfile1/</id>
+    <published>2017-09-06T03:00:54.000Z</published>
+    <updated>2017-09-06T09:49:37.807Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="http://ouzdb04w7.bkt.clouddn.com/image/2017/09/06/0.png" alt="图片上传"><br>在前端工作中，有一些小功能是大家经常遇到的，图片的上传就是经常遇到的功能之一，平时图片上传有很多的需求，比如图片预览，批量上传，有些还要有上传进度，本文将介绍如何实现图片的批量上传和删除以及预览。<br>以前的浏览器由于安全问题和兼容问题，实现不了本地图片信息的读取预览，只能选择一张就上传一张图片到服务器，然后服务器返回图片地址从而实现图片的预览，但是随着老的浏览器(ie)的逐渐淘汰，以及各个浏览器标准的统一，图片的预览也变得十分简单了。<br>图片预览有两种方法可以实现：</p>
+<h4 id="1-文件读取API-FileReader对象，它可以允许Web应用程序异步读取存储在用户计算机上的文件（或原始数据缓冲区）的内容，使用-File-或-Blob-对象指定要读取的文件或数据，它的readAsDataURL方法将文件读取为-DataURL，在读取完成时调用如果设置onload事件，则调用之，在onload里能获得result属性，它包含一个data-URL格式的字符串以表示所读取文件的内容。"><a href="#1-文件读取API-FileReader对象，它可以允许Web应用程序异步读取存储在用户计算机上的文件（或原始数据缓冲区）的内容，使用-File-或-Blob-对象指定要读取的文件或数据，它的readAsDataURL方法将文件读取为-DataURL，在读取完成时调用如果设置onload事件，则调用之，在onload里能获得result属性，它包含一个data-URL格式的字符串以表示所读取文件的内容。" class="headerlink" title="1.文件读取API-FileReader对象，它可以允许Web应用程序异步读取存储在用户计算机上的文件（或原始数据缓冲区）的内容，使用 File 或 Blob 对象指定要读取的文件或数据，它的readAsDataURL方法将文件读取为 DataURL，在读取完成时调用如果设置onload事件，则调用之，在onload里能获得result属性，它包含一个data: URL格式的字符串以表示所读取文件的内容。"></a>1.文件读取API-FileReader对象，它可以允许Web应用程序异步读取存储在用户计算机上的文件（或原始数据缓冲区）的内容，使用 File 或 Blob 对象指定要读取的文件或数据，它的readAsDataURL方法将文件读取为 DataURL，在读取完成时调用如果设置onload事件，则调用之，在onload里能获得result属性，它包含一个data: URL格式的字符串以表示所读取文件的内容。</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">var myfile = document.getElementById(&apos;file&apos;);	</div><div class="line">var List = document.getElementsByClassName(&apos;list&apos;)[0];</div><div class="line">myfile.onchange = function()&#123;</div><div class="line">		var files = this.files;</div><div class="line">		if(!files)return;		</div><div class="line">		console.log(files);</div><div class="line">		for(var i = 0;i&lt;files.length;i++)&#123;</div><div class="line">			var oFReader = new FileReader();</div><div class="line">			oFReader.readAsDataURL(files[i]);							</div><div class="line">			oFReader.onload = function (oFREvent) &#123;</div><div class="line">			console.log(oFReader);</div><div class="line">			var oLi = &apos;&lt;li&gt;&lt;img src=&quot;&apos;+oFREvent.target.result+&apos;&quot;&gt;&lt;span class=&quot;close&quot; onclick=&quot;closeli(this)&quot; &gt;&amp;times;&lt;/span&gt;&lt;/li&gt;&apos;;	</div><div class="line">			List.innerHTML+=oLi;</div><div class="line">        	&#125;;</div><div class="line">		&#125;</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
+<h5 id="实际上这种方法就是将图片解析成base64编码，然后将这个编码传给img的src，使图片通过变成base64的方式能够显示在页面上。如下"><a href="#实际上这种方法就是将图片解析成base64编码，然后将这个编码传给img的src，使图片通过变成base64的方式能够显示在页面上。如下" class="headerlink" title="实际上这种方法就是将图片解析成base64编码，然后将这个编码传给img的src，使图片通过变成base64的方式能够显示在页面上。如下:"></a>实际上这种方法就是将图片解析成base64编码，然后将这个编码传给img的src，使图片通过变成base64的方式能够显示在页面上。如下:</h5><iframe src="/code/file1.html" width="100%" height="200px" frameborder="0" allowfullscreen></iframe>
+<p>是不是简单的实现了图片的预览了，当然这种方法不是特别的好，因为base64是用于处理那些简单的图片的，一般稍微大一点的图片会使base64特别大，如图:<br><img src="http://ouzdb04w7.bkt.clouddn.com/image/2017/09/06/1.png" alt="base64"><br>那么第二种方法闪亮登场了。</p>
+<h4 id="2-URL-createObjectURL，URL-createObjectURL-静态方法会创建一个-DOMString，其中包含一个表示参数中给出的对象的URL。这个-URL-的生命周期和创建它的窗口中的-document-绑定。这个新的URL-对象表示指定的-File-对象或-Blob-对象。"><a href="#2-URL-createObjectURL，URL-createObjectURL-静态方法会创建一个-DOMString，其中包含一个表示参数中给出的对象的URL。这个-URL-的生命周期和创建它的窗口中的-document-绑定。这个新的URL-对象表示指定的-File-对象或-Blob-对象。" class="headerlink" title="2.URL.createObjectURL，URL.createObjectURL() 静态方法会创建一个 DOMString，其中包含一个表示参数中给出的对象的URL。这个 URL 的生命周期和创建它的窗口中的 document 绑定。这个新的URL 对象表示指定的 File 对象或 Blob 对象。"></a>2.URL.createObjectURL，URL.createObjectURL() 静态方法会创建一个 DOMString，其中包含一个表示参数中给出的对象的URL。这个 URL 的生命周期和创建它的窗口中的 document 绑定。这个新的URL 对象表示指定的 File 对象或 Blob 对象。</h4><h5 id="通俗来说就是URL-createObjectURL-方法会根据传入的参数创建一个指向该参数对象的URL-这个URL的生命仅存在于它被创建的这个文档里-新的对象URL指向执行的File对象或者是Blob对象，通过给img的src赋值URL-createObjectURL-File-就能让其显示在页面上。"><a href="#通俗来说就是URL-createObjectURL-方法会根据传入的参数创建一个指向该参数对象的URL-这个URL的生命仅存在于它被创建的这个文档里-新的对象URL指向执行的File对象或者是Blob对象，通过给img的src赋值URL-createObjectURL-File-就能让其显示在页面上。" class="headerlink" title="通俗来说就是URL.createObjectURL()方法会根据传入的参数创建一个指向该参数对象的URL. 这个URL的生命仅存在于它被创建的这个文档里. 新的对象URL指向执行的File对象或者是Blob对象，通过给img的src赋值URL.createObjectURL(File)就能让其显示在页面上。"></a>通俗来说就是URL.createObjectURL()方法会根据传入的参数创建一个指向该参数对象的URL. 这个URL的生命仅存在于它被创建的这个文档里. 新的对象URL指向执行的File对象或者是Blob对象，通过给img的src赋值URL.createObjectURL(File)就能让其显示在页面上。</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var myfile = document.getElementById(&apos;file&apos;);	</div><div class="line">var List = document.getElementsByClassName(&apos;list&apos;)[0];</div><div class="line">	myfile.onchange = function()&#123;</div><div class="line">		var files = this.files;</div><div class="line">		if(!files)return;		</div><div class="line">		console.log(files);</div><div class="line">		for(var i = 0;i&lt;files.length;i++)&#123;				</div><div class="line">			var oLi = &apos;&lt;li&gt;&lt;img src=&quot;&apos;+URL.createObjectURL(files[i])+&apos;&quot;&gt;&lt;span class=&quot;close&quot; onclick=&quot;closeli(this)&quot; &gt;&amp;times;&lt;/span&gt;&lt;/li&gt;&apos;;	</div><div class="line">			List.innerHTML+=oLi;        	</div><div class="line">		&#125;</div><div class="line">		&#125;</div></pre></td></tr></table></figure>
+<iframe src="/code/file2.html" width="100%" height="200px" frameborder="0" allowfullscreen></iframe>
+<p>这种方法简单多了，而且reatObjectURL可以有更好的性能，在处理上比用FileReader对象读取预览的更快，url十分简洁，完胜base64。<br><img src="http://ouzdb04w7.bkt.clouddn.com/image/2017/09/06/2.png" alt="reatObjectURL">]</p>
+<p>好了，到这里开始详细讲解多图预览了，首先要有一个上传input,既然要多图上传，就要设置multiple。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;input type=&quot;file&quot; class=&quot;hidden&quot;  id=&quot;file&quot;  multiple=&quot;multiple&quot;/&gt;</div></pre></td></tr></table></figure></p>
+<p>然后我们给他设置一个onchang事件，监听上传文件都选择，通过其files属性得到FileList对象，可以通过这个对象访问到用户所选择的文件，这个FileList是一个数组，如果是单文件上传，要获取其File就是files[0]或者files.item(0)。<br>多文件上传的话，我们把得到的FileList对象循环一遍，获得每个文件的File，将这个File通过FileReader或createObjectURL进行处理，得到想要的预览url路径，然后创建一个img，将这个url路径赋给img的src。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var myfile = document.getElementById(&apos;file&apos;);	</div><div class="line">myfile.onchange = function()&#123;</div><div class="line">	var files = this.files; //单文件就是this.files[0]，不用做for循环</div><div class="line">	if(!files)return;		</div><div class="line">	console.log(files);</div><div class="line">	for(var i = 0;i&lt;files.length;i++)&#123;				</div><div class="line">		  console.log(files[i]);  	</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>ok了，图片多图上传预览就完成了，但是实际情况中还要涉及到图片的多次重新选择和删除所选择的图片，那么该如何进行操作呢？我将在下篇博文中讲解，请期待:图片上传那些事-图片上传篇。<br>本文代码地址:<a href="https://github.com/xuxingeren/blog/tree/master/%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E9%82%A3%E4%BA%9B%E4%BA%8B" target="_blank" rel="external">链接</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;http://ouzdb04w7.bkt.clouddn.com/image/2017/09/06/0.png&quot; alt=&quot;图片上传&quot;&gt;&lt;br&gt;在前端工作中，有一些小功能是大家经常遇到的，图片的上传就是经常遇到的功能之一，平时图片上传有很多的需求，比如图
+    
+    </summary>
+    
+      <category term="前端" scheme="http://xuxin123.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="js" scheme="http://xuxin123.com/tags/js/"/>
+    
+      <category term="图片上传" scheme="http://xuxin123.com/tags/%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0/"/>
+    
+      <category term="图片预览" scheme="http://xuxin123.com/tags/%E5%9B%BE%E7%89%87%E9%A2%84%E8%A7%88/"/>
+    
+  </entry>
   
   <entry>
     <title>Circle 进度环--css篇</title>
