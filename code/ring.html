@@ -144,7 +144,7 @@
 				this.Percentage = this.Percentage < 0 ? 0 : this.Percentage;
 				this.set();
 			},
-			set:function(){
+			set:function(Percentage){
 				this.Percentage = Number(Percentage) || this.Percentage;
 				this.lef = this.Percentage > (this.Total/2) ? this.Percentage - (this.Total/2) : 0;
 				this.rig = this.Percentage > (this.Total/2) ? (this.Total/2) : this.Percentage;
@@ -174,27 +174,29 @@
 			val.value = Number(val.value)-10 < 0 ? 0 : Number(val.value)-10;
 			rin.red();
 		}
-		var rin2 =  new ring();
+		var time1 =  new ring();
+		var time2 =  new ring();
+		var time3 =  new ring();
+		    time1.init({
+	        	Dom : document.getElementsByClassName("loading")[1],
+	        	Total : 24	       
+	        });
+	        time2.init({
+	        	Dom : document.getElementsByClassName("loading")[2],
+	        	Total : 60	        
+	        });
+	        time3.init({
+	        	Dom : document.getElementsByClassName("loading")[3],
+	        	Total : 60	        	
+	        });
 		setInterval(function(){
 			var date = new Date(),
 			H = date.getHours(),
 	        M = date.getMinutes(),
 	        S = date.getSeconds();
-	        rin2.init({
-	        	Dom : document.getElementsByClassName("loading")[1],
-	        	Total : 24,
-	        	Percentage : H
-	        });
-	        rin2.init({
-	        	Dom : document.getElementsByClassName("loading")[2],
-	        	Total : 60,
-	        	Percentage : M
-	        });
-	        rin2.init({
-	        	Dom : document.getElementsByClassName("loading")[3],
-	        	Total : 60,
-	        	Percentage : S
-	        });
+	        time1.set(H);
+			time2.set(M);
+			time3.set(S);	       
 		},30);
 	</script>
 </html>
