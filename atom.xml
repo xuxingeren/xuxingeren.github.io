@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xuxin123.com/"/>
-  <updated>2017-09-09T08:06:34.818Z</updated>
+  <updated>2017-09-21T09:25:21.851Z</updated>
   <id>http://xuxin123.com/</id>
   
   <author>
@@ -14,6 +14,45 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>图片上传那些事-总结篇</title>
+    <link href="http://xuxin123.com/2017/09/21/imgfile3/"/>
+    <id>http://xuxin123.com/2017/09/21/imgfile3/</id>
+    <published>2017-09-21T06:10:20.000Z</published>
+    <updated>2017-09-21T09:25:21.851Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="http://ouzdb04w7.bkt.clouddn.com/image/2017/09/06/0.png" alt="图片上传"><br>好了，总结篇终于开工了，这次来说说关于上传的一些琐碎事情。</p>
+<p>1.file input的美化<br>file input 好用是好用但是论起颜值来说差得不是一点半点，怎么能让这玩意儿拉低我们写好的页面颜值呢(ง •̀_•́)ง，来整整容吧，其实这个东西实现起来也很简单的<br><img src="http://ouzdb04w7.bkt.clouddn.com/image/2017/09/21/1.png" alt="file样式"><br>首先我们把这个上传的input用<code>display: none;</code>隐藏掉，然后发挥自己力量写个高颜值的上传按钮，给这个按钮添加点击事件，点击的时候让上传input触发点击，ok，美化工作就完成了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;input type=&quot;file&quot; id=&quot;file&quot; style=&quot;display: none;&quot;/&gt;</div><div class="line">&lt;button class=&quot;btn&quot; onclick=&quot;upimg()&quot;&gt;上传&lt;/button&gt;</div><div class="line"></div><div class="line">var myfile = document.getElementById(&apos;file&apos;);</div><div class="line">function upimg()&#123;				</div><div class="line">	myfile.click();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>2.上传筛选<br>很多时候在上传东西的时候都要进行上传筛选的工作，避免用户把什么乱七八糟的东西都往后台扔，其实input有 <code>accept</code> 这个属性来进行提交文件类型的筛选的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;input type=&quot;file&quot; name=&quot;pic&quot; id=&quot;pic&quot; accept=&quot;image/gif, image/jpeg&quot; /&gt; //选择git和jpg图片上传</div></pre></td></tr></table></figure></p>
+<p>但是这玩意儿有点兼容问题，其筛选还可以选择全部文件，并不能达到筛选的目的。上文说到我们用数组装用户要上传的图片，那么筛选就可以在数组push的时候进行了。<br>这样凡是验证不通过的filearr都不会push进去，也就提交不了了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">var filearr = [];</div><div class="line">var myfile = document.getElementById(&apos;file&apos;);</div><div class="line">myfile.onchange = function()&#123;</div><div class="line">	var files = this.files; </div><div class="line">	for(var i = 0;i&lt;files.length;i++)&#123;	</div><div class="line">		if(!(files[i].type.indexOf(&apos;image&apos;)==0 &amp;&amp; files[i].type &amp;&amp; /\.(?:jpg|png|gif)$/.test(files[i].name)) )&#123;  </div><div class="line">			            console.log(&apos;图片只能是jpg,gif,png&apos;);      //上传其余文件的验证根据情况自己写</div><div class="line">			            continue;  </div><div class="line">			       &#125;;			</div><div class="line">		 filearr.push(files[i]);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>3.上传进度条<br>在进行上传时有时候会有进度显示的需求，在XMLHttpRequest对象发出的HTTP请求时可以绑定progress事件，来获得传输的数据进度。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;progress&quot;&gt;</div><div class="line">  &lt;div  id=&quot;progressbar&quot; style=&quot;width:0%&quot;&gt;</div><div class="line">    0%</div><div class="line">  &lt;/div&gt;</div><div class="line">&lt;/div&gt;</div><div class="line"></div><div class="line">var request = new XMLHttpRequest(); 				</div><div class="line">	request.open(&quot;POST&quot;, &quot;1.php&quot;,true);</div><div class="line">	request.onreadystatechange = function()&#123;					</div><div class="line">		if(request.readyState==4)&#123;						</div><div class="line">			</div><div class="line">		&#125;</div><div class="line">	&#125;;</div><div class="line">	request.upload.addEventListener(&apos;progress&apos;,progress, false);		//绑定progress事件</div><div class="line">	request.send(formData);</div><div class="line">	var progressbar = document.getElementById(&apos;progressbar&apos;);</div><div class="line">	function progress(e)&#123;</div><div class="line">		if(e.lengthComputable)&#123;</div><div class="line">			var percentComplete = Math.round(e.loaded/ e.total * 100 );</div><div class="line">			console.log(percentComplete);</div><div class="line">			progressbar.style.width = percentComplete+&quot;%&quot;;</div><div class="line">			progressbar.innerText = percentComplete+&quot;%&quot;;</div><div class="line">		&#125;</div><div class="line">	&#125;</div></pre></td></tr></table></figure></p>
+<p>至于进度条样式什么的靠自己发挥啦。</p>
+<p>4.富文本编辑器问题<br>有很多富文本编辑器都带有文件上传的功能，但是使用是很多时候都有点小问题，在用谷哥浏览器时，点击上传按钮后很久图片选择的弹窗才出现。其原因就是上传的input设置了多个筛选的<code>accept</code>，比如<code>image/*</code>和<code>image/svg+xml</code>，这会导致谷哥浏览器打开文件选择弹窗特别慢。<br>解决办法 :涉及多个文件验证的用<code>accept=&quot;image/jpeg, image/jpg, image/png, image/gif&quot;</code>，避免使用类似<code>image/*</code>和<code>image/svg+xml</code>多个文件同时验证的写法，可以修改富文本js源码，或者富文本加载完成后用file.setAttribute(‘accept’,XXX)覆盖掉。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;http://ouzdb04w7.bkt.clouddn.com/image/2017/09/06/0.png&quot; alt=&quot;图片上传&quot;&gt;&lt;br&gt;好了，总结篇终于开工了，这次来说说关于上传的一些琐碎事情。&lt;/p&gt;
+&lt;p&gt;1.file input的美化&lt;br
+    
+    </summary>
+    
+      <category term="前端" scheme="http://xuxin123.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="图片上传" scheme="http://xuxin123.com/tags/%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0/"/>
+    
+      <category term="js" scheme="http://xuxin123.com/tags/js/"/>
+    
+      <category term="上传进度" scheme="http://xuxin123.com/tags/%E4%B8%8A%E4%BC%A0%E8%BF%9B%E5%BA%A6/"/>
+    
+      <category term="上传美化" scheme="http://xuxin123.com/tags/%E4%B8%8A%E4%BC%A0%E7%BE%8E%E5%8C%96/"/>
+    
+      <category term="上传筛选" scheme="http://xuxin123.com/tags/%E4%B8%8A%E4%BC%A0%E7%AD%9B%E9%80%89/"/>
+    
+  </entry>
   
   <entry>
     <title>图片上传那些事-图片上传篇</title>
@@ -51,9 +90,9 @@
       <category term="前端" scheme="http://xuxin123.com/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
-      <category term="js" scheme="http://xuxin123.com/tags/js/"/>
-    
       <category term="图片上传" scheme="http://xuxin123.com/tags/%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0/"/>
+    
+      <category term="js" scheme="http://xuxin123.com/tags/js/"/>
     
       <category term="图片预览" scheme="http://xuxin123.com/tags/%E5%9B%BE%E7%89%87%E9%A2%84%E8%A7%88/"/>
     
@@ -89,9 +128,9 @@
       <category term="前端" scheme="http://xuxin123.com/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
-      <category term="js" scheme="http://xuxin123.com/tags/js/"/>
-    
       <category term="图片上传" scheme="http://xuxin123.com/tags/%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0/"/>
+    
+      <category term="js" scheme="http://xuxin123.com/tags/js/"/>
     
       <category term="图片预览" scheme="http://xuxin123.com/tags/%E5%9B%BE%E7%89%87%E9%A2%84%E8%A7%88/"/>
     
@@ -120,9 +159,9 @@
       <category term="前端" scheme="http://xuxin123.com/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
-      <category term="小实例" scheme="http://xuxin123.com/tags/%E5%B0%8F%E5%AE%9E%E4%BE%8B/"/>
-    
       <category term="js" scheme="http://xuxin123.com/tags/js/"/>
+    
+      <category term="小实例" scheme="http://xuxin123.com/tags/%E5%B0%8F%E5%AE%9E%E4%BE%8B/"/>
     
       <category term="css3" scheme="http://xuxin123.com/tags/css3/"/>
     
