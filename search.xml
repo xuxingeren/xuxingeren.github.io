@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[CSS-背景裁剪]]></title>
+    <url>%2F2017%2F10%2F26%2Fbackground-clip%2F</url>
+    <content type="text"><![CDATA[最近一直忙着看ES6（懒），好久都没更新博客（不想写），难得下午抽空写写。好了，今天的是文字对背景图片的裁剪，以及一些衍生的小东西。 background-clip:background-clip 属性规定背景的绘制区域。其值主要有四个1234background-clip: border-box;background-clip: padding-box;background-clip: content-box;background-clip: text; 顾名思义剪切掉边框的背景，剪切掉外边距的背景，剪切掉内容的背景，剪切掉文字外背景当然最后一个比较特殊，需要比较高级的浏览器才能看到。 -webkit-text-fill-color:检索或设置对象中的文字填充颜色，通过text-fill-color属性，可以做出一些例如渐变文字和镂空文字的效果。上面的配合-webkit-text-fill-color: transparent;属性可以让文字的填充色变成透明，透过文字看到背景。 background-position:background-position 属性设置背景图像的起始位置。这三者结合起来会产生什么效果呢？（请用谷歌浏览器观看）12345678910111213141516171819.text2 &#123; width: 720px; background-image: -webkit-linear-gradient(top, #fc0, #f30 50%, #c00 51%, #600); -webkit-background-clip: text; font-size: 80px; -webkit-text-fill-color: transparent; font-weight: bold; background-repeat: no-repeat; background-position: -800px 0; animation: loop 10s linear infinite;&#125;@keyframes loop &#123; 0% &#123; background-position: -800px 0; &#125; 100% &#123; background-position: -0 0; &#125;&#125; 很像卡拉OK的效果，是不是很酷呀。本文代码地址:链接]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>css3</tag>
+        <tag>背景裁剪</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[图片上传那些事-总结篇]]></title>
     <url>%2F2017%2F09%2F21%2Fimgfile3%2F</url>
     <content type="text"><![CDATA[好了，总结篇终于开工了，这次来说说关于上传的一些琐碎事情。 1.file input的美化file input 好用是好用但是论起颜值来说差得不是一点半点，怎么能让这玩意儿拉低我们写好的页面颜值呢(ง •̀_•́)ง，来整整容吧，其实这个东西实现起来也很简单的首先我们把这个上传的input用display: none;隐藏掉，然后发挥自己力量写个高颜值的上传按钮，给这个按钮添加点击事件，点击的时候让上传input触发点击，ok，美化工作就完成了。1234567&lt;input type=&quot;file&quot; id=&quot;file&quot; style=&quot;display: none;&quot;/&gt;&lt;button class=&quot;btn&quot; onclick=&quot;upimg()&quot;&gt;上传&lt;/button&gt;var myfile = document.getElementById(&apos;file&apos;);function upimg()&#123; myfile.click();&#125; 2.上传筛选很多时候在上传东西的时候都要进行上传筛选的工作，避免用户把什么乱七八糟的东西都往后台扔，其实input有 accept 这个属性来进行提交文件类型的筛选的。1&lt;input type=&quot;file&quot; name=&quot;pic&quot; id=&quot;pic&quot; accept=&quot;image/gif, image/jpeg&quot; /&gt; //选择git和jpg图片上传 但是这玩意儿有点兼容问题，其筛选还可以选择全部文件，并不能达到筛选的目的。上文说到我们用数组装用户要上传的图片，那么筛选就可以在数组push的时候进行了。这样凡是验证不通过的filearr都不会push进去，也就提交不了了。 123456789101112var filearr = [];var myfile = document.getElementById(&apos;file&apos;);myfile.onchange = function()&#123; var files = this.files; for(var i = 0;i&lt;files.length;i++)&#123; if(!(files[i].type.indexOf(&apos;image&apos;)==0 &amp;&amp; files[i].type &amp;&amp; /\.(?:jpg|png|gif)$/.test(files[i].name)) )&#123; console.log(&apos;图片只能是jpg,gif,png&apos;); //上传其余文件的验证根据情况自己写 continue; &#125;; filearr.push(files[i]); &#125;&#125; 3.上传进度条在进行上传时有时候会有进度显示的需求，在XMLHttpRequest对象发出的HTTP请求时可以绑定progress事件，来获得传输的数据进度。123456789101112131415161718192021222324&lt;div class=&quot;progress&quot;&gt; &lt;div id=&quot;progressbar&quot; style=&quot;width:0%&quot;&gt; 0% &lt;/div&gt;&lt;/div&gt;var request = new XMLHttpRequest(); request.open(&quot;POST&quot;, &quot;1.php&quot;,true); request.onreadystatechange = function()&#123; if(request.readyState==4)&#123; &#125; &#125;; request.upload.addEventListener(&apos;progress&apos;,progress, false); //绑定progress事件 request.send(formData); var progressbar = document.getElementById(&apos;progressbar&apos;); function progress(e)&#123; if(e.lengthComputable)&#123; var percentComplete = Math.round(e.loaded/ e.total * 100 ); console.log(percentComplete); progressbar.style.width = percentComplete+&quot;%&quot;; progressbar.innerText = percentComplete+&quot;%&quot;; &#125; &#125; 至于进度条样式什么的靠自己发挥啦。 4.富文本编辑器问题有很多富文本编辑器都带有文件上传的功能，但是使用是很多时候都有点小问题，在用谷哥浏览器时，点击上传按钮后很久图片选择的弹窗才出现。其原因就是上传的input设置了多个筛选的accept，比如image/*和image/svg+xml，这会导致谷哥浏览器打开文件选择弹窗特别慢。解决办法 :涉及多个文件验证的用accept=&quot;image/jpeg, image/jpg, image/png, image/gif&quot;，避免使用类似image/*和image/svg+xml多个文件同时验证的写法，可以修改富文本js源码，或者富文本加载完成后用file.setAttribute(‘accept’,XXX)覆盖掉。]]></content>
@@ -50,9 +62,9 @@
         <category>前端</category>
       </categories>
       <tags>
+        <tag>css3</tag>
         <tag>js</tag>
         <tag>小实例</tag>
-        <tag>css3</tag>
         <tag>进度环</tag>
       </tags>
   </entry>
