@@ -34,15 +34,16 @@
                 }
                 .change{
                         position: absolute;
-                        bottom: 0;
-                        left: 0;
+                        bottom: -20px;
+                        left: -20px;
                         text-align: justify;
                         width:100%;
                         background:rgba(0,0,0,0.5);
                         line-height: 36px;
                         height: 36px;
-                        padding:0 10px;
-                        box-sizing: border-box;
+                        padding:20px;
+                        font-size: 16px;
+                        font-weight: normal;
                 }
                 .change:after{
                         content: '';
@@ -54,6 +55,7 @@
                         cursor: pointer;
                         display:inline-block;
                         color: #ffffff;
+                        -webkit-text-fill-color: #FFF;
                 }
                 label input{
                         transform: translateY(2px);
@@ -63,15 +65,15 @@
 
 <body>
         <div class="box">
-             大江东去      
-        </div>
-        <div class="change">
-               <label><input type="radio" name="clip" checked>border-box</label>
-               <label><input type="radio" name="clip">padding-box</label>
-               <label><input type="radio" name="clip">content-box</label>
-               <label><input type="radio" name="clip">text</label>  
-               <label><input type="radio" name="clip">透明</label>            
-        </div>
+             大江东去   
+             <div class="change">
+                        <label><input type="radio" name="clip" checked>border-box</label>
+                        <label><input type="radio" name="clip">padding-box</label>
+                        <label><input type="radio" name="clip">content-box</label>
+                        <label><input type="radio" name="clip">text</label>  
+                        <label><input type="radio" name="clip">透明</label>            
+                 </div>   
+        </div>      
 </body>
 <script>
         var oRadio = document.querySelectorAll("label input[name='clip']");
