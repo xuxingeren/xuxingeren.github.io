@@ -3,10 +3,34 @@
 
 
     
+  <url>
+    <loc>http://xuxin123.com/2017/10/27/complete/</loc>
+    <lastmod>2017-10-28T02:16:28.015Z</lastmod>
+    <data>
+        <display>
+        <title>图片加载</title>
+        <pubTime>2017-10-27T06:40:55.000Z</pubTime>
+        
+        <tag>图片替换</tag>
+         
+        <tag>图片加载</tag>
+         
+        <tag>小实例</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="http://xuxin123.com/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
     
   <url>
     <loc>http://xuxin123.com/2017/10/26/background-clip/</loc>
-    <lastmod>2017-10-26T09:31:12.897Z</lastmod>
+    <lastmod>2017-10-27T10:19:05.520Z</lastmod>
     <data>
         <display>
         <title>CSS-背景裁剪</title>
@@ -27,25 +51,6 @@
 
     
     
-  <url>
-    <loc>http://xuxin123.com/2017/08/21/Hello/</loc>
-    <lastmod>2017-10-16T09:15:26.137Z</lastmod>
-    <data>
-        <display>
-        <title>第一个博客</title>
-        <pubTime>2017-08-21T10:49:54.000Z</pubTime>
-        
-        <tag>闲谈</tag>
-         
-         
-           
-             
-              <breadCrumb title="文章" url="http://xuxin123.com/categories/%E6%96%87%E7%AB%A0/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
   <url>
     <loc>http://xuxin123.com/2017/09/21/imgfile3/</loc>
@@ -137,11 +142,11 @@
         <title>Circle 进度环--css篇</title>
         <pubTime>2017-08-31T03:39:23.000Z</pubTime>
         
+        <tag>css3</tag>
+         
         <tag>js</tag>
          
         <tag>小实例</tag>
-         
-        <tag>css3</tag>
          
         <tag>进度环</tag>
          
@@ -181,7 +186,7 @@
     
   <url>
     <loc>http://xuxin123.com/2017/08/22/celebrity/</loc>
-    <lastmod>2017-08-23T03:42:26.607Z</lastmod>
+    <lastmod>2017-08-23T03:42:28.000Z</lastmod>
     <data>
         <display>
         <title>陈岱孙</title>
@@ -204,4 +209,24 @@
 
     
     
+    
+  <url>
+    <loc>http://xuxin123.com/2017/08/21/Hello/</loc>
+    <lastmod>2017-08-22T09:26:30.000Z</lastmod>
+    <data>
+        <display>
+        <title>第一个博客</title>
+        <pubTime>2017-08-21T10:49:54.000Z</pubTime>
+        
+        <tag>闲谈</tag>
+         
+         
+           
+             
+              <breadCrumb title="文章" url="http://xuxin123.com/categories/%E6%96%87%E7%AB%A0/"/>
+          
+        </display>
+    </data>
+    </url>
+
 </urlset>

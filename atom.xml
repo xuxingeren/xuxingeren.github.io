@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xuxin123.com/"/>
-  <updated>2017-10-26T09:31:12.897Z</updated>
+  <updated>2017-10-28T02:16:28.015Z</updated>
   <id>http://xuxin123.com/</id>
   
   <author>
@@ -16,11 +16,46 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>图片加载</title>
+    <link href="http://xuxin123.com/2017/10/27/complete/"/>
+    <id>http://xuxin123.com/2017/10/27/complete/</id>
+    <published>2017-10-27T06:40:55.000Z</published>
+    <updated>2017-10-28T02:16:28.015Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="http://ouzdb04w7.bkt.clouddn.com/image/2017/10/27/timg.jpg" alt="图片加载"><br>图片懒加载技术相信大家再熟悉不过了，当网站中用到大量图片时回事网站打开时加载过慢，用户体验不好。用户其实看到的是可视区域，可视区域下面的图片什么的可以不用加载，当用户滚动滚动条要看到还没加载的图片时，在让其进行加载。所谓懒加载，就是把img的src放在一个自定义属性中，src为空，当触发某个事件时把自定义属性的值赋给src。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;img data-src=&quot;https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1509098785051&amp;di=0cdd1c1cb8314d1fe3c460f3e13ece59&amp;imgtype=0&amp;src=http%3A%2F%2Fimg2.niutuku.com%2Fdesk%2F1207%2F1052%2Fntk121408.jpg&quot; alt=&quot;&quot; class=&quot;myimg&quot; /&gt;</div><div class="line"></div><div class="line">var img = document.getElementsByTagName(&apos;img&apos;)[0];</div><div class="line">img.src = img.getAttribute(&quot;data-src&quot;);</div></pre></td></tr></table></figure></p>
+<p>当然，一些小图片可以这样做，因为加载快嘛，一瞬间就完成了，但是网络比较慢的时候加载一些大图片时，就不太好了。<br>一般懒加载默认有个默认的显示图片，但是直接替换的话，如果加载慢的话图片一下没加载出来就会显示一片空白，这样不太好，应该做到替换时图片直接显示出来，图片没加载完成还是显示的默认图片。这就要用到我们今天所说的东西了，判断图片加载完成后触发的事件。<br>判断图片加载完成一般有三种方法</p>
+<h3 id="一、load事件"><a href="#一、load事件" class="headerlink" title="一、load事件"></a>一、load事件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var img = document.getElementsByTagName(&apos;img&apos;)[0];</div><div class="line">var Img = new Image();</div><div class="line">Img.src = img.getAttribute(&quot;data-src&quot;);</div><div class="line">Img.onload = function ()&#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>简单粗暴，基本上所有浏览器都支持，但是有一个问题，在IE、Opera等浏览器中第一次加载是正常的，但是同一张图片再次加载时不会触发onload事件了，IE是根据图片是否显示过来判断，就是说当加载的图片显示出来后就不在执行onload事件了。</p>
+<h3 id="二、onreadystatechange事件"><a href="#二、onreadystatechange事件" class="headerlink" title="二、onreadystatechange事件"></a>二、onreadystatechange事件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var img = document.getElementsByTagName(&apos;img&apos;)[0];</div><div class="line">var Img = new Image();</div><div class="line">Img.src = img.getAttribute(&quot;data-src&quot;);</div><div class="line">Img.onreadystatechange = function ()&#123;</div><div class="line">	if(Img.readyState==&quot;complete&quot;||Img.readyState==&quot;loaded&quot;)&#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在ie下，img对象与xhr对象一样具有onreadystatechange事件，可以通过该事件判断图片是否加载完成，ie特有的，其他浏览器不支持。且问题和上面问题一样。</p>
+<h3 id="三、img的complete属性"><a href="#三、img的complete属性" class="headerlink" title="三、img的complete属性"></a>三、img的complete属性</h3><p>complete 属性可返回浏览器是否已完成对图像的加载，如果加载完成，则返回 true，否则返回 fasle，基本所有浏览器都支持，且不会有上面的问题。<br>我们可以用其特性，做一个定时器，查看其是否加载完成，完成加载后执行一个回调函数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">&lt;button onclick=&quot;loadImage(document.getElementsByTagName(&apos;img&apos;),imgLoaded,allimgLoaded)&quot;&gt;加载&lt;/button&gt;</div><div class="line">&lt;img data-src=&quot;http://ouzdb04w7.bkt.clouddn.com/image/2017/10/27/timg1.jpg&quot; src=&quot;&quot;  alt=&quot;&quot; class=&quot;myimg&quot; /&gt;</div><div class="line">&lt;img data-src=&quot;http://ouzdb04w7.bkt.clouddn.com/image/2017/10/27/timg2.jpg&quot; src=&quot;&quot; alt=&quot;&quot; class=&quot;myimg&quot; /&gt;</div><div class="line">&lt;img data-src=&quot;http://ouzdb04w7.bkt.clouddn.com/image/2017/10/27/timg3.jpg&quot; src=&quot;&quot; alt=&quot;&quot; class=&quot;myimg&quot;/&gt;			</div><div class="line"></div><div class="line"></div><div class="line">function loadImage(objarr,callback,allcallback)&#123;</div><div class="line">    var timer = null;</div><div class="line">    var i = 0;</div><div class="line">    var len = objarr.length;</div><div class="line">    var load;</div><div class="line">    load = function(i)&#123;</div><div class="line">        if(i&lt;len)&#123;</div><div class="line">            var img = new Image();</div><div class="line">            img.src = objarr[i].getAttribute(&quot;data-src&quot;);</div><div class="line">            timer = setInterval(function()&#123;</div><div class="line">                if(img.complete)&#123;														</div><div class="line">                    clearInterval(timer);																						</div><div class="line">                    callback(objarr[i++],img);																	</div><div class="line">                    load(i);</div><div class="line">                &#125;</div><div class="line">            &#125;,80);</div><div class="line">        &#125;else&#123;</div><div class="line">            allcallback();</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line">    load(0);</div><div class="line">&#125;</div><div class="line">function imgLoaded(obj,img)&#123;</div><div class="line">    obj.src = img.src;</div><div class="line">    console.log(img.width);</div><div class="line">&#125;</div><div class="line">function allimgLoaded()&#123;</div><div class="line">    alert(&quot;图片全部加载完成&quot;);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<iframe src="/code/complete.html" width="100%" height="450px" frameborder="0" allowfullscreen></iframe>
+<p>ok，上面将一堆图片的<code>data-src</code>链接放在了<code>src</code>中，图片都是瞬间出现，而不是慢慢加载出来的。<br>本文代码地址:<a href="https://github.com/xuxingeren/blog/blob/master/%E5%B0%8F%E5%AE%9E%E4%BE%8B/complete.html" target="_blank" rel="external">链接</a>;</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;http://ouzdb04w7.bkt.clouddn.com/image/2017/10/27/timg.jpg&quot; alt=&quot;图片加载&quot;&gt;&lt;br&gt;图片懒加载技术相信大家再熟悉不过了，当网站中用到大量图片时回事网站打开时加载过慢，用户体验不好。用户其实
+    
+    </summary>
+    
+      <category term="前端" scheme="http://xuxin123.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="图片替换" scheme="http://xuxin123.com/tags/%E5%9B%BE%E7%89%87%E6%9B%BF%E6%8D%A2/"/>
+    
+      <category term="图片加载" scheme="http://xuxin123.com/tags/%E5%9B%BE%E7%89%87%E5%8A%A0%E8%BD%BD/"/>
+    
+      <category term="小实例" scheme="http://xuxin123.com/tags/%E5%B0%8F%E5%AE%9E%E4%BE%8B/"/>
+    
+  </entry>
+  
+  <entry>
     <title>CSS-背景裁剪</title>
     <link href="http://xuxin123.com/2017/10/26/background-clip/"/>
     <id>http://xuxin123.com/2017/10/26/background-clip/</id>
     <published>2017-10-26T07:00:24.000Z</published>
-    <updated>2017-10-26T09:31:12.897Z</updated>
+    <updated>2017-10-27T10:19:05.520Z</updated>
     
     <content type="html"><![CDATA[<p><img src="http://ouzdb04w7.bkt.clouddn.com/image/2017/10/26/1.png" alt="背景裁剪"><br>最近一直忙着看ES6（懒），好久都没更新博客（不想写），难得下午抽空写写。<br>好了，今天的是文字对背景图片的裁剪，以及一些衍生的小东西。</p>
 <h3 id="background-clip"><a href="#background-clip" class="headerlink" title="background-clip:"></a>background-clip:</h3><p>background-clip 属性规定背景的绘制区域。其值主要有四个<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">background-clip: border-box;</div><div class="line">background-clip: padding-box;</div><div class="line">background-clip: content-box;</div><div class="line">background-clip: text;</div></pre></td></tr></table></figure></p>
@@ -189,11 +224,11 @@
       <category term="前端" scheme="http://xuxin123.com/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
+      <category term="css3" scheme="http://xuxin123.com/tags/css3/"/>
+    
       <category term="js" scheme="http://xuxin123.com/tags/js/"/>
     
       <category term="小实例" scheme="http://xuxin123.com/tags/%E5%B0%8F%E5%AE%9E%E4%BE%8B/"/>
-    
-      <category term="css3" scheme="http://xuxin123.com/tags/css3/"/>
     
       <category term="进度环" scheme="http://xuxin123.com/tags/%E8%BF%9B%E5%BA%A6%E7%8E%AF/"/>
     
@@ -249,7 +284,7 @@
     <link href="http://xuxin123.com/2017/08/22/celebrity/"/>
     <id>http://xuxin123.com/2017/08/22/celebrity/</id>
     <published>2017-08-22T07:49:54.000Z</published>
-    <updated>2017-08-23T03:42:26.607Z</updated>
+    <updated>2017-08-23T03:42:28.000Z</updated>
     
     <content type="html"><![CDATA[<h3 id="有许多文人志士埋没在历史的尘埃之中，但是我希望其精神能让人见到，其事迹能让人知晓。一日一度，一生一事。"><a href="#有许多文人志士埋没在历史的尘埃之中，但是我希望其精神能让人见到，其事迹能让人知晓。一日一度，一生一事。" class="headerlink" title="有许多文人志士埋没在历史的尘埃之中，但是我希望其精神能让人见到，其事迹能让人知晓。一日一度，一生一事。"></a>有许多文人志士埋没在历史的尘埃之中，但是我希望其精神能让人见到，其事迹能让人知晓。一日一度，一生一事。</h3><h5 id="云山苍苍，江水泱泱，先生之风，山高水长"><a href="#云山苍苍，江水泱泱，先生之风，山高水长" class="headerlink" title="云山苍苍，江水泱泱，先生之风，山高水长!"></a>云山苍苍，江水泱泱，先生之风，山高水长!</h5><p>在北大燕南园55号门前，立有一樽老人的铜像。老人手拄拐杖，端坐凝神，慈蔼的面目于平和中带着守护的神光。铜像下方，刻着老人生前常说的一句话：“我这辈子只做了一件事，教书。”这位执教了70年近百岁的老人，80岁还在给本科生上课，90岁还在带博士生，他就是经济学大师，陈岱孙。</p>
 <p><img src="http://ouzdb04w7.bkt.clouddn.com/image/2017/08/22/1.png" alt="陈岱孙先生的铜像"></p>
@@ -304,7 +339,7 @@
     <link href="http://xuxin123.com/2017/08/21/Hello/"/>
     <id>http://xuxin123.com/2017/08/21/Hello/</id>
     <published>2017-08-21T10:49:54.000Z</published>
-    <updated>2017-10-16T09:15:26.137Z</updated>
+    <updated>2017-08-22T09:26:30.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="http://ouzdb04w7.bkt.clouddn.com/image/2017/08/22/timg.jpg" alt="hello"><br>考虑了很多，由于个人还是太懒，个人网站关掉了，不准备维护，因为已经很久没写什么东西了，还有就是嫌麻烦，以后写的东西将全部展示在这个博客上面，算是汇总一下吧，总结和梳理一下遗漏的知识点，当做我的学习历程吧。</p>
 <p><style>    .box{border-radius: 4px;line-height: 100px;color:#FFF;text-align:center;font-size:16px;margin:0 auto;height: 100px;width: 200px;background: rgba(255, 20, 147, .85);position: relative;} .box span{border: 26px solid transparent;border-bottom-color: rgba(255, 20, 147, .85);border-top: 0;border-right:0 ;position: absolute;top: 0;left: 50%;margin: -26px 0 0 -13px;}</style></p>

@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[图片加载]]></title>
+    <url>%2F2017%2F10%2F27%2Fcomplete%2F</url>
+    <content type="text"><![CDATA[图片懒加载技术相信大家再熟悉不过了，当网站中用到大量图片时回事网站打开时加载过慢，用户体验不好。用户其实看到的是可视区域，可视区域下面的图片什么的可以不用加载，当用户滚动滚动条要看到还没加载的图片时，在让其进行加载。所谓懒加载，就是把img的src放在一个自定义属性中，src为空，当触发某个事件时把自定义属性的值赋给src。1234&lt;img data-src=&quot;https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1509098785051&amp;di=0cdd1c1cb8314d1fe3c460f3e13ece59&amp;imgtype=0&amp;src=http%3A%2F%2Fimg2.niutuku.com%2Fdesk%2F1207%2F1052%2Fntk121408.jpg&quot; alt=&quot;&quot; class=&quot;myimg&quot; /&gt;var img = document.getElementsByTagName(&apos;img&apos;)[0];img.src = img.getAttribute(&quot;data-src&quot;); 当然，一些小图片可以这样做，因为加载快嘛，一瞬间就完成了，但是网络比较慢的时候加载一些大图片时，就不太好了。一般懒加载默认有个默认的显示图片，但是直接替换的话，如果加载慢的话图片一下没加载出来就会显示一片空白，这样不太好，应该做到替换时图片直接显示出来，图片没加载完成还是显示的默认图片。这就要用到我们今天所说的东西了，判断图片加载完成后触发的事件。判断图片加载完成一般有三种方法 一、load事件123456var img = document.getElementsByTagName(&apos;img&apos;)[0];var Img = new Image();Img.src = img.getAttribute(&quot;data-src&quot;);Img.onload = function ()&#123;&#125; 简单粗暴，基本上所有浏览器都支持，但是有一个问题，在IE、Opera等浏览器中第一次加载是正常的，但是同一张图片再次加载时不会触发onload事件了，IE是根据图片是否显示过来判断，就是说当加载的图片显示出来后就不在执行onload事件了。 二、onreadystatechange事件12345678var img = document.getElementsByTagName(&apos;img&apos;)[0];var Img = new Image();Img.src = img.getAttribute(&quot;data-src&quot;);Img.onreadystatechange = function ()&#123; if(Img.readyState==&quot;complete&quot;||Img.readyState==&quot;loaded&quot;)&#123;&#125;&#125; 在ie下，img对象与xhr对象一样具有onreadystatechange事件，可以通过该事件判断图片是否加载完成，ie特有的，其他浏览器不支持。且问题和上面问题一样。 三、img的complete属性complete 属性可返回浏览器是否已完成对图像的加载，如果加载完成，则返回 true，否则返回 fasle，基本所有浏览器都支持，且不会有上面的问题。我们可以用其特性，做一个定时器，查看其是否加载完成，完成加载后执行一个回调函数。1234567891011121314151617181920212223242526272829303132333435&lt;button onclick=&quot;loadImage(document.getElementsByTagName(&apos;img&apos;),imgLoaded,allimgLoaded)&quot;&gt;加载&lt;/button&gt;&lt;img data-src=&quot;http://ouzdb04w7.bkt.clouddn.com/image/2017/10/27/timg1.jpg&quot; src=&quot;&quot; alt=&quot;&quot; class=&quot;myimg&quot; /&gt;&lt;img data-src=&quot;http://ouzdb04w7.bkt.clouddn.com/image/2017/10/27/timg2.jpg&quot; src=&quot;&quot; alt=&quot;&quot; class=&quot;myimg&quot; /&gt;&lt;img data-src=&quot;http://ouzdb04w7.bkt.clouddn.com/image/2017/10/27/timg3.jpg&quot; src=&quot;&quot; alt=&quot;&quot; class=&quot;myimg&quot;/&gt; function loadImage(objarr,callback,allcallback)&#123; var timer = null; var i = 0; var len = objarr.length; var load; load = function(i)&#123; if(i&lt;len)&#123; var img = new Image(); img.src = objarr[i].getAttribute(&quot;data-src&quot;); timer = setInterval(function()&#123; if(img.complete)&#123; clearInterval(timer); callback(objarr[i++],img); load(i); &#125; &#125;,80); &#125;else&#123; allcallback(); &#125; &#125;; load(0);&#125;function imgLoaded(obj,img)&#123; obj.src = img.src; console.log(img.width);&#125;function allimgLoaded()&#123; alert(&quot;图片全部加载完成&quot;);&#125; ok，上面将一堆图片的data-src链接放在了src中，图片都是瞬间出现，而不是慢慢加载出来的。本文代码地址:链接;]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>图片替换</tag>
+        <tag>图片加载</tag>
+        <tag>小实例</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[CSS-背景裁剪]]></title>
     <url>%2F2017%2F10%2F26%2Fbackground-clip%2F</url>
     <content type="text"><![CDATA[最近一直忙着看ES6（懒），好久都没更新博客（不想写），难得下午抽空写写。好了，今天的是文字对背景图片的裁剪，以及一些衍生的小东西。 background-clip:background-clip 属性规定背景的绘制区域。其值主要有四个1234background-clip: border-box;background-clip: padding-box;background-clip: content-box;background-clip: text; 顾名思义剪切掉边框的背景，剪切掉外边距的背景，剪切掉内容的背景，剪切掉文字外背景当然最后一个比较特殊，需要比较高级的浏览器才能看到。 -webkit-text-fill-color:检索或设置对象中的文字填充颜色，通过text-fill-color属性，可以做出一些例如渐变文字和镂空文字的效果。上面的配合-webkit-text-fill-color: transparent;属性可以让文字的填充色变成透明，透过文字看到背景。 background-position:background-position 属性设置背景图像的起始位置。这三者结合起来会产生什么效果呢？（请用谷歌浏览器观看）12345678910111213141516171819.text2 &#123; width: 720px; background-image: -webkit-linear-gradient(top, #fc0, #f30 50%, #c00 51%, #600); -webkit-background-clip: text; font-size: 80px; -webkit-text-fill-color: transparent; font-weight: bold; background-repeat: no-repeat; background-position: -800px 0; animation: loop 10s linear infinite;&#125;@keyframes loop &#123; 0% &#123; background-position: -800px 0; &#125; 100% &#123; background-position: -0 0; &#125;&#125; 很像卡拉OK的效果，是不是很酷呀。本文代码地址:链接]]></content>
@@ -62,9 +75,9 @@
         <category>前端</category>
       </categories>
       <tags>
+        <tag>css3</tag>
         <tag>js</tag>
         <tag>小实例</tag>
-        <tag>css3</tag>
         <tag>进度环</tag>
       </tags>
   </entry>
