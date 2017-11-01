@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[拖拽小实例]]></title>
+    <url>%2F2017%2F11%2F01%2Fdrag%2F</url>
+    <content type="text"><![CDATA[在日常业务中有很多时候会用到拖拽，比如弹窗什么的，还有一些导航什么的拖动组成自己喜欢的导航。今天就写了两个小例子带大家了解PC端和移动端的拖拽是怎么实现的。 PC端拖拽pc端拖动主要是onmouse事件，当你鼠标对拖动目标点下时触发拖动目标的onmousedown事件，此时记录下鼠标点击的位置坐标和拖动目标的右上角坐标，得到二者之差，鼠标点下并且拖动触发document的onmousemove事件，获得不断移动的鼠标位置坐标，再减去之前得到的差值，把得到的Y轴移动值赋给top，X轴移动值赋给left；当鼠标松开时触发onmouseup事件，此时销毁document.onmousemove和拖动目标的onmousemove和事件，一个简单的拖拽就完成了。注意一下，当拖动是会有默认事件发生，比如往下拖动，如果有滚动条的话，会使滚动条滚动，这时需要阻止一下默认事件，event.preventDefault();当然，如果你要限制范围的话，可以在onmousemove中吧Y轴移动值和X轴移动值用判断限制一下，我限制的是不能超过文档窗口，有兴趣可以改一下。1234567891011121314151617181920212223242526272829303132function touch(id)&#123; var obj = document.getElementById(id); obj.onmousedown = function(event)&#123; var disX = event.pageX - obj.offsetLeft; var disY = event.pageY - obj.offsetTop; var W = document.documentElement.clientWidth-obj.offsetWidth; var H = document.documentElement.clientHeight-obj.offsetHeight; document.onmousemove = function(event)&#123; event.preventDefault(); var l = event.pageX - disX; var t = event.pageY - disY; if(l&lt;0)&#123; l = 0; &#125; if(l&gt;W)&#123; l = W ; &#125; if(t&lt;0)&#123; t = 0; &#125; if(t&gt;H)&#123; t = H; &#125; obj.style.top = t+ &apos;px&apos;; obj.style.left = l+&apos;px&apos;; &#125; obj.onmouseup = function()&#123; document.onmousemove = null; obj.onmouseup = null; &#125; &#125; &#125;; 移动端拖拽移动端的拖拽是由touch事件完成的，和PC的onmouse事件大致一样，touchstart是手指按下，可以通过event.targetTouches.length获得有多少手指按下，一般拖动一根手指，于是当event.targetTouches.length == 1时才能触发拖拽事件，event.targetTouches[0]相当于鼠标的event，通过这个可以获取手指按下的坐标，其余的大致和PC差不多。123456789101112131415161718192021222324252627282930313233343536373839function touch(id)&#123; var obj = document.getElementById(id); obj.addEventListener(&apos;touchstart&apos;, function(event) &#123; if (event.targetTouches.length == 1) &#123; var touch = event.targetTouches[0]; var disX=touch.pageX-obj.offsetLeft; var disY=touch.pageY-obj.offsetTop; var W = document.documentElement.clientWidth-obj.offsetWidth; var H = document.documentElement.clientHeight-obj.offsetHeight; obj.addEventListener(&apos;touchmove&apos;,move); function move(event)&#123; event.preventDefault(); var touch2=event.targetTouches[0]; var l=touch2.pageX-disX; var t=touch2.pageY-disY; if(l&lt;0)&#123; l=0; &#125;; if(l&gt;W)&#123; l=W; &#125;; if(t&lt;0)&#123; t=0; &#125;; if(t&gt;H)&#123; t=H; &#125;; obj.style.left=l+&apos;px&apos;; obj.style.top=t+&apos;px&apos;; &#125;; obj.addEventListener(&apos;touchend&apos;,chend); function chend(event)&#123; obj.removeEventListener(&apos;touchmove&apos;,move); obj.removeEventListener(&apos;touchend&apos;,chend); &#125;; &#125;; &#125;, false); &#125;; 不过有个地方要注意一下，移动端如果使用event.preventDefault();阻止默认事件的话，可能会对流畅度有点影响，如果你想应用到高级的浏览器上的话，就不要使用event.preventDefault();了，推荐的做法是用css中的touch-action来阻止默认事件，touch-action:none使触控事件发生在元素上时，不进行任何操作。也就是当touchstart发生时让html的touch-action为none，拖动完成touchend时，把html的touch-action改成auto就行了。1234567891011121314151617181920212223242526272829303132333435363738function touch(id)&#123; var obj = document.getElementById(id); obj.addEventListener(&apos;touchstart&apos;, function(event) &#123; if (event.targetTouches.length == 1) &#123; var touch = event.targetTouches[0]; var disX=touch.pageX-obj.offsetLeft; var disY=touch.pageY-obj.offsetTop; obj.addEventListener(&apos;touchmove&apos;,move); function move(event)&#123; document.documentElement.style.touchAction = &apos;none&apos;; var touch2=event.targetTouches[0]; var l=touch2.pageX-disX; var t=touch2.pageY-disY; if(l&lt;0)&#123; l=0; &#125;; if(l&gt;document.documentElement.clientWidth-obj.offsetWidth)&#123; l=document.documentElement.clientWidth-obj.offsetWidth &#125;; if(t&lt;0)&#123; t=0; &#125;; if(t&gt;document.documentElement.clientHeight-obj.offsetHeight)&#123; t=document.documentElement.clientHeight-obj.offsetHeight; &#125;; obj.style.left=l+&apos;px&apos;; obj.style.top=t+&apos;px&apos;; &#125;; obj.addEventListener(&apos;touchend&apos;,chend); function chend(event)&#123; document.documentElement.style.touchAction = &apos;auto&apos;; obj.removeEventListener(&apos;touchmove&apos;,move); obj.removeEventListener(&apos;touchend&apos;,chend); &#125;; &#125;; &#125;, false); &#125;; 本文代码地址:链接]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>拖拽</tag>
+        <tag>小实例</tag>
+        <tag>touch</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[图片加载]]></title>
     <url>%2F2017%2F10%2F27%2Fcomplete%2F</url>
     <content type="text"><![CDATA[图片懒加载技术相信大家再熟悉不过了，当网站中用到大量图片时回事网站打开时加载过慢，用户体验不好。用户其实看到的是可视区域，可视区域下面的图片什么的可以不用加载，当用户滚动滚动条要看到还没加载的图片时，在让其进行加载。所谓懒加载，就是把img的src放在一个自定义属性中，src为空，当触发某个事件时把自定义属性的值赋给src。1234&lt;img data-src=&quot;https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1509098785051&amp;di=0cdd1c1cb8314d1fe3c460f3e13ece59&amp;imgtype=0&amp;src=http%3A%2F%2Fimg2.niutuku.com%2Fdesk%2F1207%2F1052%2Fntk121408.jpg&quot; alt=&quot;&quot; class=&quot;myimg&quot; /&gt;var img = document.getElementsByTagName(&apos;img&apos;)[0];img.src = img.getAttribute(&quot;data-src&quot;); 当然，一些小图片可以这样做，因为加载快嘛，一瞬间就完成了，但是网络比较慢的时候加载一些大图片时，就不太好了。一般懒加载默认有个默认的显示图片，但是直接替换的话，如果加载慢的话图片一下没加载出来就会显示一片空白，这样不太好，应该做到替换时图片直接显示出来，图片没加载完成还是显示的默认图片。这就要用到我们今天所说的东西了，判断图片加载完成后触发的事件。判断图片加载完成一般有三种方法 一、load事件123456var img = document.getElementsByTagName(&apos;img&apos;)[0];var Img = new Image();Img.src = img.getAttribute(&quot;data-src&quot;);Img.onload = function ()&#123;&#125; 简单粗暴，基本上所有浏览器都支持，但是有一个问题，在IE、Opera等浏览器中第一次加载是正常的，但是同一张图片再次加载时不会触发onload事件了，IE是根据图片是否显示过来判断，就是说当加载的图片显示出来后就不在执行onload事件了。 二、onreadystatechange事件12345678var img = document.getElementsByTagName(&apos;img&apos;)[0];var Img = new Image();Img.src = img.getAttribute(&quot;data-src&quot;);Img.onreadystatechange = function ()&#123; if(Img.readyState==&quot;complete&quot;||Img.readyState==&quot;loaded&quot;)&#123;&#125;&#125; 在ie下，img对象与xhr对象一样具有onreadystatechange事件，可以通过该事件判断图片是否加载完成，ie特有的，其他浏览器不支持。且问题和上面问题一样。 三、img的complete属性complete 属性可返回浏览器是否已完成对图像的加载，如果加载完成，则返回 true，否则返回 fasle，基本所有浏览器都支持，且不会有上面的问题。我们可以用其特性，做一个定时器，查看其是否加载完成，完成加载后执行一个回调函数。1234567891011121314151617181920212223242526272829303132333435&lt;button onclick=&quot;loadImage(document.getElementsByTagName(&apos;img&apos;),imgLoaded,allimgLoaded)&quot;&gt;加载&lt;/button&gt;&lt;img data-src=&quot;http://ouzdb04w7.bkt.clouddn.com/image/2017/10/27/timg1.jpg&quot; src=&quot;&quot; alt=&quot;&quot; class=&quot;myimg&quot; /&gt;&lt;img data-src=&quot;http://ouzdb04w7.bkt.clouddn.com/image/2017/10/27/timg2.jpg&quot; src=&quot;&quot; alt=&quot;&quot; class=&quot;myimg&quot; /&gt;&lt;img data-src=&quot;http://ouzdb04w7.bkt.clouddn.com/image/2017/10/27/timg3.jpg&quot; src=&quot;&quot; alt=&quot;&quot; class=&quot;myimg&quot;/&gt; function loadImage(objarr,callback,allcallback)&#123; var timer = null; var i = 0; var len = objarr.length; var load; load = function(i)&#123; if(i&lt;len)&#123; var img = new Image(); img.src = objarr[i].getAttribute(&quot;data-src&quot;); timer = setInterval(function()&#123; if(img.complete)&#123; clearInterval(timer); callback(objarr[i++],img); load(i); &#125; &#125;,80); &#125;else&#123; allcallback(); &#125; &#125;; load(0);&#125;function imgLoaded(obj,img)&#123; obj.src = img.src; console.log(img.width);&#125;function allimgLoaded()&#123; alert(&quot;图片全部加载完成&quot;);&#125; ok，上面将一堆图片的data-src链接放在了src中，图片都是瞬间出现，而不是慢慢加载出来的。本文代码地址:链接;]]></content>
@@ -8,9 +21,9 @@
         <category>前端</category>
       </categories>
       <tags>
+        <tag>小实例</tag>
         <tag>图片替换</tag>
         <tag>图片加载</tag>
-        <tag>小实例</tag>
       </tags>
   </entry>
   <entry>
@@ -76,8 +89,8 @@
       </categories>
       <tags>
         <tag>css3</tag>
-        <tag>js</tag>
         <tag>小实例</tag>
+        <tag>js</tag>
         <tag>进度环</tag>
       </tags>
   </entry>

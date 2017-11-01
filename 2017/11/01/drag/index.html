@@ -3,20 +3,26 @@
 <head>
     <meta charset="utf-8">
     
-    <title>标签: 垂直居中 | 陌路凡歌的个人博客</title>
+    <title>拖拽小实例 | 陌路凡歌的个人博客</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="description" content="前端,vue.js,bootstrap,css">
-<meta property="og:type" content="website">
-<meta property="og:title" content="陌路凡歌的个人博客">
-<meta property="og:url" content="http://xuxin123.com/tags/垂直居中/index.html">
+        <meta name="keywords" content="拖拽,小实例,touch" />
+    
+    <meta name="description" content="在日常业务中有很多时候会用到拖拽，比如弹窗什么的，还有一些导航什么的拖动组成自己喜欢的导航。今天就写了两个小例子带大家了解PC端和移动端的拖拽是怎么实现的。 PC端拖拽pc端拖动主要是onmouse事件，当你鼠标对拖动目标点下时触发拖动目标的onmousedown事件，此时记录下鼠标点击的位置坐标和拖动目标的右上角坐标，得到二者之差，鼠标点下并且拖动触发document的onmousemove事件">
+<meta name="keywords" content="拖拽,小实例,touch">
+<meta property="og:type" content="article">
+<meta property="og:title" content="拖拽小实例">
+<meta property="og:url" content="http://xuxin123.com/2017/11/01/drag/index.html">
 <meta property="og:site_name" content="陌路凡歌的个人博客">
-<meta property="og:description" content="前端,vue.js,bootstrap,css">
+<meta property="og:description" content="在日常业务中有很多时候会用到拖拽，比如弹窗什么的，还有一些导航什么的拖动组成自己喜欢的导航。今天就写了两个小例子带大家了解PC端和移动端的拖拽是怎么实现的。 PC端拖拽pc端拖动主要是onmouse事件，当你鼠标对拖动目标点下时触发拖动目标的onmousedown事件，此时记录下鼠标点击的位置坐标和拖动目标的右上角坐标，得到二者之差，鼠标点下并且拖动触发document的onmousemove事件">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://ouzdb04w7.bkt.clouddn.com/image/2017/11/01/1.png">
+<meta property="og:updated_time" content="2017-11-01T10:24:00.830Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="陌路凡歌的个人博客">
-<meta name="twitter:description" content="前端,vue.js,bootstrap,css">
+<meta name="twitter:title" content="拖拽小实例">
+<meta name="twitter:description" content="在日常业务中有很多时候会用到拖拽，比如弹窗什么的，还有一些导航什么的拖动组成自己喜欢的导航。今天就写了两个小例子带大家了解PC端和移动端的拖拽是怎么实现的。 PC端拖拽pc端拖动主要是onmouse事件，当你鼠标对拖动目标点下时触发拖动目标的onmousedown事件，此时记录下鼠标点击的位置坐标和拖动目标的右上角坐标，得到二者之差，鼠标点下并且拖动触发document的onmousemove事件">
+<meta name="twitter:image" content="http://ouzdb04w7.bkt.clouddn.com/image/2017/11/01/1.png">
     
 
     
@@ -146,72 +152,133 @@ var _hmt = _hmt || [];
                         <div class="main-body-header">
     <h1 class="header">
     
-    <i class="icon fa fa-tag"></i>标签: <em>垂直居中</em>
+    <a class="page-title-link" href="/categories/前端/">前端</a>
     </h1>
 </div>
                         <div class="main-body-content">
-                            
-
-    
-    
+                            <article id="post-drag" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-        
-        <section class="archives-wrap">
-            <div class="archive-year-wrap">
-                <a href="/archives/2017" class="archive-year"><i class="icon fa fa-calendar-o"></i>2017</a>
-            </div>
-            <div class="archives">
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2017/08/26/vertical/" class="thumbnail">
-    
-    
-        <span style="background-image:url(http://ouzdb04w7.bkt.clouddn.com/image/2017/08/26/main.png)" alt="垂直居中-文本篇" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/前端/">前端</a>
-            </div>
-            <div class="date"><time datetime="2017-08-26T07:49:54.000Z" itemprop="datePublished">2017-08-26</time></div>
-        </div>
-        
+            <header class="article-header">
+                
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2017/08/26/vertical/">垂直居中-文本篇</a>
+        拖拽小实例
         </h1>
     
 
-        <p class="article-excerpt">
-            拖延症太强，每次想写点东西的时候总是会想着明天写，今天强行克服了，总算是动工了，好吧，我的第一篇技术博客。说真的css这玩意儿，很多人认为写写就行了，但在我看来这东西的复杂程度不下于js，写好真的是很难很难，各种布局都有不同的写法，写这个的原因是把常写的东西总结一下，希望给大家参考参考，同时也是对我自己的一个学习总结吧，见识不足，还请谅解。
-html统一样式123&lt;div class=&qu
-        </p>
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2017/11/01/drag/" class="article-date">
+            <time datetime="2017-11-01T08:18:44.000Z" itemprop="datePublished">2017-11-01</time>
+        </a>
+    </div>
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/touch/">touch</a>, <a class="tag-link" href="/tags/小实例/">小实例</a>, <a class="tag-link" href="/tags/拖拽/">拖拽</a>
+    </div>
+
+                               阅读数量:<span id="/2017/11/01/drag/" class="leancloud_visitors" data-flag-title="拖拽小实例"></span>次
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p><img src="http://ouzdb04w7.bkt.clouddn.com/image/2017/11/01/1.png" alt="拖拽"><br>在日常业务中有很多时候会用到拖拽，比如弹窗什么的，还有一些导航什么的拖动组成自己喜欢的导航。今天就写了两个小例子带大家了解PC端和移动端的拖拽是怎么实现的。</p>
+<h3 id="PC端拖拽"><a href="#PC端拖拽" class="headerlink" title="PC端拖拽"></a>PC端拖拽</h3><p>pc端拖动主要是onmouse事件，当你鼠标对拖动目标点下时触发拖动目标的onmousedown事件，此时记录下鼠标点击的位置坐标和拖动目标的右上角坐标，得到二者之差，鼠标点下并且拖动触发document的onmousemove事件，获得不断移动的鼠标位置坐标，再减去之前得到的差值，把得到的Y轴移动值赋给top，X轴移动值赋给left；当鼠标松开时触发onmouseup事件，此时销毁document.onmousemove和拖动目标的onmousemove和事件，一个简单的拖拽就完成了。注意一下，当拖动是会有默认事件发生，比如往下拖动，如果有滚动条的话，会使滚动条滚动，这时需要阻止一下默认事件，event.preventDefault();<br>当然，如果你要限制范围的话，可以在onmousemove中吧Y轴移动值和X轴移动值用判断限制一下，我限制的是不能超过文档窗口，有兴趣可以改一下。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">function touch(id)&#123;</div><div class="line">    		var obj = document.getElementById(id); </div><div class="line">            obj.onmousedown = function(event)&#123;</div><div class="line">                var disX = event.pageX - obj.offsetLeft;</div><div class="line">                var disY = event.pageY - obj.offsetTop;</div><div class="line">                var W = document.documentElement.clientWidth-obj.offsetWidth;</div><div class="line">                var H = document.documentElement.clientHeight-obj.offsetHeight;</div><div class="line">                document.onmousemove = function(event)&#123;</div><div class="line">                    event.preventDefault();</div><div class="line">                    var l = event.pageX - disX;</div><div class="line">                    var t = event.pageY - disY;</div><div class="line">                    if(l&lt;0)&#123;</div><div class="line">                        l = 0;</div><div class="line">                    &#125;</div><div class="line">                    if(l&gt;W)&#123;</div><div class="line">                        l = W ;</div><div class="line">                    &#125;</div><div class="line">                    if(t&lt;0)&#123;</div><div class="line">                        t = 0;</div><div class="line">                    &#125;</div><div class="line">                    if(t&gt;H)&#123;</div><div class="line">                        t = H;</div><div class="line">                    &#125;</div><div class="line">                    obj.style.top = t+ &apos;px&apos;;</div><div class="line">                    obj.style.left = l+&apos;px&apos;;</div><div class="line">                &#125;</div><div class="line">                obj.onmouseup = function()&#123;</div><div class="line">                    document.onmousemove = null;</div><div class="line">                    obj.onmouseup = null;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">    &#125;;</div></pre></td></tr></table></figure></p>
+<iframe src="/code/drag1.html" width="100%" height="450px" frameborder="0" allowfullscreen></iframe>
+<h3 id="移动端拖拽"><a href="#移动端拖拽" class="headerlink" title="移动端拖拽"></a>移动端拖拽</h3><p>移动端的拖拽是由touch事件完成的，和PC的onmouse事件大致一样，touchstart是手指按下，可以通过event.targetTouches.length获得有多少手指按下，一般拖动一根手指，于是当event.targetTouches.length == 1时才能触发拖拽事件，event.targetTouches[0]相当于鼠标的event，通过这个可以获取手指按下的坐标，其余的大致和PC差不多。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">function touch(id)&#123;</div><div class="line">			var obj = document.getElementById(id); </div><div class="line">			obj.addEventListener(&apos;touchstart&apos;, function(event) &#123; </div><div class="line">			if (event.targetTouches.length == 1) &#123; </div><div class="line">			var touch = event.targetTouches[0]; </div><div class="line">			var disX=touch.pageX-obj.offsetLeft; </div><div class="line">			var disY=touch.pageY-obj.offsetTop;</div><div class="line">			var W = document.documentElement.clientWidth-obj.offsetWidth;</div><div class="line">            var H = document.documentElement.clientHeight-obj.offsetHeight;</div><div class="line">			obj.addEventListener(&apos;touchmove&apos;,move);  </div><div class="line">			function move(event)&#123;	</div><div class="line">				event.preventDefault();</div><div class="line">					var touch2=event.targetTouches[0];</div><div class="line">					var l=touch2.pageX-disX;</div><div class="line">					var t=touch2.pageY-disY;</div><div class="line">					if(l&lt;0)&#123;</div><div class="line">						l=0;</div><div class="line">					&#125;;</div><div class="line">					if(l&gt;W)&#123;</div><div class="line">						l=W;</div><div class="line">					&#125;;</div><div class="line">					if(t&lt;0)&#123;</div><div class="line">						t=0;</div><div class="line">					&#125;;</div><div class="line">					if(t&gt;H)&#123;</div><div class="line">						t=H;</div><div class="line">					&#125;;</div><div class="line">					obj.style.left=l+&apos;px&apos;;</div><div class="line">					obj.style.top=t+&apos;px&apos;;</div><div class="line">		 </div><div class="line">			&#125;;</div><div class="line">		 	 obj.addEventListener(&apos;touchend&apos;,chend);</div><div class="line">		 	 function chend(event)&#123;</div><div class="line">				obj.removeEventListener(&apos;touchmove&apos;,move);</div><div class="line">				obj.removeEventListener(&apos;touchend&apos;,chend);</div><div class="line">		 	 &#125;;</div><div class="line">		&#125;; </div><div class="line">		&#125;, false);</div><div class="line">    &#125;;</div></pre></td></tr></table></figure></p>
+<iframe src="/code/drag2.html" width="100%" height="450px" frameborder="0" allowfullscreen></iframe>
+<p>不过有个地方要注意一下，移动端如果使用event.preventDefault();阻止默认事件的话，可能会对流畅度有点影响，如果你想应用到高级的浏览器上的话，就不要使用event.preventDefault();了，推荐的做法是用css中的touch-action来阻止默认事件，touch-action:none使触控事件发生在元素上时，不进行任何操作。也就是当touchstart发生时让html的touch-action为none，拖动完成touchend时，把html的touch-action改成auto就行了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">function touch(id)&#123;</div><div class="line">			var obj = document.getElementById(id); </div><div class="line">			obj.addEventListener(&apos;touchstart&apos;, function(event) &#123; </div><div class="line">			if (event.targetTouches.length == 1) &#123; </div><div class="line">			var touch = event.targetTouches[0]; </div><div class="line">			var disX=touch.pageX-obj.offsetLeft; </div><div class="line">			var disY=touch.pageY-obj.offsetTop;</div><div class="line">			obj.addEventListener(&apos;touchmove&apos;,move);  </div><div class="line">			function move(event)&#123;	</div><div class="line">				document.documentElement.style.touchAction = &apos;none&apos;;</div><div class="line">					var touch2=event.targetTouches[0];</div><div class="line">					var l=touch2.pageX-disX;</div><div class="line">					var t=touch2.pageY-disY;</div><div class="line">					if(l&lt;0)&#123;</div><div class="line">						l=0;</div><div class="line">					&#125;;</div><div class="line">					if(l&gt;document.documentElement.clientWidth-obj.offsetWidth)&#123;</div><div class="line">						l=document.documentElement.clientWidth-obj.offsetWidth</div><div class="line">					&#125;;</div><div class="line">					if(t&lt;0)&#123;</div><div class="line">						t=0;</div><div class="line">					&#125;;</div><div class="line">					if(t&gt;document.documentElement.clientHeight-obj.offsetHeight)&#123;</div><div class="line">						t=document.documentElement.clientHeight-obj.offsetHeight;</div><div class="line">					&#125;;</div><div class="line">					obj.style.left=l+&apos;px&apos;;</div><div class="line">					obj.style.top=t+&apos;px&apos;;</div><div class="line">		 </div><div class="line">			&#125;;</div><div class="line">		 	 obj.addEventListener(&apos;touchend&apos;,chend);</div><div class="line">		 	 function chend(event)&#123;</div><div class="line">				document.documentElement.style.touchAction = &apos;auto&apos;;</div><div class="line">				obj.removeEventListener(&apos;touchmove&apos;,move);</div><div class="line">				obj.removeEventListener(&apos;touchend&apos;,chend);</div><div class="line">		 	 &#125;;</div><div class="line">		&#125;; </div><div class="line">		&#125;, false);</div><div class="line">    &#125;;</div></pre></td></tr></table></figure></p>
+<p>本文代码地址:<a href="https://github.com/xuxingeren/blog/tree/master/%E5%B0%8F%E5%AE%9E%E4%BE%8B/drag" target="_blank" rel="external">链接</a></p>
+
+        </div>
+        <footer class="article-footer">
+            
+    <div class="jiathis_style">
+    <span class="jiathis_txt">分享到：</span>
+    <a class="jiathis_button_qzone">QQ空间</a>
+    <a class="jiathis_button_tsina">新浪微博</a>
+    <a class="jiathis_button_tqq">腾讯微博</a>
+    <a class="jiathis_button_weixin">微信</a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+    <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<style>
+    .jiathis_style div:first-child:not(.jiadiv_01) {
+        width: auto !important;
+        border: none !important;
+    }
+    .jiathis_style .jiadiv_01 {
+        margin: 10px 0;
+        border-radius: 4px;
+        border: #e1e1e1 solid 1px;
+    }
+    .jiathis_style .jiadiv_01 div:first-child {
+        display: none;
+    }
+    .jiathis_style .jiadiv_02 {
+        padding: 7px 0 !important;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle {
+        width: 85px;
+        border: none;
+        height: auto;
+        margin: 3px 10px;
+        padding: 6px 10px;
+        border-radius: 4px;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:hover {
+        border: none;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:nth-child(even) {
+        margin-left: 0;
+    }
+    .jiathis_style .jtico:hover {
+        opacity: 1;
+    }
+    .jiathis_style .ckepopBottom,
+    .jiathis_style .centerBottom {
+        width: auto !important;
+        padding: 5px;
+        background: #f7f7f7;
+    }
+</style>
+
+
+
+
+        </footer>
+        	<!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zMDMxMC82ODY1">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
     </div>
 </article>
+
+    <section id="comments">
     
-        </div>
-    
-
-
-    </div></section>
-
+    </section>
 
 
                         </div>
@@ -264,6 +331,19 @@ html统一样式123&lt;div class=&qu
             
         </ul>
     </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2017/10/27/complete/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">图片加载</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
     
     <div class="widgets-container">
         
