@@ -3,9 +3,10 @@
 
 
     
+    
   <url>
     <loc>http://xuxin123.com/2017/11/13/Calculator/</loc>
-    <lastmod>2017-11-13T10:01:24.439Z</lastmod>
+    <lastmod>2017-11-13T10:36:02.114Z</lastmod>
     <data>
         <display>
         <title>计算器小实例</title>
@@ -26,7 +27,6 @@
     </data>
     </url>
 
-    
     
   <url>
     <loc>http://xuxin123.com/2017/11/01/drag/</loc>
@@ -88,11 +88,11 @@
         <title>图片加载</title>
         <pubTime>2017-10-27T06:40:55.000Z</pubTime>
         
+        <tag>小实例</tag>
+         
         <tag>图片替换</tag>
          
         <tag>图片加载</tag>
-         
-        <tag>小实例</tag>
          
          
            
@@ -215,9 +215,9 @@
         
         <tag>js</tag>
          
-        <tag>css3</tag>
-         
         <tag>小实例</tag>
+         
+        <tag>css3</tag>
          
         <tag>进度环</tag>
          

@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[计算器小实例]]></title>
     <url>%2F2017%2F11%2F13%2FCalculator%2F</url>
-    <content type="text"><![CDATA[最近在学react，没啥时间更新博客，等有空的时候把react基础写一写，react写法还是挺有意思的。这个实例没啥可说的，就是一个小实例而已，js实现最简单的计算器功能。当然原理很简单的，就是通过eval()可以计算字符串的特性实现字符串的运算，当然eval()还是少用为好，它的可读性非常差，不好再做优化和编译。 关键js代码12345678910111213141516171819202122232425262728293031var btns = document.querySelectorAll(&apos;button.btns&apos;),text = document.querySelectorAll(&apos;.box p&apos;),arr = [],Result;[].slice.call(btns).forEach(function(element) &#123; element.onclick = function()&#123; if(this.value === &apos;=&apos;)&#123; try&#123; Result = eval(&apos;(&apos;+arr.join(&apos;&apos;)+&apos;)&apos;); &#125;catch(e)&#123; Result = &apos;error&apos;; &#125; arr = []; text[1].innerText = Result; &#125;else&#123; text[0].innerText = &apos;&apos;; if(this.value === &apos;C&apos;)&#123; arr = []; return; &#125; if(this.value === &apos;Back&apos;)&#123; arr.pop(); &#125;else&#123; arr.push(this.value); &#125; arr.map(function(num)&#123; text[0].innerText += num; &#125;); &#125; &#125;&#125;); 本文代码地址:链接]]></content>
+    <content type="text"><![CDATA[最近在学react，没啥时间更新博客，等有空的时候把react基础写一写，react写法还是挺有意思的。这个实例没啥可说的，就是一个小实例而已，js实现最简单的计算器功能。当然原理很简单的，就是通过eval()可以计算字符串的特性实现字符串的运算，当然eval()还是少用为好，它的可读性非常差，不好再做优化和编译。 关键js代码12345678910111213141516171819202122232425262728293031var btns = document.querySelectorAll(&apos;button.btns&apos;),text = document.querySelectorAll(&apos;.box p&apos;),arr = [],Result;[].slice.call(btns).forEach(function(element) &#123; element.onclick = function()&#123; if(this.value === &apos;=&apos;)&#123; try&#123; Result = eval(&apos;(&apos;+arr.join(&apos;&apos;)+&apos;)&apos;); &#125;catch(e)&#123; Result = &apos;error&apos;; &#125; arr = [Result]; text[1].innerText = Result; &#125;else&#123; text[0].innerText = &apos;&apos;; if(this.value === &apos;C&apos;)&#123; arr = []; return; &#125; if(this.value === &apos;Back&apos;)&#123; arr.pop(); &#125;else&#123; arr.push(this.value); &#125; arr.map(function(num)&#123; text[0].innerText += num; &#125;); &#125; &#125;&#125;); 本文代码地址:链接]]></content>
       <categories>
         <category>前端</category>
       </categories>
@@ -34,9 +34,9 @@
         <category>前端</category>
       </categories>
       <tags>
+        <tag>小实例</tag>
         <tag>图片替换</tag>
         <tag>图片加载</tag>
-        <tag>小实例</tag>
       </tags>
   </entry>
   <entry>
@@ -102,8 +102,8 @@
       </categories>
       <tags>
         <tag>js</tag>
-        <tag>css3</tag>
         <tag>小实例</tag>
+        <tag>css3</tag>
         <tag>进度环</tag>
       </tags>
   </entry>
