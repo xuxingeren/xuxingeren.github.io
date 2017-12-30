@@ -1,0 +1,16 @@
+User-agent: *
+Allow: /
+Allow: /archives/
+Allow: /code/
+Allow: /page/
+Allow: /tags/
+Allow: /about/
+Allow: /categories/
+
+Disallow: /journal/
+Disallow: /js/
+Disallow: /css/
+Disallow: /libs/
+
+Sitemap: http://xuxin123.com/sitemap.xml
+Sitemap: http://xuxin123.com/baidusitemap.xml

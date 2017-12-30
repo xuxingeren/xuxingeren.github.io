@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>瀑布流小实例 | 陌路凡歌的个人博客</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="js,小实例,瀑布流,无限加载" />
+    
+    <meta name="description" content="网站备案终于下来了，等了十几天，不容易呀，顺便搞了个免费的https证书，把评论也换成畅言的了，来必力太挫了，ui看见想打人系列。瀑布流，又称瀑布流式布局。其特点是随着页面滚动条向下滚动，不断加载数据块并附加至当前尾部。从Pinterest开始兴起，国内也有许多网站采用这种样式，不过大多数为了节约代码采用的是等宽等高的样式。今天我要演示的是等宽不等高如何进行瀑布流加载。 html结构由于我们这里瀑">
+<meta name="keywords" content="js,小实例,瀑布流,无限加载">
+<meta property="og:type" content="article">
+<meta property="og:title" content="瀑布流小实例">
+<meta property="og:url" content="http://xuxin123.com/2017/11/22/waterfall/index.html">
+<meta property="og:site_name" content="陌路凡歌的个人博客">
+<meta property="og:description" content="网站备案终于下来了，等了十几天，不容易呀，顺便搞了个免费的https证书，把评论也换成畅言的了，来必力太挫了，ui看见想打人系列。瀑布流，又称瀑布流式布局。其特点是随着页面滚动条向下滚动，不断加载数据块并附加至当前尾部。从Pinterest开始兴起，国内也有许多网站采用这种样式，不过大多数为了节约代码采用的是等宽等高的样式。今天我要演示的是等宽不等高如何进行瀑布流加载。 html结构由于我们这里瀑">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://ouzdb04w7.bkt.clouddn.com/image/2017/11/22/1.png">
+<meta property="og:updated_time" content="2017-12-04T06:13:54.114Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="瀑布流小实例">
+<meta name="twitter:description" content="网站备案终于下来了，等了十几天，不容易呀，顺便搞了个免费的https证书，把评论也换成畅言的了，来必力太挫了，ui看见想打人系列。瀑布流，又称瀑布流式布局。其特点是随着页面滚动条向下滚动，不断加载数据块并附加至当前尾部。从Pinterest开始兴起，国内也有许多网站采用这种样式，不过大多数为了节约代码采用的是等宽等高的样式。今天我要演示的是等宽不等高如何进行瀑布流加载。 html结构由于我们这里瀑">
+<meta name="twitter:image" content="http://ouzdb04w7.bkt.clouddn.com/image/2017/11/22/1.png">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="陌路凡歌的个人博客" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="http://ouzdb04w7.bkt.clouddn.com/image/favicon.ico" />
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?3cd4fd73eed7c1d30f5f9caaac658ea5";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+    
+
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">前端的技术分享与个人见解</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">主页</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/前端/">前端</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/文章/">文章</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/journal/">日志</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">关于</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/前端/">前端</a>
+    </h1>
+</div>
+                        <div class="main-body-content">
+                            <article id="post-waterfall" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        瀑布流小实例
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2017/11/22/waterfall/" class="article-date">
+            <time datetime="2017-11-22T07:43:42.000Z" itemprop="datePublished">2017-11-22</time>
+        </a>
+    </div>
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/js/">js</a>, <a class="tag-link" href="/tags/小实例/">小实例</a>, <a class="tag-link" href="/tags/无限加载/">无限加载</a>, <a class="tag-link" href="/tags/瀑布流/">瀑布流</a>
+    </div>
+
+                               阅读数量:<span id="/2017/11/22/waterfall/" class="leancloud_visitors" data-flag-title="瀑布流小实例"></span>次
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p><img src="http://ouzdb04w7.bkt.clouddn.com/image/2017/11/22/1.png" alt="瀑布流"><br>网站备案终于下来了，等了十几天，不容易呀，顺便搞了个免费的https证书，把评论也换成畅言的了，来必力太挫了，ui看见想打人系列。<br>瀑布流，又称瀑布流式布局。其特点是随着页面滚动条向下滚动，不断加载数据块并附加至当前尾部。从Pinterest开始兴起，国内也有许多网站采用这种样式，不过大多数为了节约代码采用的是等宽等高的样式。今天我要演示的是等宽不等高如何进行瀑布流加载。</p>
+<h3 id="html结构"><a href="#html结构" class="headerlink" title="html结构"></a>html结构</h3><p>由于我们这里瀑布流的布局是采用绝对定位的，所以html结构非常简单，加载的html都是通过js操控的。<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">main</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"main"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"pin"</span>&gt;</span>       //js生成的</div><div class="line">                    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box"</span>&gt;</span></div><div class="line">                        <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"./images/0.jpg"</span>&gt;</span></div><div class="line">                    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">                <span class="tag">&lt;/<span class="name">div</span>&gt;</span> </div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span> </div><div class="line"><span class="tag">&lt;/<span class="name">main</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h3 id="css"><a href="#css" class="headerlink" title="css"></a>css</h3><p>css没什么好说的，也是非常简单，由于其等宽不等高的性质，我们把.box的宽度都定死,这里由于要整体居中，由于<code>.pin</code>有<code>padding-left:14px;</code>，故而而把<code>#main</code>设置了<code>left: -7px;</code>让其整体居中一下。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">*&#123;<span class="attribute">padding</span>: <span class="number">0</span>;<span class="attribute">margin</span>:<span class="number">0</span>;&#125;</div><div class="line"><span class="selector-id">#main</span>&#123;</div><div class="line">    <span class="attribute">position</span>: relative;</div><div class="line">    <span class="attribute">left</span>: -<span class="number">7px</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.pin</span>&#123;</div><div class="line">    <span class="attribute">padding</span>: <span class="number">14px</span> <span class="number">0</span> <span class="number">0</span> <span class="number">14px</span>;</div><div class="line">    <span class="attribute">float</span>:left;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.box</span>&#123;</div><div class="line">    <span class="attribute">padding</span>: <span class="number">10px</span>;</div><div class="line">    <span class="attribute">border</span>:<span class="number">1px</span> solid <span class="number">#ccc</span>;</div><div class="line">    <span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">6px</span> <span class="number">#ccc</span>;</div><div class="line">    <span class="attribute">border-radius</span>: <span class="number">5px</span>;</div><div class="line">    <span class="attribute">width</span>: <span class="number">182px</span>;</div><div class="line">    <span class="attribute">box-sizing</span>: border-box;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.box</span> <span class="selector-tag">img</span>&#123;</div><div class="line">    <span class="attribute">width</span>:<span class="number">100%</span>;</div><div class="line">    <span class="attribute">height</span>:auto;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="js"><a href="#js" class="headerlink" title="js"></a>js</h3><p>瀑布流的重点部分就在js啦。</p>
+<h6 id="首先我们写一个创建节点的函数，用于创建-pin、-box和img，createDom传入父节点和img的src。"><a href="#首先我们写一个创建节点的函数，用于创建-pin、-box和img，createDom传入父节点和img的src。" class="headerlink" title="首先我们写一个创建节点的函数，用于创建.pin、.box和img，createDom传入父节点和img的src。"></a>首先我们写一个创建节点的函数，用于创建<code>.pin</code>、<code>.box</code>和img，createDom传入父节点和img的src。</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">createDom</span>(<span class="params">obj,src</span>)</span>&#123;</div><div class="line">          <span class="keyword">var</span> oDiv = <span class="built_in">document</span>.createElement(<span class="string">'div'</span>);</div><div class="line">          oDiv.className = <span class="string">'pin'</span>;</div><div class="line">          <span class="keyword">var</span> oBox = <span class="built_in">document</span>.createElement(<span class="string">'div'</span>);</div><div class="line">          oBox.className = <span class="string">'box'</span>;</div><div class="line">          <span class="keyword">var</span> oImg = <span class="built_in">document</span>.createElement(<span class="string">'img'</span>);</div><div class="line">          oImg.src = <span class="string">'./images/'</span>+src;</div><div class="line">          oBox.appendChild(oImg);</div><div class="line">          oDiv.appendChild(oBox);</div><div class="line">          obj.appendChild(oDiv);</div><div class="line">      &#125;</div></pre></td></tr></table></figure>
+<h6 id="此时我们的页面上还空无一物呢，这时需要我们模拟后端数据，遍历json调用createDom生成dom节点。"><a href="#此时我们的页面上还空无一物呢，这时需要我们模拟后端数据，遍历json调用createDom生成dom节点。" class="headerlink" title="此时我们的页面上还空无一物呢，这时需要我们模拟后端数据，遍历json调用createDom生成dom节点。"></a>此时我们的页面上还空无一物呢，这时需要我们模拟后端数据，遍历json调用createDom生成dom节点。</h6><figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> oParent = <span class="built_in">document</span>.getElementById(<span class="string">'main'</span>);</div><div class="line">     <span class="keyword">var</span> dataInt = [];</div><div class="line">     <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;<span class="number">98</span>;i++)&#123;</div><div class="line">         dataInt.push(&#123;<span class="string">'src'</span>:i+<span class="string">'.jpg'</span>&#125;);</div><div class="line">         <span class="keyword">if</span>(i&lt;<span class="number">50</span>)&#123;</div><div class="line">             createDom(oParent,dataInt[i].src);  </div><div class="line">         &#125;</div><div class="line">     &#125;</div></pre></td></tr></table></figure>
+<p>此时样式大致是这样的</p>
+<p><img src="http://ouzdb04w7.bkt.clouddn.com/image/2017/11/22/2.png" alt="生成样式"></p>
+<h6 id="然后我们再写一个定位的函数-让其一一队列排齐。"><a href="#然后我们再写一个定位的函数-让其一一队列排齐。" class="headerlink" title="然后我们再写一个定位的函数,让其一一队列排齐。"></a>然后我们再写一个定位的函数,让其一一队列排齐。</h6><p>由于是等宽的，我们获取其中一个<code>.pin</code>的宽度，然后让可视窗口宽度除以这个宽度，通过向下取整获得一行能放下<code>.pin</code>的个数。用<code>.pin</code>的宽度<code>*</code>个数得到它父容器应该有的宽度赋给父容器，然后让其居中显示，此时整体就居中了。<br>我们再把所有的<code>.pin</code>遍历一遍，先把第一行的所有<code>.pin</code>的高度装在pinHarr数组里面。由于瀑布流是一一对齐的，每一行的第一个都是在最矮的那一列下面。<br>所以第二行的第一个<code>.pin</code>应该在它的上一行最矮的那个<code>.pin</code>下面，所以不是第一行的话，我们给其全部绝对定位，我们就找到第一行中<code>.pin</code>的最小高度，取得它的索引，这样就得到最矮的那个<code>.pin</code>，我们取得它的高度和索引，把第二行的这个<code>.pin</code>的top赋值第一行中<code>.pin</code>最小高度，left赋值第一行最矮的<code>.pin</code>的索引<code>*.pin</code>的宽度，这样第二行的第一个就在第一行的最矮的那个<code>.pin</code>下面且对齐。<br>最后我们把pinHarr中最小的那个高度换成最小高度加上新增的这个<code>.pin</code>高度（简单来说就是列高），此时最小高度变化了，我们下一次还是找最小高度放<code>.pin</code>，以此类推，每次放置<code>.pin</code>都是找最矮那一列放置。这样就实现了等宽不等高的对其布局了。<br><figure class="highlight qml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">waterfall</span>(<span class="params">parent,pin</span>)</span>&#123;</div><div class="line">        <span class="keyword">var</span> aPin = <span class="built_in">parent</span>.querySelectorAll(pin);</div><div class="line">        <span class="keyword">var</span> iPiw = aPin[<span class="number">0</span>].offsetWidth;</div><div class="line">        <span class="keyword">var</span> num = <span class="built_in">Math</span>.floor(<span class="built_in">document</span>.documentElement.clientWidth/iPiw);</div><div class="line">        <span class="built_in">parent</span>.style.cssText = <span class="string">'width:'</span>+num*iPiw+<span class="string">'px;margin:0 auto;'</span>;</div><div class="line">        <span class="keyword">var</span> pinHarr = [];</div><div class="line">        aPin.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">el,index</span>)</span>&#123;</div><div class="line">           <span class="keyword">var</span> pinH = el.offsetHeight;</div><div class="line">               <span class="keyword">if</span>(index&lt;num)&#123;</div><div class="line">                  pinHarr[index] = pinH;  </div><div class="line">               &#125;<span class="title">else</span>&#123;</div><div class="line">                <span class="keyword">var</span> minH = <span class="built_in">Math</span>.min.apply(<span class="literal">null</span>,pinHarr);</div><div class="line">                <span class="keyword">var</span> minindex =  pinHarr.findIndex(<span class="function"><span class="keyword">function</span>(<span class="params">num</span>)</span>&#123;                   </div><div class="line">                        <span class="keyword">return</span> minH===num;</div><div class="line">                &#125;);</div><div class="line">                el.style.position = <span class="string">'absolute'</span>;</div><div class="line">                el.style.left = iPiw*minindex +<span class="string">'px'</span>;</div><div class="line">                el.style.top  = minH+<span class="string">'px'</span>;</div><div class="line">                pinHarr[minindex] = minH+el.offsetHeight;</div><div class="line">               &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>接下来等页面生成的最后一个img加载出来后我们调用这个函数，布局就完成了。<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">oParent.getElementsByClassName(<span class="string">'pin'</span>)[<span class="number">49</span>].getElementsByTagName(<span class="string">'img'</span>)[<span class="number">0</span>].onload = <span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</div><div class="line">    waterfall(oParent,<span class="string">'.pin'</span>);            </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h6 id="当页面滚动到底部时，我们还要让其生成新的dom，将其放在底部。"><a href="#当页面滚动到底部时，我们还要让其生成新的dom，将其放在底部。" class="headerlink" title="当页面滚动到底部时，我们还要让其生成新的dom，将其放在底部。"></a>当页面滚动到底部时，我们还要让其生成新的dom，将其放在底部。</h6><p>我们先写一个判断函数，判断滚动条滚动时到达底部没有，没有就返回false，有就返回true。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isBottom</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> aPin = oParent.querySelectorAll(<span class="string">'.pin'</span>);</div><div class="line">    <span class="keyword">var</span> lastPinh = aPin[aPin.length<span class="number">-1</span>].offsetTop+<span class="built_in">Math</span>.floor(aPin[aPin.length<span class="number">-1</span>].offsetHeight/<span class="number">2</span>); </div><div class="line">    <span class="keyword">var</span> Sh = <span class="built_in">document</span>.documentElement.scrollTop||<span class="built_in">document</span>.body.scrollTop;</div><div class="line">    <span class="keyword">var</span> Dh = <span class="built_in">document</span>.documentElement.clientHeight;</div><div class="line">    <span class="keyword">return</span> lastPinh&lt;Sh+Dh?<span class="literal">true</span>:<span class="literal">false</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>最后我们添加滚动事件，当到达底部时，我们遍历json，用createDom生成dom添加到<code>#main</code>底部，然后调用waterfall，让其让其一一队列排齐。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.onscroll = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span>(isBottom())&#123;</div><div class="line">        dataInt.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">val</span>)</span>&#123;</div><div class="line">            createDom(oParent,val.src);</div><div class="line">        &#125;);             </div><div class="line">        waterfall(oParent,<span class="string">'.pin'</span>);  </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这样，一个等宽不等高的无限加载的瀑布流就实现了。效果如下：</p>
+<iframe src="/code/waterfall/" width="100%" height="500px" frameborder="0" allowfullscreen></iframe>
+<p>本文代码地址:<a href="https://github.com/xuxingeren/blog/blob/master/%E5%B0%8F%E5%AE%9E%E4%BE%8B/waterfall/index.html" target="_blank" rel="external">链接</a></p>
+
+        </div>
+        <footer class="article-footer">
+            
+    <div class="jiathis_style">
+    <span class="jiathis_txt">分享到：</span>
+    <a class="jiathis_button_qzone">QQ空间</a>
+    <a class="jiathis_button_tsina">新浪微博</a>
+    <a class="jiathis_button_tqq">腾讯微博</a>
+    <a class="jiathis_button_weixin">微信</a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+    <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<style>
+    .jiathis_style div:first-child:not(.jiadiv_01) {
+        width: auto !important;
+        border: none !important;
+    }
+    .jiathis_style .jiadiv_01 {
+        margin: 10px 0;
+        border-radius: 4px;
+        border: #e1e1e1 solid 1px;
+    }
+    .jiathis_style .jiadiv_01 div:first-child {
+        display: none;
+    }
+    .jiathis_style .jiadiv_02 {
+        padding: 7px 0 !important;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle {
+        width: 85px;
+        border: none;
+        height: auto;
+        margin: 3px 10px;
+        padding: 6px 10px;
+        border-radius: 4px;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:hover {
+        border: none;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:nth-child(even) {
+        margin-left: 0;
+    }
+    .jiathis_style .jtico:hover {
+        opacity: 1;
+    }
+    .jiathis_style .ckepopBottom,
+    .jiathis_style .centerBottom {
+        width: auto !important;
+        padding: 5px;
+        background: #f7f7f7;
+    }
+</style>
+
+
+
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="SOHUCS" sid="http://xuxin123.com/2017/11/22/waterfall/"></div>
+
+
+    
+    </section>
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>关注我 :</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="globe" href="https://segmentfault.com/u/molufange" target="_blank">
+                        <i class="icon fa fa-globe"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/xuxingeren" target="_blank">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="weibo" href="/" target="_blank">
+                        <i class="icon fa fa-weibo"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/atom.xml" target="_blank">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/11/25/curveimg/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">下一篇</strong>
+        <p class="article-nav-title">
+        
+            曲面阴影
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2017/11/13/Calculator/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">计算器小实例</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/12/30/surround/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://ouzdb04w7.bkt.clouddn.com/image/2017/12/30/1.png)" alt="特效篇--图片环绕" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/前端/">前端</a></p>
+                            <p class="item-title"><a href="/2017/12/30/surround/" class="title">特效篇--图片环绕</a></p>
+                            <p class="item-date"><time datetime="2017-12-30T07:37:54.000Z" itemprop="datePublished">2017-12-30</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/12/23/snow/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://ouzdb04w7.bkt.clouddn.com/image/2017/12/23/1.png)" alt="Canvas --雪花图" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/前端/">前端</a></p>
+                            <p class="item-title"><a href="/2017/12/23/snow/" class="title">Canvas --雪花图</a></p>
+                            <p class="item-date"><time datetime="2017-12-23T08:06:41.000Z" itemprop="datePublished">2017-12-23</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/12/17/time1/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://ouzdb04w7.bkt.clouddn.com/image/2017/12/18/1.png)" alt="时间--时钟篇" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/前端/">前端</a></p>
+                            <p class="item-title"><a href="/2017/12/17/time1/" class="title">时间--时钟篇</a></p>
+                            <p class="item-date"><time datetime="2017-12-17T06:20:37.000Z" itemprop="datePublished">2017-12-17</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/12/16/padding/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://ouzdb04w7.bkt.clouddn.com/image/2017/12/16/1.png)" alt="你不知道的padding" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/前端/">前端</a></p>
+                            <p class="item-title"><a href="/2017/12/16/padding/" class="title">你不知道的padding</a></p>
+                            <p class="item-date"><time datetime="2017-12-16T09:40:22.000Z" itemprop="datePublished">2017-12-16</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/12/15/margin/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://ouzdb04w7.bkt.clouddn.com/image/2017/12/15/1.png)" alt="你不知道的margin" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/前端/">前端</a></p>
+                            <p class="item-title"><a href="/2017/12/15/margin/" class="title">你不知道的margin</a></p>
+                            <p class="item-date"><time datetime="2017-12-15T08:10:13.000Z" itemprop="datePublished">2017-12-15</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">20</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/文章/">文章</a><span class="category-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">4</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Canvas/" style="font-size: 10px;">Canvas</a> <a href="/tags/Promise/" style="font-size: 10px;">Promise</a> <a href="/tags/box-shadow/" style="font-size: 10px;">box-shadow</a> <a href="/tags/checkbox/" style="font-size: 10px;">checkbox</a> <a href="/tags/css/" style="font-size: 16.67px;">css</a> <a href="/tags/css3/" style="font-size: 15px;">css3</a> <a href="/tags/css3导航/" style="font-size: 10px;">css3导航</a> <a href="/tags/css3页面滚动/" style="font-size: 10px;">css3页面滚动</a> <a href="/tags/css特效/" style="font-size: 11.67px;">css特效</a> <a href="/tags/js/" style="font-size: 20px;">js</a> <a href="/tags/margin/" style="font-size: 11.67px;">margin</a> <a href="/tags/padding/" style="font-size: 10px;">padding</a> <a href="/tags/radio/" style="font-size: 10px;">radio</a> <a href="/tags/text-align-justify/" style="font-size: 10px;">text-align:justify</a> <a href="/tags/touch/" style="font-size: 10px;">touch</a> <a href="/tags/上传筛选/" style="font-size: 10px;">上传筛选</a> <a href="/tags/上传美化/" style="font-size: 10px;">上传美化</a> <a href="/tags/上传进度/" style="font-size: 10px;">上传进度</a> <a href="/tags/伪元素/" style="font-size: 13.33px;">伪元素</a> <a href="/tags/名人/" style="font-size: 10px;">名人</a> <a href="/tags/图片上传/" style="font-size: 13.33px;">图片上传</a> <a href="/tags/图片加载/" style="font-size: 10px;">图片加载</a> <a href="/tags/图片批量上传/" style="font-size: 10px;">图片批量上传</a> <a href="/tags/图片替换/" style="font-size: 10px;">图片替换</a> <a href="/tags/图片环绕/" style="font-size: 10px;">图片环绕</a> <a href="/tags/图片轮播/" style="font-size: 10px;">图片轮播</a> <a href="/tags/图片预览/" style="font-size: 11.67px;">图片预览</a> <a href="/tags/垂直居中/" style="font-size: 10px;">垂直居中</a> <a href="/tags/复选框美化/" style="font-size: 10px;">复选框美化</a> <a href="/tags/多列均匀布局/" style="font-size: 10px;">多列均匀布局</a> <a href="/tags/小实例/" style="font-size: 18.33px;">小实例</a> <a href="/tags/异步/" style="font-size: 10px;">异步</a> <a href="/tags/拖拽/" style="font-size: 10px;">拖拽</a> <a href="/tags/文字两端对齐/" style="font-size: 10px;">文字两端对齐</a> <a href="/tags/无限加载/" style="font-size: 10px;">无限加载</a> <a href="/tags/时钟/" style="font-size: 10px;">时钟</a> <a href="/tags/时间/" style="font-size: 10px;">时间</a> <a href="/tags/曲面阴影/" style="font-size: 10px;">曲面阴影</a> <a href="/tags/瀑布流/" style="font-size: 10px;">瀑布流</a> <a href="/tags/特效/" style="font-size: 10px;">特效</a> <a href="/tags/移动端图片自适应/" style="font-size: 10px;">移动端图片自适应</a> <a href="/tags/纪念/" style="font-size: 10px;">纪念</a> <a href="/tags/背景裁剪/" style="font-size: 10px;">背景裁剪</a> <a href="/tags/自适应左右布局/" style="font-size: 10px;">自适应左右布局</a> <a href="/tags/计算器/" style="font-size: 10px;">计算器</a> <a href="/tags/负margin/" style="font-size: 10px;">负margin</a> <a href="/tags/转载/" style="font-size: 10px;">转载</a> <a href="/tags/进度环/" style="font-size: 10px;">进度环</a> <a href="/tags/选项卡/" style="font-size: 11.67px;">选项卡</a> <a href="/tags/那些年我们常写的css/" style="font-size: 10px;">那些年我们常写的css</a> <a href="/tags/闲谈/" style="font-size: 10px;">闲谈</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">联系我</h3>
+        <div class="widget">
+            <i class="fa fa-envelope-square" style="margin-right: 5px;"></i>908642754@qq.com
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">友情链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    
+                    <li>
+                        <a target="_blank" rel="external nofollow" href="http://hexo.io">Hexo</a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        <a target="_blank"  href="https://segmentfault.com/u/molufange">Segmentfault</a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        <a target="_blank"  href="http://www.aliken.com.cn">码农面条君</a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        <a target="_blank"  href="http://www.tianjiajie.cn">灵魂收割者</a>
+                    </li>
+                    
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2017 徐新-陌路凡歌</p>
+                <p>备案号：<a href="http://www.miitbeian.gov.cn" target="_blank">渝ICP备17014978号-1</a></p>           		                               	
+             <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script id="cy_cmt_num" src="https://changyan.sohu.com/upload/plugins/plugins.list.count.js?clientId=cytkibOj4"></script>
+    <script type="text/javascript">
+        (function() {
+            var appid = 'cytkibOj4';
+            var conf = 'cc4429eda4f1090e017ec58b900b46e5';
+            var width = window.innerWidth || document.documentElement.clientWidth;
+            if (width < 960) {
+                window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>');
+            } else {
+                var loadJs = function(d, a) {
+                    var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+                    var b = document.createElement("script");
+                    b.setAttribute("type", "text/javascript");
+                    b.setAttribute("charset", "UTF-8");
+                    b.setAttribute("src", d);
+                    if (typeof a === "function") {
+                        if (window.attachEvent) {
+                            b.onreadystatechange = function() {
+                                var e = b.readyState;
+                                if (e === "loaded" || e === "complete") {
+                                    b.onreadystatechange = null;
+                                    a()
+                                }
+                            }
+                        } else {
+                            b.onload = a
+                        }
+                    }
+                    c.appendChild(b)
+                };
+                loadJs("https://changyan.sohu.com/upload/changyan.js", function() {
+                    window.changyan.api.config({
+                        appid: appid,
+                        conf: conf
+                    })
+                });
+            }
+        })();
+    </script>
+
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+    	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+     
+    <script src="//cdn1.lncld.net/static/js/2.5.0/av-min.js"></script>
+		<script>
+		    var APP_ID = 'mTfV9mapGktO4Xqww9CCgj4P-gzGzoHsz';
+		    var APP_KEY = 'zE9b1r6zf9OwaPck1M21M7JI';
+		    AV.init({
+		        appId: APP_ID,
+		        appKey: APP_KEY
+		    });
+		    // 显示次数
+		    function showTime(Counter) {
+		        var query = new AV.Query("Counter");
+		        if($(".leancloud_visitors").length > 0){
+		            var url = $(".leancloud_visitors").attr('id').trim();
+		            // where field
+		            query.equalTo("words", url);
+		            // count
+		            query.count().then(function (number) {
+		                // There are number instances of MyClass where words equals url.
+		                $(document.getElementById(url)).text(number?  number : '--');
+		            }, function (error) {
+		                // error is an instance of AVError.
+		            });
+		        }
+		    }
+		    // 追加pv
+		    function addCount(Counter) {
+		        var url = $(".leancloud_visitors").length > 0 ? $(".leancloud_visitors").attr('id').trim() : 'icafebolger.com';
+		        var Counter = AV.Object.extend("Counter");
+		        var query = new Counter;
+		        query.save({
+		            words: url
+		        }).then(function (object) {
+		        })
+		    }
+		    $(function () {
+		        var Counter = AV.Object.extend("Counter");
+		        addCount(Counter);
+		        showTime(Counter);
+		    });
+		</script>
+  	
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

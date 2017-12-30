@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="./time.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="clock">
+		<ul class="line-min"></ul>
+		<ul class="line-hour">
+		</ul>
+		<ol class="number"></ol>
+		<ul class="pointer">
+			<li class="hour"></li>
+			<li class="min"></li>
+			<li class="sec"></li>
+			<li class="circle"></li>
+		</ul>
+	</div>
+	<a href="http://xuxin123.com">by 陌路凡歌</a>
+	<script>
+		var time = class Time{
+	constructor(){
+		this.init();
+	}
+	drawLines(wrap, total, translateX){			//绘制刻度线
+		var gap = 360/total;
+		for(var i=0;i<total;i++){
+			var li=document.createElement('li');
+			this.addcss(li,`transform:rotate(${i*gap}deg) translate(${translateX}px,-50%)`);
+			wrap.append(li);
+		};
+	}
+	drawNumbers(wrap){							//绘制数字时间
+		var r = wrap.offsetHeight/2;
+		var child = '';
+		for(var i=1;i<=12;i++){
+			var  angle = (i-3)/6*Math.PI;
+			var myX = r + r*Math.cos(angle),  // x=r+rcos(θ)
+			myY = r + r*Math.sin(angle);     // y=r+rsin(θ)
+			child+=`<li style="left:${myX}px;top:${myY}px;">${i}</li>`;
+		};
+		wrap.innerHTML = child;
+	}
+	init(){
+		this.drawLines(this.getclass('.line-min'), 60, 85);
+		this.drawLines(this.getclass('.line-hour'), 12, 80);
+		this.drawNumbers(this.getclass('.number'));
+		this.move();
+	}
+	addcss(obj,mycss){
+		obj.style.cssText = mycss;
+	}
+	move(){
+		var h = this.getclass('.hour'),
+		m = this.getclass('.min'),
+		s = this.getclass('.sec');
+		setInterval(function(){
+			var now = new Date(),
+			hour = now.getHours(),
+			min = now.getMinutes(),   
+			sec = now.getSeconds();
+			var hangle = 30*hour + 0.5*min -90,
+			mangle = 6*min + 0.1*sec -90,
+			sangle = 6*sec -90;
+			this.addcss(h,`transform:rotate(${hangle}deg)`);
+			this.addcss(m,`transform:rotate(${mangle}deg)`);
+			this.addcss(s,`transform:rotate(${sangle}deg)`);
+		}.bind(this),1000);
+	}
+	getclass(cls){
+		return document.querySelector(cls);
+	}
+}
+new time();
+	</script>
+</body>
+</html>

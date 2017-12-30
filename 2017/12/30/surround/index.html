@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>特效篇--图片环绕 | 陌路凡歌的个人博客</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="js,小实例,图片环绕,图片轮播,特效" />
+    
+    <meta name="description" content="2017年快要结束了，来点特效的东西作为2017年博客的结束篇吧，其实特效这东西看看就好了，实际用处不是特别的大，不过效果什么的还是挺酷的。 本文介绍的是图片环绕，散列切换如何完成的，一共三个切换效果，先看看效果吧：当然博客展示的面积不够：请点这里查看全部效果链接。废话不多说直接上代码了：html：1234567891011121314151617181920212223242526&amp;lt;div">
+<meta name="keywords" content="js,小实例,图片环绕,图片轮播,特效">
+<meta property="og:type" content="article">
+<meta property="og:title" content="特效篇--图片环绕">
+<meta property="og:url" content="http://xuxin123.com/2017/12/30/surround/index.html">
+<meta property="og:site_name" content="陌路凡歌的个人博客">
+<meta property="og:description" content="2017年快要结束了，来点特效的东西作为2017年博客的结束篇吧，其实特效这东西看看就好了，实际用处不是特别的大，不过效果什么的还是挺酷的。 本文介绍的是图片环绕，散列切换如何完成的，一共三个切换效果，先看看效果吧：当然博客展示的面积不够：请点这里查看全部效果链接。废话不多说直接上代码了：html：1234567891011121314151617181920212223242526&amp;lt;div">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://ouzdb04w7.bkt.clouddn.com/image/2017/12/30/1.png">
+<meta property="og:updated_time" content="2017-12-30T09:00:38.347Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="特效篇--图片环绕">
+<meta name="twitter:description" content="2017年快要结束了，来点特效的东西作为2017年博客的结束篇吧，其实特效这东西看看就好了，实际用处不是特别的大，不过效果什么的还是挺酷的。 本文介绍的是图片环绕，散列切换如何完成的，一共三个切换效果，先看看效果吧：当然博客展示的面积不够：请点这里查看全部效果链接。废话不多说直接上代码了：html：1234567891011121314151617181920212223242526&amp;lt;div">
+<meta name="twitter:image" content="http://ouzdb04w7.bkt.clouddn.com/image/2017/12/30/1.png">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="陌路凡歌的个人博客" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="http://ouzdb04w7.bkt.clouddn.com/image/favicon.ico" />
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?3cd4fd73eed7c1d30f5f9caaac658ea5";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+    
+
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">前端的技术分享与个人见解</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">主页</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/前端/">前端</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/文章/">文章</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/journal/">日志</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">关于</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/前端/">前端</a>
+    </h1>
+</div>
+                        <div class="main-body-content">
+                            <article id="post-surround" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        特效篇--图片环绕
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2017/12/30/surround/" class="article-date">
+            <time datetime="2017-12-30T07:37:54.000Z" itemprop="datePublished">2017-12-30</time>
+        </a>
+    </div>
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/js/">js</a>, <a class="tag-link" href="/tags/图片环绕/">图片环绕</a>, <a class="tag-link" href="/tags/图片轮播/">图片轮播</a>, <a class="tag-link" href="/tags/小实例/">小实例</a>, <a class="tag-link" href="/tags/特效/">特效</a>
+    </div>
+
+                               阅读数量:<span id="/2017/12/30/surround/" class="leancloud_visitors" data-flag-title="特效篇--图片环绕"></span>次
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p><img src="http://ouzdb04w7.bkt.clouddn.com/image/2017/12/30/1.png" alt="图片环绕"><br>2017年快要结束了，来点特效的东西作为2017年博客的结束篇吧，其实特效这东西看看就好了，实际用处不是特别的大，不过效果什么的还是挺酷的。</p>
+<p>本文介绍的是图片环绕，散列切换如何完成的，一共三个切换效果，先看看效果吧：<br><iframe src="/code/surround.html" width="100%" height="800px" frameborder="0" allowfullscreen></iframe><br>当然博客展示的面积不够：请点这里查看全部效果<a href="http://xuxin123.com/code/surround.html" target="_blank">链接</a>。<br>废话不多说直接上代码了：<br>html：<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">&lt;div <span class="keyword">class</span>=<span class="string">"btnbox"</span>&gt;</div><div class="line">    &lt;button <span class="keyword">class</span>=<span class="string">"show btn"</span>&gt;散列&lt;/button&gt;</div><div class="line">    &lt;button <span class="keyword">class</span>=<span class="string">"btn"</span>&gt;横环装&lt;/button&gt;</div><div class="line">    &lt;button <span class="keyword">class</span>=<span class="string">"btn"</span>&gt;竖环装&lt;/button&gt;</div><div class="line">    &lt;div <span class="keyword">class</span>=<span class="string">"pox"</span>&gt;&lt;<span class="keyword">label</span> <span class="keyword">for</span>=<span class="string">"change"</span>&gt;自动播放：&lt;/<span class="keyword">label</span>&gt;&lt;<span class="keyword">input</span> id=<span class="string">"change"</span> <span class="keyword">type</span>=<span class="string">"checkbox"</span>/&gt;</div><div class="line">    &amp;nbsp;速度：&lt;<span class="keyword">input</span> <span class="keyword">type</span>=<span class="string">"range"</span> value=<span class="string">"4"</span> max=<span class="string">"10"</span> min=<span class="string">"1"</span> id=<span class="string">"speed"</span> value=<span class="string">"1"</span>&gt;&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;div <span class="keyword">class</span>=<span class="string">"wrap"</span> id=<span class="string">"wrap"</span>&gt;</div><div class="line"></div><div class="line">    &lt;!--    <span class="comment">//photo平移旋转        </span></div><div class="line">    &lt;div <span class="keyword">class</span>=<span class="string">"photo  photo-front"</span>"&gt;</div><div class="line">        <span class="comment">//photo-wrap负责翻转</span></div><div class="line">            &lt;div <span class="keyword">class</span>=<span class="string">"photo-wrap"</span>&gt;</div><div class="line">                &lt;div <span class="keyword">class</span>=<span class="string">"side side-front"</span>&gt;</div><div class="line">                    &lt;p <span class="keyword">class</span>=<span class="string">"imgs"</span>&gt;&lt;img src=<span class="string">""</span>/&gt;&lt;/p&gt;</div><div class="line">                    &lt;p <span class="keyword">class</span>=<span class="string">"caption"</span>&gt;&lt;/p&gt;</div><div class="line">                &lt;/div&gt;</div><div class="line">                &lt;div <span class="keyword">class</span>=<span class="string">"side side-back"</span>&gt;</div><div class="line">                    &lt;p <span class="keyword">class</span>=<span class="string">"desc"</span>&gt;</div><div class="line">                        </div><div class="line">                    &lt;/p&gt;</div><div class="line">                &lt;/div&gt;</div><div class="line">        &lt;/div&gt;	</div><div class="line">    &lt;/div&gt; --&gt;</div><div class="line"></div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<p>html还是挺简单的，<code>btnbox</code>就是控制图片排列和轮播的控制台，<code>#wrap</code>就是我们的放置容器了，注释的代码是大致的样式，我们用两层div包裹住文字和图片，第一层div(<code>.photo</code>)，这个是负责整个块的移动的，第二层div(<code>.photo-wrap</code>)是负责自身的前后两面翻转的，<code>.side-front</code>负责前面的图片和文字显示，<code>.side-back</code>负责背面的文字显示，由于所有的图片内容都是根据一个json生成的，所以这里<code>#wrap</code>里面所有的内容都是通过js生成的，<code>#wrap</code>实际上不用放任何东西。<br>css：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line"> <span class="selector-class">.wrap</span> &#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</div><div class="line">    <span class="attribute">height</span>: <span class="number">100%</span>;</div><div class="line">    <span class="attribute">position</span>: absolute;</div><div class="line">    <span class="attribute">top</span>: <span class="number">0</span>;</div><div class="line">    <span class="attribute">left</span>: <span class="number">0</span>;</div><div class="line">    <span class="attribute">background</span>: <span class="built_in">rgba</span>(0, 0, 0, 0.8);</div><div class="line">    <span class="attribute">overflow</span>: hidden;</div><div class="line">    <span class="attribute">perspective</span>: <span class="number">1800px</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.photo</span> &#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">260px</span>;</div><div class="line">    <span class="attribute">height</span>: <span class="number">320px</span>;</div><div class="line">    <span class="attribute">position</span>: absolute;</div><div class="line">    <span class="attribute">z-index</span>: <span class="number">1</span>;</div><div class="line">    <span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">1px</span> <span class="built_in">rgba</span>(0, 0, 0, 0.01);</div><div class="line">    <span class="attribute">transition</span>: all <span class="number">0.5s</span>;</div><div class="line">    <span class="attribute">left</span>: <span class="number">50%</span>;</div><div class="line">    <span class="attribute">top</span>: <span class="number">50%</span>;</div><div class="line">    <span class="attribute">margin</span>: -<span class="number">160px</span> <span class="number">0</span> <span class="number">0</span> -<span class="number">130px</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.photo</span> <span class="selector-class">.side</span> &#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</div><div class="line">    <span class="attribute">height</span>: <span class="number">100%</span>;</div><div class="line">    <span class="attribute">background</span>: <span class="number">#eee</span>;</div><div class="line">    <span class="attribute">position</span>: absolute;</div><div class="line">    <span class="attribute">right</span>: <span class="number">0</span>;</div><div class="line">    <span class="attribute">top</span>: <span class="number">0</span>;</div><div class="line">    <span class="attribute">padding</span>: <span class="number">20px</span>;</div><div class="line">    <span class="attribute">box-sizing</span>: border-box;</div><div class="line">    <span class="attribute">backface-visibility</span>: hidden;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.photo</span> <span class="selector-class">.side-front</span> &#123;</div><div class="line">    <span class="attribute">transform</span>: <span class="built_in">rotateY</span>(0deg);</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.side-back</span> &#123;</div><div class="line">    <span class="attribute">transform</span>: <span class="built_in">rotateY</span>(180deg);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/*当前选中样式*/</span></div><div class="line"> <span class="selector-class">.photo-center</span> &#123;</div><div class="line">    <span class="attribute">left</span>: <span class="number">50%</span>;</div><div class="line">    <span class="attribute">top</span>: <span class="number">50%</span>;</div><div class="line">    <span class="attribute">margin</span>: -<span class="number">160px</span> <span class="number">0</span> <span class="number">0</span> -<span class="number">130px</span>;</div><div class="line">    <span class="attribute">z-index</span>: <span class="number">999</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.photo-wrap</span> &#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</div><div class="line">    <span class="attribute">height</span>: <span class="number">100%</span>;</div><div class="line">    <span class="attribute">position</span>: absolute;</div><div class="line">    <span class="attribute">transform-style</span>: preserve-<span class="number">3</span>d;</div><div class="line">    <span class="attribute">transition</span>: all <span class="number">0.5s</span>;</div><div class="line">    <span class="attribute">transform-origin</span>: <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.photo-front</span> <span class="selector-class">.photo-wrap</span> &#123;</div><div class="line">    <span class="attribute">transform</span>: <span class="built_in">rotateY</span>(0deg) <span class="built_in">translate</span>(0px, 0px);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.photo-back</span> <span class="selector-class">.photo-wrap</span> &#123;</div><div class="line">    <span class="attribute">transform</span>: <span class="built_in">rotateY</span>(180deg) <span class="built_in">translate</span>(-260px, 0px);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>css算是比较复杂吧，主要是涉及css3的内容太多了，不熟悉的去充充电吧，这里只列出了一部分css，稍微讲解一下，基础的就不说了。<br>正反翻转：<code>.side</code>是反面和正面的共同属性,<code>.side-front</code>是正面所以<code>transform: rotateY(0deg);</code>旋转了0度正对屏幕，<code>.side-back</code>是背面用<code>transform: rotateY(180deg);</code>旋转180度，背面对着屏幕，其中用到了<code>backface-visibility: hidden;</code>这个属性，这个属性让不面向屏幕的旋转元素背面影藏掉，即<code>.side-back</code>隐藏掉了，当翻转<code>.photo-wrap</code>时，<code>.side-front</code>就隐藏了，这就让<code>.photo-wrap</code>看起来就像真的有两面一样。<br>原地翻转动画：<code>.photo-wrap</code>沿着Y轴旋转时我们要让其沿着左边进行180度旋转，所以transform-origin的x轴一定要为0，旋转后<code>.photo-wrap</code>就向左边移动了它本身的宽度的距离，简单来说就像翻书一样，一页翻过去了就相当于移动了一页的距离。我们要让其原地翻转就要对其x轴的translate进行设置，让其向右边移动它本身的宽度的距离，所以设置<code>translate(-260px, 0px)</code>，这样就相当于它没有进行移动了,看起来就像原地翻转一样。</p>
+<p>比较难以理解的css就是这些了，开始正式写了。<br>工欲善其事必先利其器，首先我们先准备好要渲染的数据，组合一个json，复杂的东西懒得写，就写点简简单单的吧，放40张图片吧：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">data</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> data = [];          </div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">1</span>; i &lt; <span class="number">41</span>; i++) &#123;</div><div class="line">        data.push(&#123;</div><div class="line">            img: <span class="string">'./waterfall/images/'</span> + i + <span class="string">'.jpg'</span>,</div><div class="line">            caption: <span class="string">'第'</span> + texthan(i) + <span class="string">'张'</span>,</div><div class="line">            desc: <span class="string">'描述'</span> + texthan(i)</div><div class="line">        &#125;);</div><div class="line">    &#125;;</div><div class="line">    <span class="keyword">return</span> data;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">texthan</span>(<span class="params">n</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> han = [<span class="string">'一'</span>, <span class="string">'二'</span>, <span class="string">'三'</span>, <span class="string">'四'</span>, <span class="string">'五'</span>, <span class="string">'六'</span>, <span class="string">'七'</span>, <span class="string">'八'</span>, <span class="string">'九'</span>, <span class="string">'十'</span>];</div><div class="line">    <span class="keyword">if</span> (n &gt; <span class="number">10</span>) &#123;</div><div class="line">        <span class="keyword">var</span> s = <span class="built_in">Math</span>.floor(n / <span class="number">10</span>) &gt; <span class="number">1</span> ? han[<span class="built_in">Math</span>.floor(n / <span class="number">10</span>) - <span class="number">1</span>] : <span class="string">'十'</span>;</div><div class="line">        <span class="keyword">var</span> g = n % <span class="number">10</span> - <span class="number">1</span> &gt;= <span class="number">0</span> ? han[n % <span class="number">10</span> - <span class="number">1</span>] : <span class="string">'十'</span>;</div><div class="line">        <span class="keyword">return</span> s + g;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">return</span> han[n - <span class="number">1</span>];</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//其实大致就是下面这个json，img为图片地址，caption是第几张图，desc是图片描述</span></div><div class="line">[&#123;<span class="attr">img</span>: <span class="string">"./waterfall/images/1.jpg"</span>, <span class="attr">caption</span>: <span class="string">"第一张"</span>, <span class="attr">desc</span>: <span class="string">"描述一"</span>&#125;,&#123;<span class="attr">img</span>: <span class="string">"./waterfall/images/2.jpg"</span>, <span class="attr">caption</span>: <span class="string">"第二张"</span>, <span class="attr">desc</span>: <span class="string">"描述二"</span>&#125;,&#123;<span class="attr">img</span>: <span class="string">"./waterfall/images/3.jpg"</span>, <span class="attr">caption</span>: <span class="string">"第三张"</span>, <span class="attr">desc</span>: <span class="string">"描述三"</span>&#125;]</div></pre></td></tr></table></figure></p>
+<p>好了，图片准备好了，开始写函数了，其他的东西懒得配置了，就俩个配置项，<code>activeindex</code>是当前选中的图片索引，<code>state</code>是轮播的类型：<br><figure class="highlight pf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function Surround(option) &#123;</div><div class="line">    option = option || &#123;&#125;;</div><div class="line">    this.activeindex = option.activeindex || <span class="number">0</span>;</div><div class="line">    this.<span class="keyword">state</span> = option.<span class="keyword">state</span> || <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>老规矩，先来几个工具函数：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">Surround.prototype = &#123;</div><div class="line">    getdom: <span class="function"><span class="keyword">function</span> (<span class="params">obj</span>) </span>&#123;</div><div class="line">            <span class="keyword">var</span> method = obj.substr(<span class="number">0</span>, <span class="number">1</span>) == <span class="string">'.'</span> ? <span class="string">'getElementsByClassName'</span> : <span class="string">'getElementById'</span>;</div><div class="line">            <span class="keyword">return</span> <span class="built_in">document</span>[method](obj.substr(<span class="number">1</span>));</div><div class="line">    &#125;,</div><div class="line">    getwh: <span class="function"><span class="keyword">function</span> (<span class="params">obj</span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> &#123;</div><div class="line">            w: obj.clientWidth,</div><div class="line">            h: obj.clientHeight</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    select: <span class="function"><span class="keyword">function</span> (<span class="params">start, end</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> num = end - start + <span class="number">1</span>;</div><div class="line">        <span class="keyword">return</span> <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * num + start);</div><div class="line">    &#125;,</div><div class="line">    time:<span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.activeindex &gt; data.length - <span class="number">1</span>) &#123;</div><div class="line">            <span class="keyword">this</span>.activeindex = <span class="number">0</span>;</div><div class="line">        &#125;;</div><div class="line">        <span class="keyword">this</span>.rsort(<span class="keyword">this</span>.activeindex);            </div><div class="line">        <span class="keyword">this</span>.activeindex++;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><code>getdom</code>用于获取节点，<code>getwh</code>返回传入dom的宽高集合，<code>select</code>返回传入最大数和最小数之间的随机数，<code>time</code>负责轮播的切换。<br>其实轮播的原理很简单，从<code>.photo</code>中选出一个放在中间，其余的通过随机数给生成随机的top和left以及旋转角度，，点击中间的，调用的是翻转函数，点击其他的则把你点击的放中间，其他的再随机生成。移动动画什么的交给css3的transition完成。<br>原理说了，下面开始生成图片了，注下面的函数全写在Surround.prototype里的：<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line">addPhotos: function (data) &#123;</div><div class="line">    <span class="keyword">var</span> lists = <span class="string">''</span>;</div><div class="line">    <span class="keyword">var</span> nav = <span class="string">''</span>;</div><div class="line">    <span class="keyword">var</span> navbox = document.createElement(<span class="string">'div'</span>);</div><div class="line">    navbox.className = <span class="string">'nav'</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> data) &#123;</div><div class="line">        <span class="keyword">var</span> photobox =</div><div class="line">            `&lt;div <span class="keyword">class</span>=<span class="string">"photo  photo-front"</span>  id=<span class="string">"photo_$&#123;i&#125;"</span>&gt;</div><div class="line">                &lt;div <span class="keyword">class</span>=<span class="string">"photo-wrap"</span>&gt;</div><div class="line">                    &lt;div <span class="keyword">class</span>=<span class="string">"side side-front"</span>&gt;</div><div class="line">                        &lt;p <span class="keyword">class</span>=<span class="string">"imgs"</span>&gt;</div><div class="line">                            &lt;img src=<span class="string">"$&#123;data[i].img&#125;"</span> /&gt;</div><div class="line">                        &lt;/p&gt;</div><div class="line">                        &lt;p <span class="keyword">class</span>=<span class="string">"caption"</span>&gt;$&#123;data[i].caption&#125;&lt;/p&gt;</div><div class="line">                    &lt;/div&gt;</div><div class="line">                    &lt;div <span class="keyword">class</span>=<span class="string">"side side-back"</span>&gt;</div><div class="line">                        &lt;p <span class="keyword">class</span>=<span class="string">"desc"</span>&gt;</div><div class="line">                            $&#123;data[i].desc&#125;</div><div class="line">                        &lt;/p&gt;</div><div class="line">                    &lt;/div&gt;</div><div class="line">                &lt;/div&gt;</div><div class="line">            &lt;/div&gt;`;</div><div class="line">        <span class="keyword">var</span> navitem = `&lt;span id=<span class="string">"nav_$&#123;i&#125;"</span>  <span class="keyword">class</span>=<span class="string">"i"</span>&gt;&lt;/span&gt;`</div><div class="line">        nav += navitem;</div><div class="line">        lists += photobox;</div><div class="line">    &#125;</div><div class="line">    navbox.innerHTML = nav;</div><div class="line">    <span class="keyword">this</span>.getdom(<span class="string">'#wrap'</span>).innerHTML = lists;</div><div class="line">    <span class="keyword">this</span>.getdom(<span class="string">"#wrap"</span>).append(navbox);</div><div class="line"></div><div class="line">    <span class="keyword">var</span> i = <span class="keyword">this</span>.getdom(<span class="string">".nav"</span>)[<span class="number">0</span>].getElementsByClassName(<span class="string">'i'</span>);</div><div class="line">    <span class="keyword">var</span> photo = <span class="keyword">this</span>.getdom(<span class="string">".photo"</span>);</div><div class="line"></div><div class="line">    [<span class="meta"></span>].slice.call(i).forEach(function(el,index) &#123;</div><div class="line">        el.onclick = function()&#123;</div><div class="line">            <span class="keyword">this</span>.turn(<span class="keyword">this</span>.getdom(<span class="string">'#photo_'</span>+index));</div><div class="line">        &#125;.bind(<span class="keyword">this</span>);</div><div class="line">    &#125;,<span class="keyword">this</span>);</div><div class="line">    </div><div class="line">    [<span class="meta"></span>].slice.call(photo).forEach(function(el,index)&#123;</div><div class="line">        el.onclick = function(<span class="keyword">event</span>)&#123;</div><div class="line">            <span class="keyword">this</span>.turn(<span class="keyword">event</span>.currentTarget);</div><div class="line">        &#125;.bind(<span class="keyword">this</span>);</div><div class="line">    &#125;,<span class="keyword">this</span>);</div><div class="line">    <span class="keyword">this</span>.rsort(<span class="keyword">this</span>.activeindex);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>我们先通过遍历data这个json创建出同数量的<code>.photo</code>和分页器<code>.nav</code>，然后分别给其添加点击事件调用<code>turn()</code>函数，然后调用<code>rsort()</code>函数传入<code>this.activeindex</code>，获得当前居中的索引。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">turn: <span class="function"><span class="keyword">function</span> (<span class="params">elem</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> cls = elem.className;</div><div class="line">    <span class="keyword">var</span> n = elem.id.split(<span class="string">'_'</span>)[<span class="number">1</span>];</div><div class="line">    <span class="keyword">this</span>.activeindex = <span class="built_in">Number</span>(n);</div><div class="line">    <span class="keyword">if</span> (!elem.classList.contains(<span class="string">"photo-center"</span>)) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.rsort(n);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (elem.classList.contains(<span class="string">'photo-front'</span>)) &#123;</div><div class="line">        cls = cls.replace(<span class="regexp">/photo-front/</span>, <span class="string">"photo-back"</span>);</div><div class="line">        <span class="keyword">this</span>.getdom(<span class="string">"#nav_"</span> + n).classList.add(<span class="string">'i_back'</span>);</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        cls = cls.replace(<span class="regexp">/photo-back/</span>, <span class="string">"photo-front"</span>);</div><div class="line">        <span class="keyword">this</span>.getdom(<span class="string">"#nav_"</span> + n).classList.remove(<span class="string">'i_back'</span>);</div><div class="line">    &#125;;</div><div class="line">    <span class="keyword">return</span> elem.className = cls;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><code>turn()</code>函数其实就是翻转函数，它根据传入函数的class判断是不是居中的<code>.photo</code>，是的话通过添加和移除class进行翻转，否者把<code>this.activeindex</code>改变为你点击的索引，调用<code>rsort()</code>函数传入<code>this.activeindex</code>。<br>下面是主要的变化函数了：<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"> rsort: function (n) &#123;</div><div class="line">    <span class="keyword">var</span> _photo = <span class="keyword">this</span>.getdom(<span class="string">'.photo'</span>);</div><div class="line">    <span class="keyword">var</span> wrap = <span class="keyword">this</span>.getwh(<span class="keyword">this</span>.getdom(<span class="string">'#wrap'</span>));</div><div class="line">    <span class="keyword">var</span> photo = <span class="keyword">this</span>.getwh(<span class="keyword">this</span>.getdom(<span class="string">'.photo'</span>)[<span class="number">0</span>]);</div><div class="line">    <span class="keyword">var</span> photos = []</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; _photo.length; i++) &#123;</div><div class="line">        _photo[i].className = <span class="string">'photo photo-front'</span>;</div><div class="line">        _photo[i].style.left = <span class="string">''</span>;</div><div class="line">        _photo[i].style.top = <span class="string">''</span>;</div><div class="line">        _photo[i].style[<span class="string">'transform'</span>] = <span class="string">'rotate(0deg) scale(1.3)'</span>;</div><div class="line">        photos.push(_photo[i]);</div><div class="line">    &#125;;</div><div class="line">    <span class="keyword">var</span> photo_center = <span class="keyword">this</span>.getdom(<span class="string">'#photo_'</span> + n);</div><div class="line">    photo_center.className += <span class="string">' photo-center'</span>;</div><div class="line">    photo_center = photos.splice(n, <span class="number">1</span>)[<span class="number">0</span>];</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.state === <span class="number">0</span>) &#123;    </div><div class="line">    <span class="keyword">this</span>.separate(photos,function(photo)&#123;</div><div class="line">        photo.style.left = <span class="keyword">this</span>.range().left.x + <span class="string">'px'</span>;</div><div class="line">        photo.style.top = <span class="keyword">this</span>.range().left.y + <span class="string">'px'</span>;</div><div class="line">        photo.style[<span class="string">'transform'</span>] = <span class="string">'rotate('</span> + <span class="keyword">this</span>.select(<span class="number">-90</span>, <span class="number">90</span>) + <span class="string">'deg) scale(1)'</span>;</div><div class="line">    &#125;,function(photo)&#123;</div><div class="line">        photo.style.left = <span class="keyword">this</span>.range().right.x + <span class="string">'px'</span>;</div><div class="line">        photo.style.top = <span class="keyword">this</span>.range().right.y + <span class="string">'px'</span>;</div><div class="line">        photo.style[<span class="string">'transform'</span>] = <span class="string">'rotate('</span> + <span class="keyword">this</span>.select(<span class="number">-90</span>, <span class="number">90</span>) + <span class="string">'deg) scale(1)'</span>;</div><div class="line">    &#125;);   </div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">this</span>.state === <span class="number">1</span>) &#123;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> s <span class="keyword">in</span> photos)&#123;</div><div class="line">            photos[s].style[<span class="string">'transform'</span>] = <span class="string">'rotate('</span> + <span class="keyword">this</span>.select(<span class="number">0</span>, <span class="number">360</span>) +</div><div class="line">            <span class="string">'deg) scale(1) translate(500px)'</span>;</div><div class="line">        &#125;;   </div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">var</span> r = <span class="number">460</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> s = <span class="number">0</span>; s &lt; photos.length; s++) &#123;</div><div class="line">            <span class="keyword">var</span> deg = <span class="keyword">this</span>.select(<span class="number">0</span>, <span class="number">360</span>);</div><div class="line">            <span class="keyword">var</span> sinY = Math.sin(deg * Math.PI / <span class="number">180</span>) * r;</div><div class="line">            <span class="keyword">var</span> cosX = Math.cos(deg * Math.PI / <span class="number">180</span>) * r;</div><div class="line">            photos[s].style.top = ((wrap.h / <span class="number">2</span>) + sinY) + <span class="string">'px'</span>;</div><div class="line">            photos[s].style.left = ((wrap.w / <span class="number">2</span>) + cosX) + <span class="string">'px'</span>;</div><div class="line">            photos[s].style.transform = <span class="string">'rotate('</span> + (deg + <span class="number">90</span>) + <span class="string">'deg)'</span></div><div class="line">        &#125;;</div><div class="line">    &#125;;</div><div class="line">    <span class="keyword">var</span> navs = <span class="keyword">this</span>.getdom(<span class="string">'.i'</span>);</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; navs.length; i++) &#123;</div><div class="line">        navs[i].className = <span class="string">'i'</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">this</span>.getdom(<span class="string">"#nav_"</span> + n).className += <span class="string">' i_current'</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><code>rsort()</code>函数先把所有的样式全部重置，然后把所有的<code>.photo</code>放入一个数组中，根据传入的索引把当前要居中的<code>.photo</code>取出来给其添加居中的class，<br>剩余的用for循环给其添加随机的样式。<code>separate()</code>函数的作用是把剩余<code>.photo</code>分成两部分，然后在回调函数里给其设置样式，<code>range()</code>函数的主要作用是将分成两部分的<code>.photo</code>给区分放置，一份放居中元素的左边，一份放居中元素的右边，写这个两个函数的原因是散列时有可能全部挤在一堆了，留下一堆空白的不好看，左右两边均分一下。<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">separate:function(photos,lfn,rfn)&#123;</div><div class="line">    <span class="keyword">var</span> photos_left = photos.splice(<span class="number">0</span>, Math.ceil(photos.length / <span class="number">2</span>));</div><div class="line">    <span class="keyword">var</span> photos_right = photos;</div><div class="line">    <span class="keyword">for</span>(s <span class="keyword">in</span> photos_left)&#123;</div><div class="line">        <span class="keyword">var</span> photo = photos_left[s];</div><div class="line">        lfn.apply(<span class="keyword">this</span>,[photo]);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span>(s <span class="keyword">in</span> photos_right)&#123;</div><div class="line">        <span class="keyword">var</span> photo = photos_right[s];</div><div class="line">        rfn.apply(<span class="keyword">this</span>,[photo]);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">range: function () &#123;</div><div class="line">    <span class="keyword">var</span> range = &#123;</div><div class="line">        left: &#123;</div><div class="line">            x: [],</div><div class="line">            y: []</div><div class="line">        &#125;,</div><div class="line">        right: &#123;</div><div class="line">            x: [],</div><div class="line">            y: []</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line">    <span class="keyword">var</span> wrap = <span class="keyword">this</span>.getwh(<span class="keyword">this</span>.getdom(<span class="string">'#wrap'</span>));</div><div class="line">    <span class="keyword">var</span> photo = <span class="keyword">this</span>.getwh(<span class="keyword">this</span>.getdom(<span class="string">'.photo'</span>)[<span class="number">0</span>]);</div><div class="line">    range.left.x = <span class="keyword">this</span>.select(-photo.w, (wrap.w - photo.w) / <span class="number">2</span>);</div><div class="line">    range.left.y = <span class="keyword">this</span>.select(-photo.h, wrap.h);</div><div class="line">    range.right.x = <span class="keyword">this</span>.select((wrap.w - photo.w) / <span class="number">2</span>, wrap.w);</div><div class="line">    range.right.y = <span class="keyword">this</span>.select(-photo.h, wrap.h);</div><div class="line">    <span class="keyword">return</span> range;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><code>this.state</code>为0的样式就基本完成了，至于<code>this.state</code>成圆环状的样式写法原因参考我<a href="http://xuxin123.com/2017/12/17/time1/" target="_blank">时间–时钟篇</a>，这里面有说明。<br>好了Surround函数基本完成了，下面我们开始调用，surround.getdom这个只是顺便用了Surround函数里面获取dom的函数：<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//轮播</span></div><div class="line"><span class="keyword">var</span> surround = <span class="keyword">new</span> Surround();</div><div class="line">surround.addPhotos(data());</div><div class="line">surround.getdom(<span class="string">"#change"</span>).onchange = <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.checked) &#123;</div><div class="line">        <span class="keyword">var</span> speed =surround.getdom(<span class="string">'#speed'</span>).value;</div><div class="line">        surround.getdom(<span class="string">'#speed'</span>).onchange = <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</div><div class="line">            speed = <span class="keyword">this</span>.value;</div><div class="line">            clearInterval(timer);</div><div class="line">            timer = setInterval(<span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</div><div class="line">                surround.time(data());</div><div class="line">            &#125;, speed * <span class="number">500</span>);</div><div class="line">        &#125;;</div><div class="line">        timer = setInterval(<span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</div><div class="line">            surround.time(data());</div><div class="line">        &#125;, speed * <span class="number">500</span>);</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        clearInterval(timer);</div><div class="line">    &#125;;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">//切换样式</span></div><div class="line">btn();</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">btn</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; surround.getdom(<span class="string">'.btn'</span>).length; i++) &#123;</div><div class="line">        (<span class="function"><span class="keyword">function</span> <span class="params">(i)</span> </span>&#123;</div><div class="line">            surround.getdom(<span class="string">".btn"</span>)[i].onclick = <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</div><div class="line">                <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; surround.getdom(<span class="string">'.btn'</span>).length; j++) &#123;</div><div class="line">                    surround.getdom(<span class="string">".btn"</span>)[j].className = <span class="string">'btn'</span>;</div><div class="line">                &#125;;</div><div class="line">                surround.getdom(<span class="string">".btn"</span>)[i].className = <span class="string">'btn show'</span>;</div><div class="line">                surround.state = i;</div><div class="line">                surround.rsort(surround.activeindex);</div><div class="line">            &#125;;</div><div class="line">        &#125;)(i);</div><div class="line">&#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>本文代码地址<a href="https://github.com/xuxingeren/blog/blob/master/specially/surround.html" target="_blank" rel="external">链接</a></p>
+
+        </div>
+        <footer class="article-footer">
+            
+    <div class="jiathis_style">
+    <span class="jiathis_txt">分享到：</span>
+    <a class="jiathis_button_qzone">QQ空间</a>
+    <a class="jiathis_button_tsina">新浪微博</a>
+    <a class="jiathis_button_tqq">腾讯微博</a>
+    <a class="jiathis_button_weixin">微信</a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+    <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<style>
+    .jiathis_style div:first-child:not(.jiadiv_01) {
+        width: auto !important;
+        border: none !important;
+    }
+    .jiathis_style .jiadiv_01 {
+        margin: 10px 0;
+        border-radius: 4px;
+        border: #e1e1e1 solid 1px;
+    }
+    .jiathis_style .jiadiv_01 div:first-child {
+        display: none;
+    }
+    .jiathis_style .jiadiv_02 {
+        padding: 7px 0 !important;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle {
+        width: 85px;
+        border: none;
+        height: auto;
+        margin: 3px 10px;
+        padding: 6px 10px;
+        border-radius: 4px;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:hover {
+        border: none;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:nth-child(even) {
+        margin-left: 0;
+    }
+    .jiathis_style .jtico:hover {
+        opacity: 1;
+    }
+    .jiathis_style .ckepopBottom,
+    .jiathis_style .centerBottom {
+        width: auto !important;
+        padding: 5px;
+        background: #f7f7f7;
+    }
+</style>
+
+
+
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="SOHUCS" sid="http://xuxin123.com/2017/12/30/surround/"></div>
+
+
+    
+    </section>
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>关注我 :</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="globe" href="https://segmentfault.com/u/molufange" target="_blank">
+                        <i class="icon fa fa-globe"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/xuxingeren" target="_blank">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="weibo" href="/" target="_blank">
+                        <i class="icon fa fa-weibo"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/atom.xml" target="_blank">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2017/12/23/snow/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">Canvas --雪花图</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/12/30/surround/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://ouzdb04w7.bkt.clouddn.com/image/2017/12/30/1.png)" alt="特效篇--图片环绕" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/前端/">前端</a></p>
+                            <p class="item-title"><a href="/2017/12/30/surround/" class="title">特效篇--图片环绕</a></p>
+                            <p class="item-date"><time datetime="2017-12-30T07:37:54.000Z" itemprop="datePublished">2017-12-30</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/12/23/snow/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://ouzdb04w7.bkt.clouddn.com/image/2017/12/23/1.png)" alt="Canvas --雪花图" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/前端/">前端</a></p>
+                            <p class="item-title"><a href="/2017/12/23/snow/" class="title">Canvas --雪花图</a></p>
+                            <p class="item-date"><time datetime="2017-12-23T08:06:41.000Z" itemprop="datePublished">2017-12-23</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/12/17/time1/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://ouzdb04w7.bkt.clouddn.com/image/2017/12/18/1.png)" alt="时间--时钟篇" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/前端/">前端</a></p>
+                            <p class="item-title"><a href="/2017/12/17/time1/" class="title">时间--时钟篇</a></p>
+                            <p class="item-date"><time datetime="2017-12-17T06:20:37.000Z" itemprop="datePublished">2017-12-17</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/12/16/padding/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://ouzdb04w7.bkt.clouddn.com/image/2017/12/16/1.png)" alt="你不知道的padding" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/前端/">前端</a></p>
+                            <p class="item-title"><a href="/2017/12/16/padding/" class="title">你不知道的padding</a></p>
+                            <p class="item-date"><time datetime="2017-12-16T09:40:22.000Z" itemprop="datePublished">2017-12-16</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/12/15/margin/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://ouzdb04w7.bkt.clouddn.com/image/2017/12/15/1.png)" alt="你不知道的margin" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/前端/">前端</a></p>
+                            <p class="item-title"><a href="/2017/12/15/margin/" class="title">你不知道的margin</a></p>
+                            <p class="item-date"><time datetime="2017-12-15T08:10:13.000Z" itemprop="datePublished">2017-12-15</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">20</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/文章/">文章</a><span class="category-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">4</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Canvas/" style="font-size: 10px;">Canvas</a> <a href="/tags/Promise/" style="font-size: 10px;">Promise</a> <a href="/tags/box-shadow/" style="font-size: 10px;">box-shadow</a> <a href="/tags/checkbox/" style="font-size: 10px;">checkbox</a> <a href="/tags/css/" style="font-size: 16.67px;">css</a> <a href="/tags/css3/" style="font-size: 15px;">css3</a> <a href="/tags/css3导航/" style="font-size: 10px;">css3导航</a> <a href="/tags/css3页面滚动/" style="font-size: 10px;">css3页面滚动</a> <a href="/tags/css特效/" style="font-size: 11.67px;">css特效</a> <a href="/tags/js/" style="font-size: 20px;">js</a> <a href="/tags/margin/" style="font-size: 11.67px;">margin</a> <a href="/tags/padding/" style="font-size: 10px;">padding</a> <a href="/tags/radio/" style="font-size: 10px;">radio</a> <a href="/tags/text-align-justify/" style="font-size: 10px;">text-align:justify</a> <a href="/tags/touch/" style="font-size: 10px;">touch</a> <a href="/tags/上传筛选/" style="font-size: 10px;">上传筛选</a> <a href="/tags/上传美化/" style="font-size: 10px;">上传美化</a> <a href="/tags/上传进度/" style="font-size: 10px;">上传进度</a> <a href="/tags/伪元素/" style="font-size: 13.33px;">伪元素</a> <a href="/tags/名人/" style="font-size: 10px;">名人</a> <a href="/tags/图片上传/" style="font-size: 13.33px;">图片上传</a> <a href="/tags/图片加载/" style="font-size: 10px;">图片加载</a> <a href="/tags/图片批量上传/" style="font-size: 10px;">图片批量上传</a> <a href="/tags/图片替换/" style="font-size: 10px;">图片替换</a> <a href="/tags/图片环绕/" style="font-size: 10px;">图片环绕</a> <a href="/tags/图片轮播/" style="font-size: 10px;">图片轮播</a> <a href="/tags/图片预览/" style="font-size: 11.67px;">图片预览</a> <a href="/tags/垂直居中/" style="font-size: 10px;">垂直居中</a> <a href="/tags/复选框美化/" style="font-size: 10px;">复选框美化</a> <a href="/tags/多列均匀布局/" style="font-size: 10px;">多列均匀布局</a> <a href="/tags/小实例/" style="font-size: 18.33px;">小实例</a> <a href="/tags/异步/" style="font-size: 10px;">异步</a> <a href="/tags/拖拽/" style="font-size: 10px;">拖拽</a> <a href="/tags/文字两端对齐/" style="font-size: 10px;">文字两端对齐</a> <a href="/tags/无限加载/" style="font-size: 10px;">无限加载</a> <a href="/tags/时钟/" style="font-size: 10px;">时钟</a> <a href="/tags/时间/" style="font-size: 10px;">时间</a> <a href="/tags/曲面阴影/" style="font-size: 10px;">曲面阴影</a> <a href="/tags/瀑布流/" style="font-size: 10px;">瀑布流</a> <a href="/tags/特效/" style="font-size: 10px;">特效</a> <a href="/tags/移动端图片自适应/" style="font-size: 10px;">移动端图片自适应</a> <a href="/tags/纪念/" style="font-size: 10px;">纪念</a> <a href="/tags/背景裁剪/" style="font-size: 10px;">背景裁剪</a> <a href="/tags/自适应左右布局/" style="font-size: 10px;">自适应左右布局</a> <a href="/tags/计算器/" style="font-size: 10px;">计算器</a> <a href="/tags/负margin/" style="font-size: 10px;">负margin</a> <a href="/tags/转载/" style="font-size: 10px;">转载</a> <a href="/tags/进度环/" style="font-size: 10px;">进度环</a> <a href="/tags/选项卡/" style="font-size: 11.67px;">选项卡</a> <a href="/tags/那些年我们常写的css/" style="font-size: 10px;">那些年我们常写的css</a> <a href="/tags/闲谈/" style="font-size: 10px;">闲谈</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">联系我</h3>
+        <div class="widget">
+            <i class="fa fa-envelope-square" style="margin-right: 5px;"></i>908642754@qq.com
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">友情链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    
+                    <li>
+                        <a target="_blank" rel="external nofollow" href="http://hexo.io">Hexo</a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        <a target="_blank"  href="https://segmentfault.com/u/molufange">Segmentfault</a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        <a target="_blank"  href="http://www.aliken.com.cn">码农面条君</a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        <a target="_blank"  href="http://www.tianjiajie.cn">灵魂收割者</a>
+                    </li>
+                    
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2017 徐新-陌路凡歌</p>
+                <p>备案号：<a href="http://www.miitbeian.gov.cn" target="_blank">渝ICP备17014978号-1</a></p>           		                               	
+             <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script id="cy_cmt_num" src="https://changyan.sohu.com/upload/plugins/plugins.list.count.js?clientId=cytkibOj4"></script>
+    <script type="text/javascript">
+        (function() {
+            var appid = 'cytkibOj4';
+            var conf = 'cc4429eda4f1090e017ec58b900b46e5';
+            var width = window.innerWidth || document.documentElement.clientWidth;
+            if (width < 960) {
+                window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>');
+            } else {
+                var loadJs = function(d, a) {
+                    var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+                    var b = document.createElement("script");
+                    b.setAttribute("type", "text/javascript");
+                    b.setAttribute("charset", "UTF-8");
+                    b.setAttribute("src", d);
+                    if (typeof a === "function") {
+                        if (window.attachEvent) {
+                            b.onreadystatechange = function() {
+                                var e = b.readyState;
+                                if (e === "loaded" || e === "complete") {
+                                    b.onreadystatechange = null;
+                                    a()
+                                }
+                            }
+                        } else {
+                            b.onload = a
+                        }
+                    }
+                    c.appendChild(b)
+                };
+                loadJs("https://changyan.sohu.com/upload/changyan.js", function() {
+                    window.changyan.api.config({
+                        appid: appid,
+                        conf: conf
+                    })
+                });
+            }
+        })();
+    </script>
+
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+    	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+     
+    <script src="//cdn1.lncld.net/static/js/2.5.0/av-min.js"></script>
+		<script>
+		    var APP_ID = 'mTfV9mapGktO4Xqww9CCgj4P-gzGzoHsz';
+		    var APP_KEY = 'zE9b1r6zf9OwaPck1M21M7JI';
+		    AV.init({
+		        appId: APP_ID,
+		        appKey: APP_KEY
+		    });
+		    // 显示次数
+		    function showTime(Counter) {
+		        var query = new AV.Query("Counter");
+		        if($(".leancloud_visitors").length > 0){
+		            var url = $(".leancloud_visitors").attr('id').trim();
+		            // where field
+		            query.equalTo("words", url);
+		            // count
+		            query.count().then(function (number) {
+		                // There are number instances of MyClass where words equals url.
+		                $(document.getElementById(url)).text(number?  number : '--');
+		            }, function (error) {
+		                // error is an instance of AVError.
+		            });
+		        }
+		    }
+		    // 追加pv
+		    function addCount(Counter) {
+		        var url = $(".leancloud_visitors").length > 0 ? $(".leancloud_visitors").attr('id').trim() : 'icafebolger.com';
+		        var Counter = AV.Object.extend("Counter");
+		        var query = new Counter;
+		        query.save({
+		            words: url
+		        }).then(function (object) {
+		        })
+		    }
+		    $(function () {
+		        var Counter = AV.Object.extend("Counter");
+		        addCount(Counter);
+		        showTime(Counter);
+		    });
+		</script>
+  	
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

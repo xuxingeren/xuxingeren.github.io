@@ -1112,6 +1112,9 @@ a.article-title:hover {
 .article-entry:after {
   clear: both;
 }
+.article-entry p {
+  text-align: justify;
+}
 .article-entry p,
 .article-entry table {
   margin: 1.6em 0;

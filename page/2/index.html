@@ -7,16 +7,17 @@
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="description" content="前端,vue.js,bootstrap,css">
+    <meta name="description" content="陌路凡歌的个人博客,陌路凡歌的前端技术分享,陌路凡歌的学习与进步">
+<meta name="keywords" content="前端,JavaScript,html,vue,react,bootstrap,css,jQuery,陌路凡歌,个人博客">
 <meta property="og:type" content="website">
 <meta property="og:title" content="陌路凡歌的个人博客">
-<meta property="og:url" content="https://xuxingeren.github.io/page/2/index.html">
+<meta property="og:url" content="http://xuxin123.com/page/2/index.html">
 <meta property="og:site_name" content="陌路凡歌的个人博客">
-<meta property="og:description" content="前端,vue.js,bootstrap,css">
+<meta property="og:description" content="陌路凡歌的个人博客,陌路凡歌的前端技术分享,陌路凡歌的学习与进步">
 <meta property="og:locale" content="zh-CN">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="陌路凡歌的个人博客">
-<meta name="twitter:description" content="前端,vue.js,bootstrap,css">
+<meta name="twitter:description" content="陌路凡歌的个人博客,陌路凡歌的前端技术分享,陌路凡歌的学习与进步">
     
 
     
@@ -47,9 +48,21 @@
 var _hmt = _hmt || [];
 (function() {
   var hm = document.createElement("script");
-  hm.src = "//hm.baidu.com/hm.js?aaf777cd25b5dee291c5fdbc26eba698";
+  hm.src = "//hm.baidu.com/hm.js?3cd4fd73eed7c1d30f5f9caaac658ea5";
   var s = document.getElementsByTagName("script")[0];
   s.parentNode.insertBefore(hm, s);
+})();
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
 })();
 </script>
 
@@ -70,7 +83,7 @@ var _hmt = _hmt || [];
                     </h1>
                     
                         <h2 class="subtitle-wrap">
-                            <p class="subtitle">前端的技术分享</p>
+                            <p class="subtitle">前端的技术分享与个人见解</p>
                         </h2>
                     
                 </div>
@@ -169,15 +182,17 @@ var _hmt = _hmt || [];
         <article class="article article-summary">
     <div class="article-summary-inner">
         
-        <a href="/2017/08/21/Hello/" class="thumbnail">
+        <a href="/2017/11/22/waterfall/" class="thumbnail">
     
     
-        <span style="background-image:url(http://ouzdb04w7.bkt.clouddn.com/image/2017/08/22/timg.jpg)" alt="第一个博客" class="thumbnail-image"></span>
+        <span style="background-image:url(http://ouzdb04w7.bkt.clouddn.com/image/2017/11/22/1.png)" alt="瀑布流小实例" class="thumbnail-image"></span>
     
     
         
 <span class="comment-counter">
     <i class="fa fa-comments-o"></i>
+    
+        <span class="cy_cmt_count" id="sourceId::http://xuxin123.com/2017/11/22/waterfall/">0</span>
     
 </span>
 
@@ -188,20 +203,456 @@ var _hmt = _hmt || [];
         
         <div class="article-meta">
             <div class="category">
-            <a class="article-category-link" href="/categories/文章/">文章</a>
+            <a class="article-category-link" href="/categories/前端/">前端</a>
             </div>
-            <div class="date"><time datetime="2017-08-21T10:49:54.000Z" itemprop="datePublished">2017-08-21</time></div>
+            <div class="date"><time datetime="2017-11-22T07:43:42.000Z" itemprop="datePublished">2017-11-22</time></div>
         </div>
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2017/08/21/Hello/">第一个博客</a>
+        <a href="/2017/11/22/waterfall/">瀑布流小实例</a>
         </h1>
     
 
         <p class="article-excerpt">
-            考虑了很多，由于个人还是太懒，个人网站关掉了，不准备维护，因为已经很久没写什么东西了，还有就是嫌麻烦，以后写的东西将全部展示在这个博客上面，算是汇总一下吧，总结和梳理一下遗漏的知识点，当做我的学习历程吧。
-    .box{border-radius: 4px;line-height: 100px;color:#FFF;text-align:center;font-size:16px;margin
+            网站备案终于下来了，等了十几天，不容易呀，顺便搞了个免费的https证书，把评论也换成畅言的了，来必力太挫了，ui看见想打人系列。瀑布流，又称瀑布流式布局。其特点是随着页面滚动条向下滚动，不断加载数据块并附加至当前尾部。从Pinterest开始兴起，国内也有许多网站采用这种样式，不过大多数为了节约代码采用的是等宽等高的样式。今天我要演示的是等宽不等高如何进行瀑布流加载。
+html结构由于我们这里瀑
+        </p>
+    </div>
+</article>
+    
+
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/2017/11/13/Calculator/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://ouzdb04w7.bkt.clouddn.com/image/2017/11/13/1.png)" alt="计算器小实例" class="thumbnail-image"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="cy_cmt_count" id="sourceId::http://xuxin123.com/2017/11/13/Calculator/">0</span>
+    
+</span>
+
+
+    
+</a>
+
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/前端/">前端</a>
+            </div>
+            <div class="date"><time datetime="2017-11-13T08:40:43.000Z" itemprop="datePublished">2017-11-13</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2017/11/13/Calculator/">计算器小实例</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            最近在学react，没啥时间更新博客，等有空的时候把react基础写一写，react写法还是挺有意思的。这个实例没啥可说的，就是一个小实例而已，js实现最简单的计算器功能。当然原理很简单的，就是通过eval()可以计算字符串的特性实现字符串的运算，当然eval()还是少用为好，它的可读性非常差，不好再做优化和编译。
+关键js代码12345678910111213141516171819202122
+        </p>
+    </div>
+</article>
+    
+        </div>
+    
+
+    
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/2017/11/01/drag/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://ouzdb04w7.bkt.clouddn.com/image/2017/11/01/1.png)" alt="拖拽小实例" class="thumbnail-image"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="cy_cmt_count" id="sourceId::http://xuxin123.com/2017/11/01/drag/">0</span>
+    
+</span>
+
+
+    
+</a>
+
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/前端/">前端</a>
+            </div>
+            <div class="date"><time datetime="2017-11-01T08:18:44.000Z" itemprop="datePublished">2017-11-01</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2017/11/01/drag/">拖拽小实例</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            在日常业务中有很多时候会用到拖拽，比如弹窗什么的，还有一些导航什么的拖动组成自己喜欢的导航。今天就写了两个小例子带大家了解PC端和移动端的拖拽是怎么实现的。
+PC端拖拽pc端拖动主要是onmouse事件，当你鼠标对拖动目标点下时触发拖动目标的onmousedown事件，此时记录下鼠标点击的位置坐标和拖动目标的右上角坐标，得到二者之差，鼠标点下并且拖动触发document的onmousemove事件
+        </p>
+    </div>
+</article>
+    
+
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/2017/10/27/complete/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://ouzdb04w7.bkt.clouddn.com/image/2017/10/27/timg.jpg)" alt="图片加载" class="thumbnail-image"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="cy_cmt_count" id="sourceId::http://xuxin123.com/2017/10/27/complete/">0</span>
+    
+</span>
+
+
+    
+</a>
+
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/前端/">前端</a>
+            </div>
+            <div class="date"><time datetime="2017-10-27T06:40:55.000Z" itemprop="datePublished">2017-10-27</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2017/10/27/complete/">图片加载</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            图片懒加载技术相信大家再熟悉不过了，当网站中用到大量图片时回事网站打开时加载过慢，用户体验不好。用户其实看到的是可视区域，可视区域下面的图片什么的可以不用加载，当用户滚动滚动条要看到还没加载的图片时，在让其进行加载。所谓懒加载，就是把img的src放在一个自定义属性中，src为空，当触发某个事件时把自定义属性的值赋给src。1234&lt;img data-src="https://timgsa.
+        </p>
+    </div>
+</article>
+    
+        </div>
+    
+
+    
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/2017/10/26/background-clip/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://ouzdb04w7.bkt.clouddn.com/image/2017/10/26/1.png)" alt="CSS-背景裁剪" class="thumbnail-image"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="cy_cmt_count" id="sourceId::http://xuxin123.com/2017/10/26/background-clip/">0</span>
+    
+</span>
+
+
+    
+</a>
+
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/前端/">前端</a>
+            </div>
+            <div class="date"><time datetime="2017-10-26T07:00:24.000Z" itemprop="datePublished">2017-10-26</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2017/10/26/background-clip/">CSS-背景裁剪</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            最近一直忙着看ES6（懒），好久都没更新博客（不想写），难得下午抽空写写。好了，今天的是文字对背景图片的裁剪，以及一些衍生的小东西。
+background-clip:background-clip 属性规定背景的绘制区域。其值主要有四个1234background-clip: border-box;background-clip: padding-box;background-clip: cont
+        </p>
+    </div>
+</article>
+    
+
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/2017/09/21/imgfile3/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://ouzdb04w7.bkt.clouddn.com/image/2017/09/06/0.png)" alt="图片上传那些事-总结篇" class="thumbnail-image"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="cy_cmt_count" id="sourceId::http://xuxin123.com/2017/09/21/imgfile3/">0</span>
+    
+</span>
+
+
+    
+</a>
+
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/前端/">前端</a>
+            </div>
+            <div class="date"><time datetime="2017-09-21T06:10:20.000Z" itemprop="datePublished">2017-09-21</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2017/09/21/imgfile3/">图片上传那些事-总结篇</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            好了，总结篇终于开工了，这次来说说关于上传的一些琐碎事情。
+1.file input的美化file input 好用是好用但是论起颜值来说差得不是一点半点，怎么能让这玩意儿拉低我们写好的页面颜值呢(ง •̀_•́)ง，来整整容吧，其实这个东西实现起来也很简单的首先我们把这个上传的input用display: none;隐藏掉，然后发挥自己力量写个高颜值的上传按钮，给这个按钮添加点击事件，点击的时候
+        </p>
+    </div>
+</article>
+    
+        </div>
+    
+
+    
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/2017/09/09/imgfile2/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://ouzdb04w7.bkt.clouddn.com/image/2017/09/06/0.png)" alt="图片上传那些事-图片上传篇" class="thumbnail-image"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="cy_cmt_count" id="sourceId::http://xuxin123.com/2017/09/09/imgfile2/">0</span>
+    
+</span>
+
+
+    
+</a>
+
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/前端/">前端</a>
+            </div>
+            <div class="date"><time datetime="2017-09-09T01:40:30.000Z" itemprop="datePublished">2017-09-09</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2017/09/09/imgfile2/">图片上传那些事-图片上传篇</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            上次说完了图片上传预览，使用form提交就可以把图片进行提交了，但是在现实中这样的操作往往满足不了用户需求，一般在进行上传操作时可能会进行图片的多次重新选择和增删所选择的图片，这时用form提交就实现不了。
+这时就该我们本篇的主角闪亮登场了：FormData。W3C在2008年提出XMLHttpRequest Level 2的草案中改进了XMLHttpRequest对象，在新版本的一些功能中就有F
+        </p>
+    </div>
+</article>
+    
+
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/2017/09/06/imgfile1/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://ouzdb04w7.bkt.clouddn.com/image/2017/09/06/0.png)" alt="图片上传那些事-图片预览篇" class="thumbnail-image"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="cy_cmt_count" id="sourceId::http://xuxin123.com/2017/09/06/imgfile1/">0</span>
+    
+</span>
+
+
+    
+</a>
+
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/前端/">前端</a>
+            </div>
+            <div class="date"><time datetime="2017-09-06T03:00:54.000Z" itemprop="datePublished">2017-09-06</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2017/09/06/imgfile1/">图片上传那些事-图片预览篇</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            在前端工作中，有一些小功能是大家经常遇到的，图片的上传就是经常遇到的功能之一，平时图片上传有很多的需求，比如图片预览，批量上传，有些还要有上传进度，本文将介绍如何实现图片的批量上传和删除以及预览。以前的浏览器由于安全问题和兼容问题，实现不了本地图片信息的读取预览，只能选择一张就上传一张图片到服务器，然后服务器返回图片地址从而实现图片的预览，但是随着老的浏览器(ie)的逐渐淘汰，以及各个浏览器标准的
+        </p>
+    </div>
+</article>
+    
+        </div>
+    
+
+    
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/2017/08/31/ring/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://ouzdb04w7.bkt.clouddn.com/image/2017/08/31/1.png)" alt="Circle 进度环--css篇" class="thumbnail-image"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="cy_cmt_count" id="sourceId::http://xuxin123.com/2017/08/31/ring/">0</span>
+    
+</span>
+
+
+    
+</a>
+
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/前端/">前端</a>
+            </div>
+            <div class="date"><time datetime="2017-08-31T03:39:23.000Z" itemprop="datePublished">2017-08-31</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2017/08/31/ring/">Circle 进度环--css篇</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            网上有各种进度，进度条啊，进度环，进度条做起来简单，可是有很多时候需要的是进度环，本篇是用css3的效果结合js完成进度环的。废话不多说了，上结构html:12345&lt;div class="loading"&gt;    &lt;div class="left"&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;    &lt;div class="right"
+        </p>
+    </div>
+</article>
+    
+
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/2017/08/26/vertical/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://ouzdb04w7.bkt.clouddn.com/image/2017/08/26/main.png)" alt="垂直居中-文本篇" class="thumbnail-image"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="cy_cmt_count" id="sourceId::http://xuxin123.com/2017/08/26/vertical/">0</span>
+    
+</span>
+
+
+    
+</a>
+
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/前端/">前端</a>
+            </div>
+            <div class="date"><time datetime="2017-08-26T07:49:54.000Z" itemprop="datePublished">2017-08-26</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2017/08/26/vertical/">垂直居中-文本篇</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            拖延症太强，每次想写点东西的时候总是会想着明天写，今天强行克服了，总算是动工了，好吧，我的第一篇技术博客。说真的css这玩意儿，很多人认为写写就行了，但在我看来这东西的复杂程度不下于js，写好真的是很难很难，各种布局都有不同的写法，写这个的原因是把常写的东西总结一下，希望给大家参考参考，同时也是对我自己的一个学习总结吧，见识不足，还请谅解。
+html统一样式123&lt;div class="te
         </p>
     </div>
 </article>
@@ -214,8 +665,8 @@ var _hmt = _hmt || [];
 
 
     <nav id="page-nav">
-        <span class="pages">第 2 页，共 2 页</span>
-        <a class="extend prev" rel="prev" href="/">&laquo;</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+        <span class="pages">第 2 页，共 3 页</span>
+        <a class="extend prev" rel="prev" href="/">&laquo;</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">&raquo;</a>
     </nav>
 
 
@@ -231,14 +682,6 @@ var _hmt = _hmt || [];
                 <li>
                     <a class="social-tooltip" title="globe" href="https://segmentfault.com/u/molufange" target="_blank">
                         <i class="icon fa fa-globe"></i>
-                    </a>
-                </li>
-                
-            
-                
-                <li>
-                    <a class="social-tooltip" title="wordpress" href="http://www.xuxin123.com/blog" target="_blank">
-                        <i class="icon fa fa-wordpress"></i>
                     </a>
                 </li>
                 
@@ -282,10 +725,10 @@ var _hmt = _hmt || [];
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2017/11/13/Calculator/" class="thumbnail">
+                            <a href="/2017/12/30/surround/" class="thumbnail">
     
     
-        <span style="background-image:url(http://ouzdb04w7.bkt.clouddn.com/image/2017/11/13/1.png)" alt="计算器小实例" class="thumbnail-image"></span>
+        <span style="background-image:url(http://ouzdb04w7.bkt.clouddn.com/image/2017/12/30/1.png)" alt="特效篇--图片环绕" class="thumbnail-image"></span>
     
     
 </a>
@@ -294,18 +737,18 @@ var _hmt = _hmt || [];
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/前端/">前端</a></p>
-                            <p class="item-title"><a href="/2017/11/13/Calculator/" class="title">计算器小实例</a></p>
-                            <p class="item-date"><time datetime="2017-11-13T08:40:43.000Z" itemprop="datePublished">2017-11-13</time></p>
+                            <p class="item-title"><a href="/2017/12/30/surround/" class="title">特效篇--图片环绕</a></p>
+                            <p class="item-date"><time datetime="2017-12-30T07:37:54.000Z" itemprop="datePublished">2017-12-30</time></p>
                         </div>
                     </li>
                 
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2017/11/01/drag/" class="thumbnail">
+                            <a href="/2017/12/23/snow/" class="thumbnail">
     
     
-        <span style="background-image:url(http://ouzdb04w7.bkt.clouddn.com/image/2017/11/01/1.png)" alt="拖拽小实例" class="thumbnail-image"></span>
+        <span style="background-image:url(http://ouzdb04w7.bkt.clouddn.com/image/2017/12/23/1.png)" alt="Canvas --雪花图" class="thumbnail-image"></span>
     
     
 </a>
@@ -314,18 +757,18 @@ var _hmt = _hmt || [];
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/前端/">前端</a></p>
-                            <p class="item-title"><a href="/2017/11/01/drag/" class="title">拖拽小实例</a></p>
-                            <p class="item-date"><time datetime="2017-11-01T08:18:44.000Z" itemprop="datePublished">2017-11-01</time></p>
+                            <p class="item-title"><a href="/2017/12/23/snow/" class="title">Canvas --雪花图</a></p>
+                            <p class="item-date"><time datetime="2017-12-23T08:06:41.000Z" itemprop="datePublished">2017-12-23</time></p>
                         </div>
                     </li>
                 
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2017/10/27/complete/" class="thumbnail">
+                            <a href="/2017/12/17/time1/" class="thumbnail">
     
     
-        <span style="background-image:url(http://ouzdb04w7.bkt.clouddn.com/image/2017/10/27/timg.jpg)" alt="图片加载" class="thumbnail-image"></span>
+        <span style="background-image:url(http://ouzdb04w7.bkt.clouddn.com/image/2017/12/18/1.png)" alt="时间--时钟篇" class="thumbnail-image"></span>
     
     
 </a>
@@ -334,18 +777,18 @@ var _hmt = _hmt || [];
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/前端/">前端</a></p>
-                            <p class="item-title"><a href="/2017/10/27/complete/" class="title">图片加载</a></p>
-                            <p class="item-date"><time datetime="2017-10-27T06:40:55.000Z" itemprop="datePublished">2017-10-27</time></p>
+                            <p class="item-title"><a href="/2017/12/17/time1/" class="title">时间--时钟篇</a></p>
+                            <p class="item-date"><time datetime="2017-12-17T06:20:37.000Z" itemprop="datePublished">2017-12-17</time></p>
                         </div>
                     </li>
                 
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2017/10/26/background-clip/" class="thumbnail">
+                            <a href="/2017/12/16/padding/" class="thumbnail">
     
     
-        <span style="background-image:url(http://ouzdb04w7.bkt.clouddn.com/image/2017/10/26/1.png)" alt="CSS-背景裁剪" class="thumbnail-image"></span>
+        <span style="background-image:url(http://ouzdb04w7.bkt.clouddn.com/image/2017/12/16/1.png)" alt="你不知道的padding" class="thumbnail-image"></span>
     
     
 </a>
@@ -354,18 +797,18 @@ var _hmt = _hmt || [];
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/前端/">前端</a></p>
-                            <p class="item-title"><a href="/2017/10/26/background-clip/" class="title">CSS-背景裁剪</a></p>
-                            <p class="item-date"><time datetime="2017-10-26T07:00:24.000Z" itemprop="datePublished">2017-10-26</time></p>
+                            <p class="item-title"><a href="/2017/12/16/padding/" class="title">你不知道的padding</a></p>
+                            <p class="item-date"><time datetime="2017-12-16T09:40:22.000Z" itemprop="datePublished">2017-12-16</time></p>
                         </div>
                     </li>
                 
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2017/09/21/imgfile3/" class="thumbnail">
+                            <a href="/2017/12/15/margin/" class="thumbnail">
     
     
-        <span style="background-image:url(http://ouzdb04w7.bkt.clouddn.com/image/2017/09/06/0.png)" alt="图片上传那些事-总结篇" class="thumbnail-image"></span>
+        <span style="background-image:url(http://ouzdb04w7.bkt.clouddn.com/image/2017/12/15/1.png)" alt="你不知道的margin" class="thumbnail-image"></span>
     
     
 </a>
@@ -374,8 +817,8 @@ var _hmt = _hmt || [];
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/前端/">前端</a></p>
-                            <p class="item-title"><a href="/2017/09/21/imgfile3/" class="title">图片上传那些事-总结篇</a></p>
-                            <p class="item-date"><time datetime="2017-09-21T06:10:20.000Z" itemprop="datePublished">2017-09-21</time></p>
+                            <p class="item-title"><a href="/2017/12/15/margin/" class="title">你不知道的margin</a></p>
+                            <p class="item-date"><time datetime="2017-12-15T08:10:13.000Z" itemprop="datePublished">2017-12-15</time></p>
                         </div>
                     </li>
                 
@@ -388,7 +831,7 @@ var _hmt = _hmt || [];
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">分类</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/文章/">文章</a><span class="category-list-count">2</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">20</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/文章/">文章</a><span class="category-list-count">2</span></li></ul>
         </div>
     </div>
 
@@ -398,7 +841,7 @@ var _hmt = _hmt || [];
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">4</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">4</span></li></ul>
         </div>
     </div>
 
@@ -408,7 +851,7 @@ var _hmt = _hmt || [];
     <div class="widget-wrap widget-float">
         <h3 class="widget-title">标签云</h3>
         <div class="widget tagcloud">
-            <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/css3/" style="font-size: 12.5px;">css3</a> <a href="/tags/js/" style="font-size: 20px;">js</a> <a href="/tags/touch/" style="font-size: 10px;">touch</a> <a href="/tags/上传筛选/" style="font-size: 10px;">上传筛选</a> <a href="/tags/上传美化/" style="font-size: 10px;">上传美化</a> <a href="/tags/上传进度/" style="font-size: 10px;">上传进度</a> <a href="/tags/名人/" style="font-size: 10px;">名人</a> <a href="/tags/图片上传/" style="font-size: 15px;">图片上传</a> <a href="/tags/图片加载/" style="font-size: 10px;">图片加载</a> <a href="/tags/图片批量上传/" style="font-size: 10px;">图片批量上传</a> <a href="/tags/图片替换/" style="font-size: 10px;">图片替换</a> <a href="/tags/图片预览/" style="font-size: 12.5px;">图片预览</a> <a href="/tags/垂直居中/" style="font-size: 10px;">垂直居中</a> <a href="/tags/小实例/" style="font-size: 17.5px;">小实例</a> <a href="/tags/拖拽/" style="font-size: 10px;">拖拽</a> <a href="/tags/纪念/" style="font-size: 10px;">纪念</a> <a href="/tags/背景裁剪/" style="font-size: 10px;">背景裁剪</a> <a href="/tags/计算器/" style="font-size: 10px;">计算器</a> <a href="/tags/转载/" style="font-size: 10px;">转载</a> <a href="/tags/进度环/" style="font-size: 10px;">进度环</a> <a href="/tags/那些年我们常写的css/" style="font-size: 10px;">那些年我们常写的css</a> <a href="/tags/闲谈/" style="font-size: 10px;">闲谈</a>
+            <a href="/tags/Canvas/" style="font-size: 10px;">Canvas</a> <a href="/tags/Promise/" style="font-size: 10px;">Promise</a> <a href="/tags/box-shadow/" style="font-size: 10px;">box-shadow</a> <a href="/tags/checkbox/" style="font-size: 10px;">checkbox</a> <a href="/tags/css/" style="font-size: 16.67px;">css</a> <a href="/tags/css3/" style="font-size: 15px;">css3</a> <a href="/tags/css3导航/" style="font-size: 10px;">css3导航</a> <a href="/tags/css3页面滚动/" style="font-size: 10px;">css3页面滚动</a> <a href="/tags/css特效/" style="font-size: 11.67px;">css特效</a> <a href="/tags/js/" style="font-size: 20px;">js</a> <a href="/tags/margin/" style="font-size: 11.67px;">margin</a> <a href="/tags/padding/" style="font-size: 10px;">padding</a> <a href="/tags/radio/" style="font-size: 10px;">radio</a> <a href="/tags/text-align-justify/" style="font-size: 10px;">text-align:justify</a> <a href="/tags/touch/" style="font-size: 10px;">touch</a> <a href="/tags/上传筛选/" style="font-size: 10px;">上传筛选</a> <a href="/tags/上传美化/" style="font-size: 10px;">上传美化</a> <a href="/tags/上传进度/" style="font-size: 10px;">上传进度</a> <a href="/tags/伪元素/" style="font-size: 13.33px;">伪元素</a> <a href="/tags/名人/" style="font-size: 10px;">名人</a> <a href="/tags/图片上传/" style="font-size: 13.33px;">图片上传</a> <a href="/tags/图片加载/" style="font-size: 10px;">图片加载</a> <a href="/tags/图片批量上传/" style="font-size: 10px;">图片批量上传</a> <a href="/tags/图片替换/" style="font-size: 10px;">图片替换</a> <a href="/tags/图片环绕/" style="font-size: 10px;">图片环绕</a> <a href="/tags/图片轮播/" style="font-size: 10px;">图片轮播</a> <a href="/tags/图片预览/" style="font-size: 11.67px;">图片预览</a> <a href="/tags/垂直居中/" style="font-size: 10px;">垂直居中</a> <a href="/tags/复选框美化/" style="font-size: 10px;">复选框美化</a> <a href="/tags/多列均匀布局/" style="font-size: 10px;">多列均匀布局</a> <a href="/tags/小实例/" style="font-size: 18.33px;">小实例</a> <a href="/tags/异步/" style="font-size: 10px;">异步</a> <a href="/tags/拖拽/" style="font-size: 10px;">拖拽</a> <a href="/tags/文字两端对齐/" style="font-size: 10px;">文字两端对齐</a> <a href="/tags/无限加载/" style="font-size: 10px;">无限加载</a> <a href="/tags/时钟/" style="font-size: 10px;">时钟</a> <a href="/tags/时间/" style="font-size: 10px;">时间</a> <a href="/tags/曲面阴影/" style="font-size: 10px;">曲面阴影</a> <a href="/tags/瀑布流/" style="font-size: 10px;">瀑布流</a> <a href="/tags/特效/" style="font-size: 10px;">特效</a> <a href="/tags/移动端图片自适应/" style="font-size: 10px;">移动端图片自适应</a> <a href="/tags/纪念/" style="font-size: 10px;">纪念</a> <a href="/tags/背景裁剪/" style="font-size: 10px;">背景裁剪</a> <a href="/tags/自适应左右布局/" style="font-size: 10px;">自适应左右布局</a> <a href="/tags/计算器/" style="font-size: 10px;">计算器</a> <a href="/tags/负margin/" style="font-size: 10px;">负margin</a> <a href="/tags/转载/" style="font-size: 10px;">转载</a> <a href="/tags/进度环/" style="font-size: 10px;">进度环</a> <a href="/tags/选项卡/" style="font-size: 11.67px;">选项卡</a> <a href="/tags/那些年我们常写的css/" style="font-size: 10px;">那些年我们常写的css</a> <a href="/tags/闲谈/" style="font-size: 10px;">闲谈</a>
         </div>
     </div>
 
@@ -430,17 +873,29 @@ var _hmt = _hmt || [];
         <div class="widget">
             <ul>
                 
+                    
                     <li>
-                        <a target="_blank" href="http://hexo.io">Hexo</a>
+                        <a target="_blank" rel="external nofollow" href="http://hexo.io">Hexo</a>
                     </li>
+                    
                 
+                    
                     <li>
-                        <a target="_blank" href="http://www.zhangxinxu.com">张鑫旭</a>
+                        <a target="_blank"  href="https://segmentfault.com/u/molufange">Segmentfault</a>
                     </li>
+                    
                 
+                    
                     <li>
-                        <a target="_blank" href="https://segmentfault.com/u/molufange">Segmentfault</a>
+                        <a target="_blank"  href="http://www.aliken.com.cn">码农面条君</a>
                     </li>
+                    
+                
+                    
+                    <li>
+                        <a target="_blank"  href="http://www.tianjiajie.cn">灵魂收割者</a>
+                    </li>
+                    
                 
             </ul>
         </div>
@@ -462,14 +917,57 @@ var _hmt = _hmt || [];
                 <h1 class="logo-wrap">
                     <a href="/" class="logo"></a>
                 </h1>
-                <p>&copy; 2017 徐新</p>
-                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>           		                               	
+                <p>&copy; 2017 徐新-陌路凡歌</p>
+                <p>备案号：<a href="http://www.miitbeian.gov.cn" target="_blank">渝ICP备17014978号-1</a></p>           		                               	
              <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
             </div>
         </div>
     </div>
 </footer>
         
+    
+    <script id="cy_cmt_num" src="https://changyan.sohu.com/upload/plugins/plugins.list.count.js?clientId=cytkibOj4"></script>
+    <script type="text/javascript">
+        (function() {
+            var appid = 'cytkibOj4';
+            var conf = 'cc4429eda4f1090e017ec58b900b46e5';
+            var width = window.innerWidth || document.documentElement.clientWidth;
+            if (width < 960) {
+                window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>');
+            } else {
+                var loadJs = function(d, a) {
+                    var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+                    var b = document.createElement("script");
+                    b.setAttribute("type", "text/javascript");
+                    b.setAttribute("charset", "UTF-8");
+                    b.setAttribute("src", d);
+                    if (typeof a === "function") {
+                        if (window.attachEvent) {
+                            b.onreadystatechange = function() {
+                                var e = b.readyState;
+                                if (e === "loaded" || e === "complete") {
+                                    b.onreadystatechange = null;
+                                    a()
+                                }
+                            }
+                        } else {
+                            b.onload = a
+                        }
+                    }
+                    c.appendChild(b)
+                };
+                loadJs("https://changyan.sohu.com/upload/changyan.js", function() {
+                    window.changyan.api.config({
+                        appid: appid,
+                        conf: conf
+                    })
+                });
+            }
+        })();
+    </script>
+
+
+
 
 
     

@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>你不知道的margin | 陌路凡歌的个人博客</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="css,负margin,自适应左右布局,选项卡,margin" />
+    
+    <meta name="description" content="当了一回标题党了(震惊！99%的人都不知道XXXX &amp;lt;(￣︶￣)&amp;gt;)，本文是对我所了解的margin的一些说明，希望能给大家带来些许有意思的知识。margin和padding是css中应用最多的了吧，没有之一，这两兄弟帮我们解决了一个又一个的布局问题。好了，来看看margin的一些应用吧。 何为margin来看看官方的说明:  边界，元素周围生成额外的空白区。“空白区”通常是指其他元素">
+<meta name="keywords" content="css,负margin,自适应左右布局,选项卡,margin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="你不知道的margin">
+<meta property="og:url" content="http://xuxin123.com/2017/12/15/margin/index.html">
+<meta property="og:site_name" content="陌路凡歌的个人博客">
+<meta property="og:description" content="当了一回标题党了(震惊！99%的人都不知道XXXX &amp;lt;(￣︶￣)&amp;gt;)，本文是对我所了解的margin的一些说明，希望能给大家带来些许有意思的知识。margin和padding是css中应用最多的了吧，没有之一，这两兄弟帮我们解决了一个又一个的布局问题。好了，来看看margin的一些应用吧。 何为margin来看看官方的说明:  边界，元素周围生成额外的空白区。“空白区”通常是指其他元素">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://ouzdb04w7.bkt.clouddn.com/image/2017/12/15/1.png">
+<meta property="og:updated_time" content="2017-12-23T07:52:52.342Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="你不知道的margin">
+<meta name="twitter:description" content="当了一回标题党了(震惊！99%的人都不知道XXXX &amp;lt;(￣︶￣)&amp;gt;)，本文是对我所了解的margin的一些说明，希望能给大家带来些许有意思的知识。margin和padding是css中应用最多的了吧，没有之一，这两兄弟帮我们解决了一个又一个的布局问题。好了，来看看margin的一些应用吧。 何为margin来看看官方的说明:  边界，元素周围生成额外的空白区。“空白区”通常是指其他元素">
+<meta name="twitter:image" content="http://ouzdb04w7.bkt.clouddn.com/image/2017/12/15/1.png">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="陌路凡歌的个人博客" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="http://ouzdb04w7.bkt.clouddn.com/image/favicon.ico" />
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?3cd4fd73eed7c1d30f5f9caaac658ea5";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+    
+
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">前端的技术分享与个人见解</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">主页</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/前端/">前端</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/文章/">文章</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/journal/">日志</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">关于</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/前端/">前端</a>
+    </h1>
+</div>
+                        <div class="main-body-content">
+                            <article id="post-margin" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        你不知道的margin
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2017/12/15/margin/" class="article-date">
+            <time datetime="2017-12-15T08:10:13.000Z" itemprop="datePublished">2017-12-15</time>
+        </a>
+    </div>
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/css/">css</a>, <a class="tag-link" href="/tags/margin/">margin</a>, <a class="tag-link" href="/tags/自适应左右布局/">自适应左右布局</a>, <a class="tag-link" href="/tags/负margin/">负margin</a>, <a class="tag-link" href="/tags/选项卡/">选项卡</a>
+    </div>
+
+                               阅读数量:<span id="/2017/12/15/margin/" class="leancloud_visitors" data-flag-title="你不知道的margin"></span>次
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p><img src="http://ouzdb04w7.bkt.clouddn.com/image/2017/12/15/1.png" alt="选项卡"><br>当了一回标题党了(<del>震惊！99%的人都不知道XXXX &lt;(￣︶￣)&gt;</del>)，本文是对我所了解的margin的一些说明，希望能给大家带来些许有意思的知识。<br>margin和padding是css中应用最多的了吧，没有之一，这两兄弟帮我们解决了一个又一个的布局问题。好了，来看看margin的一些应用吧。</p>
+<h3 id="何为margin"><a href="#何为margin" class="headerlink" title="何为margin"></a>何为margin</h3><p>来看看官方的说明:</p>
+<blockquote>
+<p>边界，元素周围生成额外的空白区。“空白区”通常是指其他元素不能出现且父元素背景可见的区域。——CSS权威指南</p>
+<p>CSS 边距属性定义元素周围的空间。通过使用单独的属性，可以对上、右、下、左的外边距进行设置。也可以使用简写的外边距属性同时改变所有的外边距。——W3School</p>
+</blockquote>
+<p>margin就是盒模型的外边距，它最基本用途就是控制元素周围空间的间隔，把一个个元素分隔开来。margin始终是透明的。</p>
+<h3 id="垂直外边距合并问题"><a href="#垂直外边距合并问题" class="headerlink" title="垂直外边距合并问题"></a>垂直外边距合并问题</h3><p>外边距合并指的是，当两个垂直外边距相遇时，它们将形成一个外边距。合并后的外边距的高度等于两个发生合并的外边距的高度中的较大者。</p>
+<p>其实这个问题一般常见于父元素和子元素，第一个子元素的margin-top会顶开父元素与父元素相邻元素的间距，其原因是第一个子元素的margin-top和父元素的margin-top没有东西与其分隔开来，导致了两者的margin-top重合了。<br>简单点说就是：父元素的第一个子元素的上边距margin-top如果碰不到有效的东西如border或者padding将两者的margin-top阻隔，就会不断一层一层的找自己祖先元素的麻烦，直到有隔断的东西，或者找到了最终的父元素。<br>当然解决办法太多了：</p>
+<ol>
+<li>其子元素浮动、inline-block、绝对定位;</li>
+<li>父元素建立BFC（float（除了none）、overflow（除了visible）、display（table-cell/table-caption/inline-block）、position（除了static/relative）），大家常用的overflow: hidden;来解决就是这个做法。</li>
+<li>父元素和子元素隔断两者的margin-top，也就是父元素添加:after，padding-top，border-top，总之能隔断就行</li>
+</ol>
+<h3 id="负margin"><a href="#负margin" class="headerlink" title="负margin"></a>负margin</h3><p>首先盒模型的大小等于盒子的border+padding+正margin，负margin是不会影响其大小的。<br>那么负margin有啥用呢？负margin主要是让元素脱离自身的位置发生移动，当元素margin的top和left是负值时会引起元素的向上或向左位置移动（当然元素移动了，会导致后面的元素一起动）。而当元素margin的bottom和right是负值时会影响右边和下边相邻元素的参考线（比如margin-bottom: -100px;会让它下面挨着的元素上移100px）。<br><img src="http://ouzdb04w7.bkt.clouddn.com/image/2017/12/15/2.gif" alt="负margin"></p>
+<h5 id="负margin的应用："><a href="#负margin的应用：" class="headerlink" title="负margin的应用："></a>负margin的应用：</h5><ol>
+<li><p>悬停图片放大<br>其实这个东西有很多人是用<code>transform: scale()</code>来做的，让图片放大，但是这个其实也可以用负margin来做，让img宽高变大然后通过负margin让其中心位置不变，当然这个兼容性特好，不追求动画效果的话ie7都没啥问题的。<br><style>.box{margin: 50px;width: 200px;height: 200px;border: 1px solid #000;overflow: hidden;}.article-entry img.pox{max-width:inherit;width: 200px;height: 200px;margin:0;<br>background-color: red;transition: all 0.4s ease; vertical-align: top;}.box:hover .pox{margin: -25px 0 0 -25px!important;width:  250px!important;height: 250px!important;}.box a{display: block;height: 100%;width: 100%;}</style><br><div class="box"><img src="http://ouzdb04w7.bkt.clouddn.com/image/2017/10/27/timg1.jpg" alt="" class="pox"></div></p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">&lt;<span class="selector-tag">div</span> class=<span class="string">"box"</span>&gt;</div><div class="line">    &lt;<span class="selector-tag">img</span> src=<span class="string">"http://ouzdb04w7.bkt.clouddn.com/image/2017/10/27/timg1.jpg"</span> alt=<span class="string">""</span>  class=<span class="string">"pox"</span>/&gt;</div><div class="line">&lt;/div&gt;</div><div class="line"></div><div class="line">.box&#123;</div><div class="line">    <span class="attribute">margin</span>: <span class="number">50px</span>;</div><div class="line">    <span class="attribute">width</span>: <span class="number">200px</span>;</div><div class="line">    <span class="attribute">height</span>: <span class="number">200px</span>;</div><div class="line">    <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#000</span>;</div><div class="line">    <span class="attribute">overflow</span>: hidden;</div><div class="line">&#125;</div><div class="line">.pox&#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">200px</span>;</div><div class="line">    <span class="attribute">height</span>: <span class="number">200px</span>;</div><div class="line">    <span class="attribute">background-color</span>: red;</div><div class="line">    <span class="attribute">transition</span>: all <span class="number">0.4s</span> ease; </div><div class="line">    <span class="attribute">vertical-align</span>: top;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.box</span>:hover .pox&#123;</div><div class="line">    <span class="attribute">margin</span>: -<span class="number">25px</span> <span class="number">0</span> <span class="number">0</span> -<span class="number">25px</span>;</div><div class="line">    <span class="attribute">width</span>:  <span class="number">250px</span>;</div><div class="line">    <span class="attribute">height</span>: <span class="number">250px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>选项卡<br>负margin是可以用作于特殊样式的选项卡的，而且负margin可以实现border重叠，也就是两个紧挨着的1px border可以用margin-left:-1px让其重叠，变成1px的border，下面的选项卡就只是使用负margin达到了效果，当然还有很多种方式可以实现，但是这种方式简单快捷，ie7什么的不在话下。</p>
+<iframe src="/code/margin.html" width="100%" height="230px" frameborder="0" allowfullscreen></iframe>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">ul</span><span class="selector-class">.list</span>&#123;</div><div class="line">    <span class="attribute">height</span>:<span class="number">38px</span>;</div><div class="line">    <span class="attribute">line-height</span>: <span class="number">38px</span>;</div><div class="line">    <span class="attribute">overflow</span>: hidden;</div><div class="line">    <span class="attribute">list-style</span>: none;</div><div class="line">    <span class="attribute">background</span>: <span class="number">#f8f8f8</span>;</div><div class="line">    <span class="attribute">margin-bottom</span>: -<span class="number">1px</span>;            </div><div class="line">&#125;</div><div class="line"><span class="selector-id">#list</span> <span class="selector-tag">li</span>&#123;</div><div class="line">    <span class="attribute">float</span>: left;</div><div class="line">    <span class="attribute">width</span>: <span class="number">99px</span>; </div><div class="line">    <span class="attribute">text-align</span>: center;</div><div class="line">    <span class="attribute">border-left</span>: <span class="number">1px</span> <span class="number">#e5e5e5</span> solid;</div><div class="line">    <span class="attribute">border-right</span>: <span class="number">1px</span> <span class="number">#e5e5e5</span> solid;</div><div class="line">    <span class="attribute">margin-left</span>: -<span class="number">1px</span>;</div><div class="line">    <span class="attribute">cursor</span>: pointer;</div><div class="line">&#125;</div><div class="line"><span class="selector-id">#list</span> <span class="selector-class">.active</span>&#123;</div><div class="line">    <span class="attribute">position</span>: relative;</div><div class="line">    <span class="attribute">background-color</span>: <span class="number">#FFf</span>;   </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>绝对定位效果<br>负margin是可以达到绝对定位的视觉效果的，但是有要注意：负margin的重叠的话背景会被正常元素覆盖，ie7则相反。<br><style>.mybox{width:200px;height:112px}.mybox img{width:100%;height:100%}.mybox span{margin-top:-100px;display:block;color:#FFF;text-align:right;margin-right:10px}</style><br><div class="mybox"><img src="http://ouzdb04w7.bkt.clouddn.com/image/2017/10/27/timg1.jpg" alt=""><span>特大喜讯</span></div></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.mybox</span>&#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">200px</span>;</div><div class="line">    <span class="attribute">height</span>: <span class="number">112px</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.mybox</span> <span class="selector-tag">img</span>&#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</div><div class="line">    <span class="attribute">height</span>: <span class="number">100%</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.mybox</span> <span class="selector-tag">span</span>&#123;</div><div class="line">    <span class="attribute">top</span>: -<span class="number">100px</span>;</div><div class="line">    <span class="attribute">display</span>:block;</div><div class="line">    <span class="attribute">color</span>: <span class="number">#FFF</span>;</div><div class="line">    <span class="attribute">text-align</span>:right;</div><div class="line">    <span class="attribute">margin-right</span>: <span class="number">10px</span>;</div><div class="line">    <span class="attribute">background-color</span>: red;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>自适应布局<br>当然，负margin最出名的应用还是自适应上的。<br>双飞翼布局：<br><style>.wrapper{color:#fff}.col{float:left}.myheader{height:50px;background-color:#666;color:#fff;line-height:50px;text-align:center}.main{width:100%;background-color:#555}.main-wrap{margin:0 100px 0 100px;height:200px}.left{width:100px;height:200px;margin-left:-100%;background-color:#999}.right{width:100px;height:200px;margin-left:-100px;background-color:#999}.footer{height:50px;background-color:#666;color:#fff}.clearfix{overflow:hidden}</style><br><div class="myheader clearfix">header </div><div class="wrapper clearfix"><div class="main col"><div class="main-wrap">main </div></div><div class="left col">left </div><div class="right col">right </div></div><div class="footer">footer</div></p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.wrapper</span> &#123;<span class="attribute">color</span>:<span class="number">#fff</span>;&#125;</div><div class="line"><span class="selector-class">.col</span> &#123;<span class="attribute">float</span>: left;&#125;</div><div class="line"><span class="selector-class">.header</span> &#123;<span class="attribute">height</span>: <span class="number">50px</span>;<span class="attribute">background-color</span>: <span class="number">#666</span>;<span class="attribute">color</span>:<span class="number">#fff</span>;<span class="attribute">line-height</span>: <span class="number">50px</span>;<span class="attribute">text-align</span>: center;&#125;</div><div class="line"><span class="selector-class">.main</span> &#123;<span class="attribute">width</span>: <span class="number">100%</span>;<span class="attribute">background-color</span>: <span class="number">#555</span>;&#125;</div><div class="line"><span class="selector-class">.main-wrap</span> &#123;<span class="attribute">margin</span>: <span class="number">0</span> <span class="number">100px</span> <span class="number">0</span> <span class="number">100px</span>;<span class="attribute">height</span>: <span class="number">200px</span>;&#125;</div><div class="line"><span class="selector-class">.left</span> &#123;<span class="attribute">width</span>: <span class="number">100px</span>;<span class="attribute">height</span>: <span class="number">200px</span>;<span class="attribute">margin-left</span>: -<span class="number">100%</span>;<span class="attribute">background-color</span>: <span class="number">#999</span>;&#125;</div><div class="line"><span class="selector-class">.right</span> &#123;<span class="attribute">width</span>: <span class="number">100px</span>;<span class="attribute">height</span>: <span class="number">200px</span>;<span class="attribute">margin-left</span>: -<span class="number">100px</span>;<span class="attribute">background-color</span>: <span class="number">#999</span>;&#125;</div><div class="line"><span class="selector-class">.footer</span> &#123;<span class="attribute">height</span>: <span class="number">50px</span>;<span class="attribute">background-color</span>: <span class="number">#666</span>;<span class="attribute">color</span>:<span class="number">#fff</span>;&#125;</div><div class="line"><span class="selector-class">.clearfix</span>::after&#123;<span class="attribute">content</span>: <span class="string">""</span>;<span class="attribute">display</span>:block;<span class="attribute">clear</span>:both;<span class="attribute">visibility</span>:hidden;<span class="attribute">height</span>:<span class="number">0</span>;<span class="attribute">overflow</span>:hidden;&#125;</div><div class="line"></div><div class="line">&lt;<span class="selector-tag">div</span> class=<span class="string">"myheader clearfix"</span>&gt;		  		</div><div class="line">	header</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;<span class="selector-tag">div</span> class=<span class="string">"wrapper clearfix"</span>&gt;</div><div class="line">    &lt;<span class="selector-tag">div</span> class=<span class="string">"main col"</span>&gt;</div><div class="line">        &lt;<span class="selector-tag">div</span> class=<span class="string">"main-wrap"</span>&gt;</div><div class="line">            main</div><div class="line">        &lt;/div&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">    &lt;<span class="selector-tag">div</span> class=<span class="string">"left col"</span>&gt;</div><div class="line">        <span class="attribute">left</span></div><div class="line">    &lt;/div&gt;</div><div class="line">    &lt;<span class="selector-tag">div</span> class=<span class="string">"right col"</span>&gt;</div><div class="line">        <span class="attribute">right</span></div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;<span class="selector-tag">div</span> class=<span class="string">"footer"</span>&gt;footer&lt;/div&gt;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>圣杯布局：</p>
+<p><style>.wrapper2{padding:0 100px 0 100px;color:#fff}.col2{position:relative;float:left}.header2{height:50px;background-color:#666;color:#fff;text-align:center;line-height:50px}.main2{width:100%;height:200px;background-color:#555}.left2{width:100px;height:200px;margin-left:-100%;left:-100px;background-color:#999}.right2{width:100px;height:200px;margin-left:-100px;right:-100px;background-color:#999}</style></p>
+<p><div class="myheader clearfix">header </div><div class="wrapper2 clearfix"><div class="main2 col2">main </div><div class="left2 col2">left </div><div class="right2 col2">right </div></div><div class="footer">footer</div><br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.wrapper2</span> &#123;<span class="attribute">padding</span>: <span class="number">0</span> <span class="number">100px</span> <span class="number">0</span> <span class="number">100px</span>; <span class="attribute">color</span>:<span class="number">#fff</span>;&#125;</div><div class="line">.col2&#123;<span class="attribute">position</span>: relative;<span class="attribute">float</span>: left;&#125;</div><div class="line"><span class="selector-class">.myheader</span> &#123;<span class="attribute">height</span>: <span class="number">50px</span>;<span class="attribute">background-color</span>: <span class="number">#666</span>;<span class="attribute">color</span>:<span class="number">#fff</span>;<span class="attribute">text-align</span>: center;<span class="attribute">line-height</span>: <span class="number">50px</span>;&#125;</div><div class="line"><span class="selector-class">.main2</span> &#123;<span class="attribute">width</span>: <span class="number">100%</span>;<span class="attribute">height</span>: <span class="number">200px</span>;<span class="attribute">background-color</span>: <span class="number">#555</span>;&#125;</div><div class="line"><span class="selector-class">.left2</span> &#123;<span class="attribute">width</span>: <span class="number">100px</span>;<span class="attribute">height</span>: <span class="number">200px</span>;<span class="attribute">margin-left</span>: -<span class="number">100%</span>;<span class="attribute">left</span>: -<span class="number">100px</span>;<span class="attribute">background-color</span>: <span class="number">#999</span>;&#125;</div><div class="line"><span class="selector-class">.right2</span> &#123;<span class="attribute">width</span>: <span class="number">100px</span>;<span class="attribute">height</span>: <span class="number">200px</span>;<span class="attribute">margin-left</span>: -<span class="number">100px</span>;<span class="attribute">right</span>: -<span class="number">100px</span>;<span class="attribute">background-color</span>: <span class="number">#999</span>;&#125;</div><div class="line"><span class="selector-class">.footer</span> &#123;<span class="attribute">height</span>: <span class="number">50px</span>;<span class="attribute">background-color</span>: <span class="number">#666</span>; <span class="attribute">color</span>:<span class="number">#fff</span>;&#125;</div><div class="line"><span class="selector-class">.clearfix</span>::after&#123;<span class="attribute">content</span>: <span class="string">""</span>;<span class="attribute">display</span>:block;<span class="attribute">clear</span>:both;<span class="attribute">visibility</span>:hidden;<span class="attribute">height</span>:<span class="number">0</span>;<span class="attribute">overflow</span>:hidden;&#125;</div><div class="line"></div><div class="line"> &lt;<span class="selector-tag">div</span> class=<span class="string">"myheader clearfix"</span>&gt;</div><div class="line">    header</div><div class="line"> &lt;/div&gt;</div><div class="line">    &lt;<span class="selector-tag">div</span> class=<span class="string">"wrapper2 clearfix"</span>&gt;</div><div class="line">        &lt;<span class="selector-tag">div</span> class=<span class="string">"main2 col2"</span>&gt;</div><div class="line">            main</div><div class="line">        &lt;/div&gt;</div><div class="line">        &lt;<span class="selector-tag">div</span> class=<span class="string">"left2 col2"</span>&gt;</div><div class="line">            <span class="attribute">left</span></div><div class="line">        &lt;/div&gt;</div><div class="line">        &lt;<span class="selector-tag">div</span> class=<span class="string">"right2 col2"</span>&gt;</div><div class="line">            <span class="attribute">right</span></div><div class="line">        &lt;/div&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">    &lt;<span class="selector-tag">div</span> class=<span class="string">"footer"</span>&gt;footer&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="margin配合定位绝对居中"><a href="#margin配合定位绝对居中" class="headerlink" title="margin配合定位绝对居中"></a>margin配合定位绝对居中</h3><p>margin还可以配合绝对定位实现绝对居中的功能</p>
+<p><style>.box3{width:400px;height:400px;background-color:#e5e5e5;position:relative}.pox3{width:100px;height:100px;background-color:#000;margin:auto;position:absolute;top:0;left:0;bottom:0;right:0}</style></p>
+<p><div class="box3"><div class="pox3"></div></div><br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"> .box&#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">400px</span>;</div><div class="line">    <span class="attribute">height</span>: <span class="number">400px</span>;</div><div class="line">    <span class="attribute">background-color</span>: <span class="number">#e5e5e5</span>;</div><div class="line">    <span class="attribute">position</span>: relative;</div><div class="line">&#125;</div><div class="line">.pox&#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">100px</span>;</div><div class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</div><div class="line">    <span class="attribute">background-color</span>: <span class="number">#000</span>;</div><div class="line">    <span class="attribute">margin</span>: auto;  </div><div class="line">    <span class="attribute">position</span>: absolute;  </div><div class="line">    <span class="attribute">top</span>: <span class="number">0</span>; <span class="attribute">left</span>: <span class="number">0</span>; <span class="attribute">bottom</span>: <span class="number">0</span>; <span class="attribute">right</span>: <span class="number">0</span>;  </div><div class="line">&#125;</div><div class="line">&lt;<span class="selector-tag">div</span> class=<span class="string">"box"</span>&gt;</div><div class="line">       &lt;<span class="selector-tag">div</span> class=<span class="string">"pox"</span>&gt;&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<p>ok，这就是我所认识的margin，可能有所遗漏，不过暂时也记不得了，后面再补充，下一篇准备padding吧。<br>本文代码地址:<a href="https://github.com/xuxingeren/blog/tree/master/CSS/margin" target="_blank" rel="external">链接</a></p>
+
+        </div>
+        <footer class="article-footer">
+            
+    <div class="jiathis_style">
+    <span class="jiathis_txt">分享到：</span>
+    <a class="jiathis_button_qzone">QQ空间</a>
+    <a class="jiathis_button_tsina">新浪微博</a>
+    <a class="jiathis_button_tqq">腾讯微博</a>
+    <a class="jiathis_button_weixin">微信</a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+    <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<style>
+    .jiathis_style div:first-child:not(.jiadiv_01) {
+        width: auto !important;
+        border: none !important;
+    }
+    .jiathis_style .jiadiv_01 {
+        margin: 10px 0;
+        border-radius: 4px;
+        border: #e1e1e1 solid 1px;
+    }
+    .jiathis_style .jiadiv_01 div:first-child {
+        display: none;
+    }
+    .jiathis_style .jiadiv_02 {
+        padding: 7px 0 !important;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle {
+        width: 85px;
+        border: none;
+        height: auto;
+        margin: 3px 10px;
+        padding: 6px 10px;
+        border-radius: 4px;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:hover {
+        border: none;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:nth-child(even) {
+        margin-left: 0;
+    }
+    .jiathis_style .jtico:hover {
+        opacity: 1;
+    }
+    .jiathis_style .ckepopBottom,
+    .jiathis_style .centerBottom {
+        width: auto !important;
+        padding: 5px;
+        background: #f7f7f7;
+    }
+</style>
+
+
+
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="SOHUCS" sid="http://xuxin123.com/2017/12/15/margin/"></div>
+
+
+    
+    </section>
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>关注我 :</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="globe" href="https://segmentfault.com/u/molufange" target="_blank">
+                        <i class="icon fa fa-globe"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/xuxingeren" target="_blank">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="weibo" href="/" target="_blank">
+                        <i class="icon fa fa-weibo"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/atom.xml" target="_blank">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/12/16/padding/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">下一篇</strong>
+        <p class="article-nav-title">
+        
+            你不知道的padding
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2017/12/13/justify/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">text-align:justify;</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/12/30/surround/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://ouzdb04w7.bkt.clouddn.com/image/2017/12/30/1.png)" alt="特效篇--图片环绕" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/前端/">前端</a></p>
+                            <p class="item-title"><a href="/2017/12/30/surround/" class="title">特效篇--图片环绕</a></p>
+                            <p class="item-date"><time datetime="2017-12-30T07:37:54.000Z" itemprop="datePublished">2017-12-30</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/12/23/snow/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://ouzdb04w7.bkt.clouddn.com/image/2017/12/23/1.png)" alt="Canvas --雪花图" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/前端/">前端</a></p>
+                            <p class="item-title"><a href="/2017/12/23/snow/" class="title">Canvas --雪花图</a></p>
+                            <p class="item-date"><time datetime="2017-12-23T08:06:41.000Z" itemprop="datePublished">2017-12-23</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/12/17/time1/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://ouzdb04w7.bkt.clouddn.com/image/2017/12/18/1.png)" alt="时间--时钟篇" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/前端/">前端</a></p>
+                            <p class="item-title"><a href="/2017/12/17/time1/" class="title">时间--时钟篇</a></p>
+                            <p class="item-date"><time datetime="2017-12-17T06:20:37.000Z" itemprop="datePublished">2017-12-17</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/12/16/padding/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://ouzdb04w7.bkt.clouddn.com/image/2017/12/16/1.png)" alt="你不知道的padding" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/前端/">前端</a></p>
+                            <p class="item-title"><a href="/2017/12/16/padding/" class="title">你不知道的padding</a></p>
+                            <p class="item-date"><time datetime="2017-12-16T09:40:22.000Z" itemprop="datePublished">2017-12-16</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/12/15/margin/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://ouzdb04w7.bkt.clouddn.com/image/2017/12/15/1.png)" alt="你不知道的margin" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/前端/">前端</a></p>
+                            <p class="item-title"><a href="/2017/12/15/margin/" class="title">你不知道的margin</a></p>
+                            <p class="item-date"><time datetime="2017-12-15T08:10:13.000Z" itemprop="datePublished">2017-12-15</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">20</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/文章/">文章</a><span class="category-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">4</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Canvas/" style="font-size: 10px;">Canvas</a> <a href="/tags/Promise/" style="font-size: 10px;">Promise</a> <a href="/tags/box-shadow/" style="font-size: 10px;">box-shadow</a> <a href="/tags/checkbox/" style="font-size: 10px;">checkbox</a> <a href="/tags/css/" style="font-size: 16.67px;">css</a> <a href="/tags/css3/" style="font-size: 15px;">css3</a> <a href="/tags/css3导航/" style="font-size: 10px;">css3导航</a> <a href="/tags/css3页面滚动/" style="font-size: 10px;">css3页面滚动</a> <a href="/tags/css特效/" style="font-size: 11.67px;">css特效</a> <a href="/tags/js/" style="font-size: 20px;">js</a> <a href="/tags/margin/" style="font-size: 11.67px;">margin</a> <a href="/tags/padding/" style="font-size: 10px;">padding</a> <a href="/tags/radio/" style="font-size: 10px;">radio</a> <a href="/tags/text-align-justify/" style="font-size: 10px;">text-align:justify</a> <a href="/tags/touch/" style="font-size: 10px;">touch</a> <a href="/tags/上传筛选/" style="font-size: 10px;">上传筛选</a> <a href="/tags/上传美化/" style="font-size: 10px;">上传美化</a> <a href="/tags/上传进度/" style="font-size: 10px;">上传进度</a> <a href="/tags/伪元素/" style="font-size: 13.33px;">伪元素</a> <a href="/tags/名人/" style="font-size: 10px;">名人</a> <a href="/tags/图片上传/" style="font-size: 13.33px;">图片上传</a> <a href="/tags/图片加载/" style="font-size: 10px;">图片加载</a> <a href="/tags/图片批量上传/" style="font-size: 10px;">图片批量上传</a> <a href="/tags/图片替换/" style="font-size: 10px;">图片替换</a> <a href="/tags/图片环绕/" style="font-size: 10px;">图片环绕</a> <a href="/tags/图片轮播/" style="font-size: 10px;">图片轮播</a> <a href="/tags/图片预览/" style="font-size: 11.67px;">图片预览</a> <a href="/tags/垂直居中/" style="font-size: 10px;">垂直居中</a> <a href="/tags/复选框美化/" style="font-size: 10px;">复选框美化</a> <a href="/tags/多列均匀布局/" style="font-size: 10px;">多列均匀布局</a> <a href="/tags/小实例/" style="font-size: 18.33px;">小实例</a> <a href="/tags/异步/" style="font-size: 10px;">异步</a> <a href="/tags/拖拽/" style="font-size: 10px;">拖拽</a> <a href="/tags/文字两端对齐/" style="font-size: 10px;">文字两端对齐</a> <a href="/tags/无限加载/" style="font-size: 10px;">无限加载</a> <a href="/tags/时钟/" style="font-size: 10px;">时钟</a> <a href="/tags/时间/" style="font-size: 10px;">时间</a> <a href="/tags/曲面阴影/" style="font-size: 10px;">曲面阴影</a> <a href="/tags/瀑布流/" style="font-size: 10px;">瀑布流</a> <a href="/tags/特效/" style="font-size: 10px;">特效</a> <a href="/tags/移动端图片自适应/" style="font-size: 10px;">移动端图片自适应</a> <a href="/tags/纪念/" style="font-size: 10px;">纪念</a> <a href="/tags/背景裁剪/" style="font-size: 10px;">背景裁剪</a> <a href="/tags/自适应左右布局/" style="font-size: 10px;">自适应左右布局</a> <a href="/tags/计算器/" style="font-size: 10px;">计算器</a> <a href="/tags/负margin/" style="font-size: 10px;">负margin</a> <a href="/tags/转载/" style="font-size: 10px;">转载</a> <a href="/tags/进度环/" style="font-size: 10px;">进度环</a> <a href="/tags/选项卡/" style="font-size: 11.67px;">选项卡</a> <a href="/tags/那些年我们常写的css/" style="font-size: 10px;">那些年我们常写的css</a> <a href="/tags/闲谈/" style="font-size: 10px;">闲谈</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">联系我</h3>
+        <div class="widget">
+            <i class="fa fa-envelope-square" style="margin-right: 5px;"></i>908642754@qq.com
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">友情链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    
+                    <li>
+                        <a target="_blank" rel="external nofollow" href="http://hexo.io">Hexo</a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        <a target="_blank"  href="https://segmentfault.com/u/molufange">Segmentfault</a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        <a target="_blank"  href="http://www.aliken.com.cn">码农面条君</a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        <a target="_blank"  href="http://www.tianjiajie.cn">灵魂收割者</a>
+                    </li>
+                    
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2017 徐新-陌路凡歌</p>
+                <p>备案号：<a href="http://www.miitbeian.gov.cn" target="_blank">渝ICP备17014978号-1</a></p>           		                               	
+             <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script id="cy_cmt_num" src="https://changyan.sohu.com/upload/plugins/plugins.list.count.js?clientId=cytkibOj4"></script>
+    <script type="text/javascript">
+        (function() {
+            var appid = 'cytkibOj4';
+            var conf = 'cc4429eda4f1090e017ec58b900b46e5';
+            var width = window.innerWidth || document.documentElement.clientWidth;
+            if (width < 960) {
+                window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>');
+            } else {
+                var loadJs = function(d, a) {
+                    var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+                    var b = document.createElement("script");
+                    b.setAttribute("type", "text/javascript");
+                    b.setAttribute("charset", "UTF-8");
+                    b.setAttribute("src", d);
+                    if (typeof a === "function") {
+                        if (window.attachEvent) {
+                            b.onreadystatechange = function() {
+                                var e = b.readyState;
+                                if (e === "loaded" || e === "complete") {
+                                    b.onreadystatechange = null;
+                                    a()
+                                }
+                            }
+                        } else {
+                            b.onload = a
+                        }
+                    }
+                    c.appendChild(b)
+                };
+                loadJs("https://changyan.sohu.com/upload/changyan.js", function() {
+                    window.changyan.api.config({
+                        appid: appid,
+                        conf: conf
+                    })
+                });
+            }
+        })();
+    </script>
+
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+    	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+     
+    <script src="//cdn1.lncld.net/static/js/2.5.0/av-min.js"></script>
+		<script>
+		    var APP_ID = 'mTfV9mapGktO4Xqww9CCgj4P-gzGzoHsz';
+		    var APP_KEY = 'zE9b1r6zf9OwaPck1M21M7JI';
+		    AV.init({
+		        appId: APP_ID,
+		        appKey: APP_KEY
+		    });
+		    // 显示次数
+		    function showTime(Counter) {
+		        var query = new AV.Query("Counter");
+		        if($(".leancloud_visitors").length > 0){
+		            var url = $(".leancloud_visitors").attr('id').trim();
+		            // where field
+		            query.equalTo("words", url);
+		            // count
+		            query.count().then(function (number) {
+		                // There are number instances of MyClass where words equals url.
+		                $(document.getElementById(url)).text(number?  number : '--');
+		            }, function (error) {
+		                // error is an instance of AVError.
+		            });
+		        }
+		    }
+		    // 追加pv
+		    function addCount(Counter) {
+		        var url = $(".leancloud_visitors").length > 0 ? $(".leancloud_visitors").attr('id').trim() : 'icafebolger.com';
+		        var Counter = AV.Object.extend("Counter");
+		        var query = new Counter;
+		        query.save({
+		            words: url
+		        }).then(function (object) {
+		        })
+		    }
+		    $(function () {
+		        var Counter = AV.Object.extend("Counter");
+		        addCount(Counter);
+		        showTime(Counter);
+		    });
+		</script>
+  	
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

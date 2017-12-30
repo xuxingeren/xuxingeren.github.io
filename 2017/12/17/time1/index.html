@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>时间--时钟篇 | 陌路凡歌的个人博客</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="js,小实例,css3,时间,时钟" />
+    
+    <meta name="description" content="这天是越来越冷了，人也越发的懒起来，早上起来简直要老命，下班回去也只想进被子里面，游戏都不想打了╮（﹀_﹀）╭，冷呀。。。。好了，写个时钟来激励一下懒惰的自己吧。 旋转方式做时钟首先要把样式给搞定，主要是围绕中心旋转的样式。围绕中心旋转形成等分状态其实有两种做法，假设html样式如下：1234567891011121314&amp;lt;ul class=&quot;pox&quot;&amp;gt;    &amp;lt;li&amp;gt;1&amp;">
+<meta name="keywords" content="js,小实例,css3,时间,时钟">
+<meta property="og:type" content="article">
+<meta property="og:title" content="时间--时钟篇">
+<meta property="og:url" content="http://xuxin123.com/2017/12/17/time1/index.html">
+<meta property="og:site_name" content="陌路凡歌的个人博客">
+<meta property="og:description" content="这天是越来越冷了，人也越发的懒起来，早上起来简直要老命，下班回去也只想进被子里面，游戏都不想打了╮（﹀_﹀）╭，冷呀。。。。好了，写个时钟来激励一下懒惰的自己吧。 旋转方式做时钟首先要把样式给搞定，主要是围绕中心旋转的样式。围绕中心旋转形成等分状态其实有两种做法，假设html样式如下：1234567891011121314&amp;lt;ul class=&quot;pox&quot;&amp;gt;    &amp;lt;li&amp;gt;1&amp;">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://ouzdb04w7.bkt.clouddn.com/image/2017/12/18/1.png">
+<meta property="og:updated_time" content="2017-12-19T09:43:00.331Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="时间--时钟篇">
+<meta name="twitter:description" content="这天是越来越冷了，人也越发的懒起来，早上起来简直要老命，下班回去也只想进被子里面，游戏都不想打了╮（﹀_﹀）╭，冷呀。。。。好了，写个时钟来激励一下懒惰的自己吧。 旋转方式做时钟首先要把样式给搞定，主要是围绕中心旋转的样式。围绕中心旋转形成等分状态其实有两种做法，假设html样式如下：1234567891011121314&amp;lt;ul class=&quot;pox&quot;&amp;gt;    &amp;lt;li&amp;gt;1&amp;">
+<meta name="twitter:image" content="http://ouzdb04w7.bkt.clouddn.com/image/2017/12/18/1.png">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="陌路凡歌的个人博客" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="http://ouzdb04w7.bkt.clouddn.com/image/favicon.ico" />
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?3cd4fd73eed7c1d30f5f9caaac658ea5";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+    
+
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">前端的技术分享与个人见解</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">主页</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/前端/">前端</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/文章/">文章</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/journal/">日志</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">关于</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/前端/">前端</a>
+    </h1>
+</div>
+                        <div class="main-body-content">
+                            <article id="post-time1" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        时间--时钟篇
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2017/12/17/time1/" class="article-date">
+            <time datetime="2017-12-17T06:20:37.000Z" itemprop="datePublished">2017-12-17</time>
+        </a>
+    </div>
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/css3/">css3</a>, <a class="tag-link" href="/tags/js/">js</a>, <a class="tag-link" href="/tags/小实例/">小实例</a>, <a class="tag-link" href="/tags/时钟/">时钟</a>, <a class="tag-link" href="/tags/时间/">时间</a>
+    </div>
+
+                               阅读数量:<span id="/2017/12/17/time1/" class="leancloud_visitors" data-flag-title="时间--时钟篇"></span>次
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p><img src="http://ouzdb04w7.bkt.clouddn.com/image/2017/12/18/1.png" alt="时间-时钟"><br>这天是越来越冷了，人也越发的懒起来，早上起来简直要老命，下班回去也只想进被子里面，游戏都不想打了╮（﹀_﹀）╭，冷呀。。。。<br>好了，写个时钟来激励一下懒惰的自己吧。</p>
+<h3 id="旋转方式"><a href="#旋转方式" class="headerlink" title="旋转方式"></a>旋转方式</h3><p>做时钟首先要把样式给搞定，主要是围绕中心旋转的样式。<br>围绕中心旋转形成等分状态其实有两种做法，假设html样式如下：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"pox"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>4<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>5<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>6<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>7<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>8<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>9<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>10<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>11<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>12<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<ol>
+<li><p>让li全部定位到pox中心，用css3的旋转rotate让其围绕中心旋转角度，再配合translate偏移，给它一个x轴的偏移量，就变成了围绕中心旋转的样式了：</p>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">.<span class="built_in">box</span> ul&#123;</div><div class="line">    <span class="built_in">width</span>: 200px;</div><div class="line">    <span class="built_in">height</span>: 200px;</div><div class="line">    <span class="built_in">border</span>-<span class="built_in">radius</span>: <span class="number">50</span><span class="symbol">%</span>;</div><div class="line">    <span class="built_in">border</span>:1px solid red;</div><div class="line">    <span class="built_in">position</span>: relative;</div><div class="line">    <span class="built_in">display</span>: inline-<span class="built_in">block</span>;</div><div class="line">    margin: 100px;</div><div class="line">&#125;</div><div class="line">.<span class="built_in">box</span> <span class="built_in">li</span>&#123;</div><div class="line">    <span class="built_in">width</span>: 50px;</div><div class="line">    <span class="built_in">height</span>:50px;</div><div class="line">    <span class="built_in">border</span>:1px solid red;</div><div class="line">    <span class="built_in">border</span>-<span class="built_in">radius</span>: <span class="number">50</span><span class="symbol">%</span>;</div><div class="line">    line-<span class="built_in">height</span>: 48px;</div><div class="line">    text-align: <span class="built_in">center</span>;</div><div class="line">    <span class="built_in">position</span>: absolute;</div><div class="line">    top: <span class="number">50</span><span class="symbol">%</span>;</div><div class="line">    left:<span class="number">50</span><span class="symbol">%</span>;</div><div class="line">    margin: -25px <span class="number">0</span> <span class="number">0</span> -25px;</div><div class="line">    <span class="built_in">transform</span>-<span class="built_in">origin</span>:<span class="number">50</span><span class="symbol">%</span> <span class="number">50</span><span class="symbol">%</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">var</span> lists = document.querySelectorAll(<span class="string">".box .pox li"</span>);</div><div class="line"><span class="keyword">for</span>(<span class="built_in">var</span> i=<span class="number">0</span>;i&lt;lists.<span class="built_in">length</span>;i++)&#123;</div><div class="line">    lists[i].<span class="built_in">style</span>.cssText = `<span class="built_in">transform</span>: rotate($&#123;i*<span class="number">30</span>&#125;deg) <span class="built_in">translate</span>(98px, -<span class="number">50</span><span class="symbol">%</span>);`;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p> 当然这种旋转非常的简单，但是也有一定的缺陷的，其缺点是文字什么的也一起旋转了，时钟的数字可不能一起旋转了，所以这刻度线什么的用这个简单方便，但是数字得用另一种方式。</p>
+</li>
+<li>好了万能的数学该来了，用sin和cos实现，我们把父元素所占的空间当成一个坐标轴，其宽的一半当成半径画个圆，如 <code>r = 父元素.offsetHeight/2</code>，其中心坐标点就是(r,r)，<figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">&lt;ul <span class="keyword">class</span>=<span class="string">"pox2"</span>&gt;</div><div class="line">    &lt;<span class="keyword">li</span>&gt;1&lt;/<span class="keyword">li</span>&gt;</div><div class="line">    &lt;<span class="keyword">li</span>&gt;2&lt;/<span class="keyword">li</span>&gt;</div><div class="line">    &lt;<span class="keyword">li</span>&gt;3&lt;/<span class="keyword">li</span>&gt;</div><div class="line">    &lt;<span class="keyword">li</span>&gt;4&lt;/<span class="keyword">li</span>&gt;</div><div class="line">    &lt;<span class="keyword">li</span>&gt;5&lt;/<span class="keyword">li</span>&gt;</div><div class="line">    &lt;<span class="keyword">li</span>&gt;6&lt;/<span class="keyword">li</span>&gt;</div><div class="line">    &lt;<span class="keyword">li</span>&gt;7&lt;/<span class="keyword">li</span>&gt;</div><div class="line">    &lt;<span class="keyword">li</span>&gt;8&lt;/<span class="keyword">li</span>&gt;</div><div class="line">    &lt;<span class="keyword">li</span>&gt;9&lt;/<span class="keyword">li</span>&gt;</div><div class="line">    &lt;<span class="keyword">li</span>&gt;10&lt;/<span class="keyword">li</span>&gt;</div><div class="line">    &lt;<span class="keyword">li</span>&gt;11&lt;/<span class="keyword">li</span>&gt;</div><div class="line">    &lt;<span class="keyword">li</span>&gt;12&lt;/<span class="keyword">li</span>&gt;</div><div class="line">&lt;/ul&gt;</div><div class="line"></div><div class="line"><span class="keyword">var</span> lists2 = document.querySelectorAll(<span class="string">".box .pox2 li"</span>);</div><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> j=0;j&lt;lists2.length;j++)&#123;</div><div class="line">    <span class="keyword">var</span> r = lists2[0].parentNode.offsetHeight/2,</div><div class="line">    angle = j*30/180*Math.PI;</div><div class="line">    x = r + r*Math.<span class="built_in">cos</span>(angle);</div><div class="line">    y = r + r*Math.<span class="built_in">sin</span>(angle);</div><div class="line">    lists2[j].style.cssText = `top:<span class="variable">$&#123;y&#125;</span>px;left:<span class="variable">$&#123;x&#125;</span>px;`;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><img src="http://ouzdb04w7.bkt.clouddn.com/image/2017/12/18/2.png" alt="sin和cos"><br>其实理解起来也不难，先得到每个li的弧度值，然后根据三角函数计算出li的在坐标轴中的坐标，x轴的坐标为<code>r+r*cosθ</code>,y轴的坐标为<code>r+r*sinθ</code>，这里有点小知识，js的象限是顺时针开始的，初始0度是从时钟的三点方向开始的，和数学的是反着来的，当然你可能不理解，我的图也有点挫，应该画右下角的，你把右下角当成第一象限来理解要好一点，自己画一遍就什么都有了。<br><iframe src="/code/time/surround.html" width="100%" height="350px" frameborder="0" allowfullscreen></iframe><br>好了，准备就绪，开始画时钟了，html结构如下。<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"> <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"clock"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"line-min"</span>&gt;</span><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"line-hour"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ol</span> <span class="attr">class</span>=<span class="string">"number"</span>&gt;</span><span class="tag">&lt;/<span class="name">ol</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"pointer"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"hour"</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"min"</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"sec"</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"circle"</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>初始表盘css：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line">*&#123;</div><div class="line">	<span class="attribute">margin</span>: <span class="number">0</span>;</div><div class="line">	<span class="attribute">padding</span>: <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">ol</span>,<span class="selector-tag">ul</span> &#123;</div><div class="line">	<span class="attribute">margin</span>: <span class="number">0</span>;</div><div class="line">	<span class="attribute">padding</span>: <span class="number">0</span>;</div><div class="line">	<span class="attribute">list-style</span>: none;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.clock</span> &#123;</div><div class="line">	<span class="attribute">position</span>: relative;</div><div class="line">	<span class="attribute">width</span>: <span class="number">200px</span>;</div><div class="line">	<span class="attribute">height</span>: <span class="number">200px</span>;</div><div class="line">	<span class="attribute">border-radius</span>: <span class="number">100%</span>;</div><div class="line">	<span class="attribute">background-color</span>: <span class="number">#292a38</span>;</div><div class="line">	<span class="attribute">margin</span>: <span class="number">50px</span> auto;</div><div class="line">&#125;</div><div class="line"><span class="comment">/*指针*/</span></div><div class="line"><span class="selector-class">.pointer</span> <span class="selector-tag">li</span><span class="selector-class">.circle</span> &#123;</div><div class="line">	<span class="attribute">position</span>: absolute;</div><div class="line">	<span class="attribute">top</span>: <span class="number">50%</span>;</div><div class="line">	<span class="attribute">left</span>: <span class="number">50%</span>;</div><div class="line">	<span class="attribute">transform-origin</span>: left center;</div><div class="line">	<span class="attribute">background</span>: <span class="number">#fff</span>;</div><div class="line">	<span class="attribute">width</span>: <span class="number">10px</span>;</div><div class="line">	<span class="attribute">height</span>: <span class="number">10px</span>;</div><div class="line">	<span class="attribute">border-radius</span>: <span class="number">100%</span>;</div><div class="line">	<span class="attribute">margin-top</span>: -<span class="number">5px</span>;</div><div class="line">	<span class="attribute">margin-left</span>: -<span class="number">5px</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.pointer</span> <span class="selector-tag">li</span> &#123;</div><div class="line">	<span class="attribute">position</span>: absolute;</div><div class="line">	<span class="attribute">top</span>: <span class="number">50%</span>;</div><div class="line">	<span class="attribute">left</span>: <span class="number">50%</span>;</div><div class="line">	<span class="attribute">transform-origin</span>: left center;</div><div class="line">	<span class="attribute">background</span>: <span class="number">#fff</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.pointer</span> <span class="selector-tag">li</span><span class="selector-class">.hour</span> &#123;</div><div class="line">	<span class="attribute">width</span>: <span class="number">45px</span>;</div><div class="line">	<span class="attribute">height</span>: <span class="number">3px</span>;</div><div class="line">	<span class="attribute">margin-top</span>: -<span class="number">1px</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.pointer</span> <span class="selector-tag">li</span><span class="selector-class">.min</span> &#123;</div><div class="line">	<span class="attribute">width</span>: <span class="number">60px</span>;</div><div class="line">	<span class="attribute">height</span>: <span class="number">2px</span>;</div><div class="line">	<span class="attribute">margin-top</span>: -<span class="number">1px</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.pointer</span> <span class="selector-tag">li</span><span class="selector-class">.sec</span> &#123;</div><div class="line">	<span class="attribute">width</span>: <span class="number">80px</span>;</div><div class="line">	<span class="attribute">height</span>: <span class="number">1px</span>;</div><div class="line">	<span class="attribute">margin-top</span>: -<span class="number">1px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><code>.line-min</code>是分刻度线，<code>.line-hour</code>是小时刻度线，<code>.number</code>是1-12的时间数字，<code>.hour</code>是时针，<code>.min</code>分针，<code>.sec</code>秒针，<code>.circle</code>中心圆点。<br>这次我们用ES6的class来写吧,先定义一个Time类，后面的方法都是写在Time类里面的，Time里面的构造方法constructor调用初始化函数init，init就先空着吧。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> time = <span class="class"><span class="keyword">class</span> <span class="title">Time</span></span>&#123;</div><div class="line">    <span class="keyword">constructor</span>()&#123;</div><div class="line">		<span class="keyword">this</span>.init();</div><div class="line">	&#125;</div><div class="line">    init()&#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>为了写得方便点，我们先建立两个工具函数，addcss函数是向传入的dom中添加css样式，getclass是根据传入的css获取dom节点：<br><figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">addcss(obj,mycss)&#123;</div><div class="line">    obj.style.cssText = mycss;</div><div class="line">&#125;</div><div class="line">getclass(cls)&#123;</div><div class="line">	<span class="keyword">return</span> <span class="built_in">document</span>.<span class="built_in">querySelector</span>(cls);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>我们先来画时钟刻度线，用第一种旋转方式：<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">drawLines(wrap, <span class="keyword">total</span>, translateX)&#123;			<span class="comment">//绘制刻度线</span></div><div class="line">    <span class="keyword">var</span> gap = 360/<span class="keyword">total</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=0;i&lt;<span class="keyword">total</span>;i++)&#123;</div><div class="line">        <span class="keyword">var</span> <span class="keyword">li</span> = document.createElement('<span class="keyword">li</span>');</div><div class="line">        this.addcss(<span class="keyword">li</span>,`transform:<span class="keyword">rotate</span>(<span class="variable">$&#123;i</span>*gap&#125;deg) <span class="keyword">translate</span>(<span class="variable">$&#123;translateX&#125;</span>px,-50%)`);</div><div class="line">        wrap.<span class="keyword">append</span>(<span class="keyword">li</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>补上刻度css<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.line-hour</span> <span class="selector-tag">li</span>,</div><div class="line"><span class="selector-class">.line-min</span> <span class="selector-tag">li</span> &#123;</div><div class="line">	<span class="attribute">position</span>: absolute;</div><div class="line">	<span class="attribute">left</span>: <span class="number">50%</span>;</div><div class="line">	<span class="attribute">top</span>: <span class="number">50%</span>;</div><div class="line">	<span class="attribute">transform-origin</span>: left center;</div><div class="line">	<span class="attribute">background-color</span>: <span class="number">#fff</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.line-hour</span> <span class="selector-tag">li</span> &#123;</div><div class="line">	<span class="attribute">width</span>: <span class="number">10px</span>;</div><div class="line">	<span class="attribute">height</span>: <span class="number">2px</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.line-min</span> <span class="selector-tag">li</span> &#123;</div><div class="line">	<span class="attribute">width</span>: <span class="number">5px</span>;</div><div class="line">	<span class="attribute">height</span>: <span class="number">2px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>我们用drawLines函数绘制刻度线，分别传入wrap（父节点），total（时钟的刻度个数，时针12个，分针是60个），translateX（第一种旋转方式x轴的偏移量），这个函数生成了刻度线li，并且添加css样式后放到了传入的父节点中。</p>
+<p>然后我们再绘制时钟数字，当然数字可不能旋转，所以得用第二种旋转方式：<br>由于初始度数是0，刚好是3点，所以3对应的弧度应该是0,6点是π/2，9点是π，12点是3π/2，通过传入的数字得到其对应的弧度如下：<br><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">    时钟            角度     弧度      sin          cos</div><div class="line"><span class="string">//</span> 3<span class="function">:x</span><span class="function">:2r</span>,y<span class="function">:r</span>; 	     0	     0       sin 0        cos 1</div><div class="line"><span class="string">//</span> 6<span class="function">:x</span><span class="function">:r</span>,y<span class="function">:2r</span>;	     90	    π<span class="string">/2</span>      sin 1        cos 0</div><div class="line"><span class="string">//</span> 9<span class="function">:x</span><span class="function">:0</span>,y<span class="function">:r</span>;	     180     π       sin 0        cos -1</div><div class="line"><span class="string">//</span> 12<span class="function">:x</span><span class="function">:r</span>,y<span class="function">:0</span>;	     270    3π<span class="string">/2</span>     sin -1       cos 0</div><div class="line">我们把弧度全部除以π得到</div><div class="line"><span class="string">//</span> 3   0;	=   3-3 = 0/6			<span class="params">(num-3)</span><span class="string">/6</span> * π</div><div class="line"><span class="string">//</span> 6   1/2;	=   6-3 = 3/6</div><div class="line"><span class="string">//</span> 9   1;	=   9-3 = 6/6</div><div class="line"><span class="string">//</span> 12  3/2;	=   12-3 = 9/6</div></pre></td></tr></table></figure></p>
+<p>我们可以推算出公式为<code>(num-3)/6 * π</code>，故弧度为 = <code>(i-3)/6*Math.PI</code>;<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">drawNumbers(wrap)&#123;							<span class="comment">//绘制数字时间</span></div><div class="line">    <span class="keyword">var</span> r = wrap.offsetHeight/<span class="number">2</span>;</div><div class="line">    <span class="keyword">var</span> child = <span class="string">''</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">1</span>;i&lt;=<span class="number">12</span>;i++)&#123;</div><div class="line">        <span class="keyword">var</span>  angle = (i<span class="number">-3</span>)/<span class="number">6</span>*<span class="built_in">Math</span>.PI;</div><div class="line">        <span class="keyword">var</span> myX = r + r*<span class="built_in">Math</span>.cos(angle),  <span class="comment">// x=r+rcos(θ)</span></div><div class="line">        myY = r + r*<span class="built_in">Math</span>.sin(angle);     <span class="comment">// y=r+rsin(θ)</span></div><div class="line">        child+=<span class="string">`&lt;li style="left:<span class="subst">$&#123;myX&#125;</span>px;top:<span class="subst">$&#123;myY&#125;</span>px;"&gt;<span class="subst">$&#123;i&#125;</span>&lt;/li&gt;`</span>;</div><div class="line">    &#125;</div><div class="line">    wrap.innerHTML = child;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>数字css<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.number</span> &#123;</div><div class="line">	<span class="attribute">position</span>: absolute;</div><div class="line">	<span class="attribute">height</span>: <span class="number">140px</span>;</div><div class="line">	<span class="attribute">width</span>: <span class="number">140px</span>;</div><div class="line">	<span class="attribute">left</span>: <span class="number">50%</span>;</div><div class="line">	<span class="attribute">top</span>: <span class="number">50%</span>;</div><div class="line">	<span class="attribute">transform</span>: <span class="built_in">translate</span>(-50%, -50%);</div><div class="line">	<span class="attribute">font-family</span>: <span class="string">'Microsoft Yahei'</span>;</div><div class="line">	<span class="attribute">font-size</span>: <span class="number">15px</span>;</div><div class="line">	<span class="attribute">color</span>: <span class="number">#fff</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.number</span> <span class="selector-tag">li</span> &#123;</div><div class="line">	<span class="attribute">position</span>: absolute;</div><div class="line">	<span class="attribute">transform</span>: <span class="built_in">translate</span>(-50%, -50%);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这样数字函数也完成了，接下来我们在init初始化函数里面调用，new time()，让其生成出来：<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">init()&#123;</div><div class="line">    <span class="keyword">this</span>.drawLines(<span class="keyword">this</span>.getclass(<span class="string">'.line-min'</span>), <span class="number">60</span>, <span class="number">85</span>);</div><div class="line">    <span class="keyword">this</span>.drawLines(<span class="keyword">this</span>.getclass(<span class="string">'.line-hour'</span>), <span class="number">12</span>, <span class="number">80</span>);</div><div class="line">    <span class="keyword">this</span>.drawNumbers(<span class="keyword">this</span>.getclass(<span class="string">'.number'</span>));</div><div class="line">&#125;</div><div class="line">new time();</div></pre></td></tr></table></figure></p>
+<p>我们就得到了时钟的大致样式了，只是时钟的针还不会走：<br><img src="http://ouzdb04w7.bkt.clouddn.com/image/2017/12/18/3.png" alt="时钟"><br>最后我们写个move函数让时钟开始走动<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">move()&#123;</div><div class="line">    <span class="keyword">var</span> h = <span class="keyword">this</span>.getclass(<span class="string">'.hour'</span>),</div><div class="line">    m = <span class="keyword">this</span>.getclass(<span class="string">'.min'</span>),</div><div class="line">    s = <span class="keyword">this</span>.getclass(<span class="string">'.sec'</span>);</div><div class="line">    setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="keyword">var</span> now = <span class="keyword">new</span> <span class="built_in">Date</span>(),</div><div class="line">        hour = now.getHours(),</div><div class="line">        min = now.getMinutes(),   </div><div class="line">        sec = now.getSeconds();</div><div class="line">        <span class="keyword">var</span> hangle = <span class="number">30</span>*hour + <span class="number">0.5</span>*min <span class="number">-90</span>,</div><div class="line">        mangle = <span class="number">6</span>*min + <span class="number">0.1</span>*sec <span class="number">-90</span>,</div><div class="line">        sangle = <span class="number">6</span>*sec <span class="number">-90</span>;</div><div class="line">        <span class="keyword">this</span>.addcss(h,<span class="string">`transform:rotate(<span class="subst">$&#123;hangle&#125;</span>deg)`</span>);</div><div class="line">        <span class="keyword">this</span>.addcss(m,<span class="string">`transform:rotate(<span class="subst">$&#123;mangle&#125;</span>deg)`</span>);</div><div class="line">        <span class="keyword">this</span>.addcss(s,<span class="string">`transform:rotate(<span class="subst">$&#123;sangle&#125;</span>deg)`</span>);</div><div class="line">    &#125;.bind(<span class="keyword">this</span>),<span class="number">1000</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>其余的可能没啥问题，只有指针的角度计算这里可能要说一下，<br>小时是12个小时，所以1个小时=360°/12=30°，当然还要加上分钟的偏移，一个小时60分钟，60分钟就要偏移30°，所以1分钟为0.5°，故小时=<code>30*小时+0.5*分钟</code>，当然也可以计算秒的，但是太小了(1/120)，这里就忽略不计了，分针和秒针同上。由于初始位置是3点那里，以3点为基准，故3点旋转角度为0°，1点为-60°，6点为90°，故所有角度应该减去90°再进行旋转。init()里面调用：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">init()&#123;</div><div class="line">    <span class="keyword">this</span>.drawLines(<span class="keyword">this</span>.getclass(<span class="string">'.line-min'</span>), <span class="number">60</span>, <span class="number">85</span>);</div><div class="line">    <span class="keyword">this</span>.drawLines(<span class="keyword">this</span>.getclass(<span class="string">'.line-hour'</span>), <span class="number">12</span>, <span class="number">80</span>);</div><div class="line">    <span class="keyword">this</span>.drawNumbers(<span class="keyword">this</span>.getclass(<span class="string">'.number'</span>));</div><div class="line">    <span class="keyword">this</span>.move();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<iframe src="/code/time/time.html" width="100%" height="350px" frameborder="0" allowfullscreen></iframe>
+<p>ok，一个简单的时钟就完成了。</p>
+<p>本文代码地址:<a href="https://github.com/xuxingeren/blog/tree/master/%E5%B0%8F%E5%AE%9E%E4%BE%8B/time" target="_blank" rel="external">链接</a></p>
+
+        </div>
+        <footer class="article-footer">
+            
+    <div class="jiathis_style">
+    <span class="jiathis_txt">分享到：</span>
+    <a class="jiathis_button_qzone">QQ空间</a>
+    <a class="jiathis_button_tsina">新浪微博</a>
+    <a class="jiathis_button_tqq">腾讯微博</a>
+    <a class="jiathis_button_weixin">微信</a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+    <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<style>
+    .jiathis_style div:first-child:not(.jiadiv_01) {
+        width: auto !important;
+        border: none !important;
+    }
+    .jiathis_style .jiadiv_01 {
+        margin: 10px 0;
+        border-radius: 4px;
+        border: #e1e1e1 solid 1px;
+    }
+    .jiathis_style .jiadiv_01 div:first-child {
+        display: none;
+    }
+    .jiathis_style .jiadiv_02 {
+        padding: 7px 0 !important;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle {
+        width: 85px;
+        border: none;
+        height: auto;
+        margin: 3px 10px;
+        padding: 6px 10px;
+        border-radius: 4px;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:hover {
+        border: none;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:nth-child(even) {
+        margin-left: 0;
+    }
+    .jiathis_style .jtico:hover {
+        opacity: 1;
+    }
+    .jiathis_style .ckepopBottom,
+    .jiathis_style .centerBottom {
+        width: auto !important;
+        padding: 5px;
+        background: #f7f7f7;
+    }
+</style>
+
+
+
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="SOHUCS" sid="http://xuxin123.com/2017/12/17/time1/"></div>
+
+
+    
+    </section>
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>关注我 :</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="globe" href="https://segmentfault.com/u/molufange" target="_blank">
+                        <i class="icon fa fa-globe"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/xuxingeren" target="_blank">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="weibo" href="/" target="_blank">
+                        <i class="icon fa fa-weibo"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/atom.xml" target="_blank">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/12/23/snow/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">下一篇</strong>
+        <p class="article-nav-title">
+        
+            Canvas --雪花图
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2017/12/16/padding/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">你不知道的padding</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/12/30/surround/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://ouzdb04w7.bkt.clouddn.com/image/2017/12/30/1.png)" alt="特效篇--图片环绕" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/前端/">前端</a></p>
+                            <p class="item-title"><a href="/2017/12/30/surround/" class="title">特效篇--图片环绕</a></p>
+                            <p class="item-date"><time datetime="2017-12-30T07:37:54.000Z" itemprop="datePublished">2017-12-30</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/12/23/snow/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://ouzdb04w7.bkt.clouddn.com/image/2017/12/23/1.png)" alt="Canvas --雪花图" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/前端/">前端</a></p>
+                            <p class="item-title"><a href="/2017/12/23/snow/" class="title">Canvas --雪花图</a></p>
+                            <p class="item-date"><time datetime="2017-12-23T08:06:41.000Z" itemprop="datePublished">2017-12-23</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/12/17/time1/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://ouzdb04w7.bkt.clouddn.com/image/2017/12/18/1.png)" alt="时间--时钟篇" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/前端/">前端</a></p>
+                            <p class="item-title"><a href="/2017/12/17/time1/" class="title">时间--时钟篇</a></p>
+                            <p class="item-date"><time datetime="2017-12-17T06:20:37.000Z" itemprop="datePublished">2017-12-17</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/12/16/padding/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://ouzdb04w7.bkt.clouddn.com/image/2017/12/16/1.png)" alt="你不知道的padding" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/前端/">前端</a></p>
+                            <p class="item-title"><a href="/2017/12/16/padding/" class="title">你不知道的padding</a></p>
+                            <p class="item-date"><time datetime="2017-12-16T09:40:22.000Z" itemprop="datePublished">2017-12-16</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/12/15/margin/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://ouzdb04w7.bkt.clouddn.com/image/2017/12/15/1.png)" alt="你不知道的margin" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/前端/">前端</a></p>
+                            <p class="item-title"><a href="/2017/12/15/margin/" class="title">你不知道的margin</a></p>
+                            <p class="item-date"><time datetime="2017-12-15T08:10:13.000Z" itemprop="datePublished">2017-12-15</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">20</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/文章/">文章</a><span class="category-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">4</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Canvas/" style="font-size: 10px;">Canvas</a> <a href="/tags/Promise/" style="font-size: 10px;">Promise</a> <a href="/tags/box-shadow/" style="font-size: 10px;">box-shadow</a> <a href="/tags/checkbox/" style="font-size: 10px;">checkbox</a> <a href="/tags/css/" style="font-size: 16.67px;">css</a> <a href="/tags/css3/" style="font-size: 15px;">css3</a> <a href="/tags/css3导航/" style="font-size: 10px;">css3导航</a> <a href="/tags/css3页面滚动/" style="font-size: 10px;">css3页面滚动</a> <a href="/tags/css特效/" style="font-size: 11.67px;">css特效</a> <a href="/tags/js/" style="font-size: 20px;">js</a> <a href="/tags/margin/" style="font-size: 11.67px;">margin</a> <a href="/tags/padding/" style="font-size: 10px;">padding</a> <a href="/tags/radio/" style="font-size: 10px;">radio</a> <a href="/tags/text-align-justify/" style="font-size: 10px;">text-align:justify</a> <a href="/tags/touch/" style="font-size: 10px;">touch</a> <a href="/tags/上传筛选/" style="font-size: 10px;">上传筛选</a> <a href="/tags/上传美化/" style="font-size: 10px;">上传美化</a> <a href="/tags/上传进度/" style="font-size: 10px;">上传进度</a> <a href="/tags/伪元素/" style="font-size: 13.33px;">伪元素</a> <a href="/tags/名人/" style="font-size: 10px;">名人</a> <a href="/tags/图片上传/" style="font-size: 13.33px;">图片上传</a> <a href="/tags/图片加载/" style="font-size: 10px;">图片加载</a> <a href="/tags/图片批量上传/" style="font-size: 10px;">图片批量上传</a> <a href="/tags/图片替换/" style="font-size: 10px;">图片替换</a> <a href="/tags/图片环绕/" style="font-size: 10px;">图片环绕</a> <a href="/tags/图片轮播/" style="font-size: 10px;">图片轮播</a> <a href="/tags/图片预览/" style="font-size: 11.67px;">图片预览</a> <a href="/tags/垂直居中/" style="font-size: 10px;">垂直居中</a> <a href="/tags/复选框美化/" style="font-size: 10px;">复选框美化</a> <a href="/tags/多列均匀布局/" style="font-size: 10px;">多列均匀布局</a> <a href="/tags/小实例/" style="font-size: 18.33px;">小实例</a> <a href="/tags/异步/" style="font-size: 10px;">异步</a> <a href="/tags/拖拽/" style="font-size: 10px;">拖拽</a> <a href="/tags/文字两端对齐/" style="font-size: 10px;">文字两端对齐</a> <a href="/tags/无限加载/" style="font-size: 10px;">无限加载</a> <a href="/tags/时钟/" style="font-size: 10px;">时钟</a> <a href="/tags/时间/" style="font-size: 10px;">时间</a> <a href="/tags/曲面阴影/" style="font-size: 10px;">曲面阴影</a> <a href="/tags/瀑布流/" style="font-size: 10px;">瀑布流</a> <a href="/tags/特效/" style="font-size: 10px;">特效</a> <a href="/tags/移动端图片自适应/" style="font-size: 10px;">移动端图片自适应</a> <a href="/tags/纪念/" style="font-size: 10px;">纪念</a> <a href="/tags/背景裁剪/" style="font-size: 10px;">背景裁剪</a> <a href="/tags/自适应左右布局/" style="font-size: 10px;">自适应左右布局</a> <a href="/tags/计算器/" style="font-size: 10px;">计算器</a> <a href="/tags/负margin/" style="font-size: 10px;">负margin</a> <a href="/tags/转载/" style="font-size: 10px;">转载</a> <a href="/tags/进度环/" style="font-size: 10px;">进度环</a> <a href="/tags/选项卡/" style="font-size: 11.67px;">选项卡</a> <a href="/tags/那些年我们常写的css/" style="font-size: 10px;">那些年我们常写的css</a> <a href="/tags/闲谈/" style="font-size: 10px;">闲谈</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">联系我</h3>
+        <div class="widget">
+            <i class="fa fa-envelope-square" style="margin-right: 5px;"></i>908642754@qq.com
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">友情链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    
+                    <li>
+                        <a target="_blank" rel="external nofollow" href="http://hexo.io">Hexo</a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        <a target="_blank"  href="https://segmentfault.com/u/molufange">Segmentfault</a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        <a target="_blank"  href="http://www.aliken.com.cn">码农面条君</a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        <a target="_blank"  href="http://www.tianjiajie.cn">灵魂收割者</a>
+                    </li>
+                    
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2017 徐新-陌路凡歌</p>
+                <p>备案号：<a href="http://www.miitbeian.gov.cn" target="_blank">渝ICP备17014978号-1</a></p>           		                               	
+             <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script id="cy_cmt_num" src="https://changyan.sohu.com/upload/plugins/plugins.list.count.js?clientId=cytkibOj4"></script>
+    <script type="text/javascript">
+        (function() {
+            var appid = 'cytkibOj4';
+            var conf = 'cc4429eda4f1090e017ec58b900b46e5';
+            var width = window.innerWidth || document.documentElement.clientWidth;
+            if (width < 960) {
+                window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>');
+            } else {
+                var loadJs = function(d, a) {
+                    var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+                    var b = document.createElement("script");
+                    b.setAttribute("type", "text/javascript");
+                    b.setAttribute("charset", "UTF-8");
+                    b.setAttribute("src", d);
+                    if (typeof a === "function") {
+                        if (window.attachEvent) {
+                            b.onreadystatechange = function() {
+                                var e = b.readyState;
+                                if (e === "loaded" || e === "complete") {
+                                    b.onreadystatechange = null;
+                                    a()
+                                }
+                            }
+                        } else {
+                            b.onload = a
+                        }
+                    }
+                    c.appendChild(b)
+                };
+                loadJs("https://changyan.sohu.com/upload/changyan.js", function() {
+                    window.changyan.api.config({
+                        appid: appid,
+                        conf: conf
+                    })
+                });
+            }
+        })();
+    </script>
+
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+    	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+     
+    <script src="//cdn1.lncld.net/static/js/2.5.0/av-min.js"></script>
+		<script>
+		    var APP_ID = 'mTfV9mapGktO4Xqww9CCgj4P-gzGzoHsz';
+		    var APP_KEY = 'zE9b1r6zf9OwaPck1M21M7JI';
+		    AV.init({
+		        appId: APP_ID,
+		        appKey: APP_KEY
+		    });
+		    // 显示次数
+		    function showTime(Counter) {
+		        var query = new AV.Query("Counter");
+		        if($(".leancloud_visitors").length > 0){
+		            var url = $(".leancloud_visitors").attr('id').trim();
+		            // where field
+		            query.equalTo("words", url);
+		            // count
+		            query.count().then(function (number) {
+		                // There are number instances of MyClass where words equals url.
+		                $(document.getElementById(url)).text(number?  number : '--');
+		            }, function (error) {
+		                // error is an instance of AVError.
+		            });
+		        }
+		    }
+		    // 追加pv
+		    function addCount(Counter) {
+		        var url = $(".leancloud_visitors").length > 0 ? $(".leancloud_visitors").attr('id').trim() : 'icafebolger.com';
+		        var Counter = AV.Object.extend("Counter");
+		        var query = new Counter;
+		        query.save({
+		            words: url
+		        }).then(function (object) {
+		        })
+		    }
+		    $(function () {
+		        var Counter = AV.Object.extend("Counter");
+		        addCount(Counter);
+		        showTime(Counter);
+		    });
+		</script>
+  	
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

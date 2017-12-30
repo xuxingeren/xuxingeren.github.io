@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Canvas --雪花图 | 陌路凡歌的个人博客</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="js,小实例,Canvas" />
+    
+    <meta name="description" content="昨天冬至，又到了白色相簿的季节了，︿(￣︶￣)︿笑，后天就是圣诞了，安安心心做个剩蛋老人吧(ノへ￣、)。好了好了，重庆还是没下雪，冷着不下雪，感觉好亏。既然不下，那就只有自己写点雪花了。canvas这个东西一直是想深入学习的，做出来的东西各种炫酷吊炸天，但是没啥时间，就只会点小东西，大家将就着看吧：首先既然是用canvas，那么结构就非常简单啦，html什么都不用写，用js创建canvas。我们把">
+<meta name="keywords" content="js,小实例,Canvas">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Canvas --雪花图">
+<meta property="og:url" content="http://xuxin123.com/2017/12/23/snow/index.html">
+<meta property="og:site_name" content="陌路凡歌的个人博客">
+<meta property="og:description" content="昨天冬至，又到了白色相簿的季节了，︿(￣︶￣)︿笑，后天就是圣诞了，安安心心做个剩蛋老人吧(ノへ￣、)。好了好了，重庆还是没下雪，冷着不下雪，感觉好亏。既然不下，那就只有自己写点雪花了。canvas这个东西一直是想深入学习的，做出来的东西各种炫酷吊炸天，但是没啥时间，就只会点小东西，大家将就着看吧：首先既然是用canvas，那么结构就非常简单啦，html什么都不用写，用js创建canvas。我们把">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://ouzdb04w7.bkt.clouddn.com/image/2017/12/23/1.png">
+<meta property="og:updated_time" content="2017-12-23T10:24:39.761Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Canvas --雪花图">
+<meta name="twitter:description" content="昨天冬至，又到了白色相簿的季节了，︿(￣︶￣)︿笑，后天就是圣诞了，安安心心做个剩蛋老人吧(ノへ￣、)。好了好了，重庆还是没下雪，冷着不下雪，感觉好亏。既然不下，那就只有自己写点雪花了。canvas这个东西一直是想深入学习的，做出来的东西各种炫酷吊炸天，但是没啥时间，就只会点小东西，大家将就着看吧：首先既然是用canvas，那么结构就非常简单啦，html什么都不用写，用js创建canvas。我们把">
+<meta name="twitter:image" content="http://ouzdb04w7.bkt.clouddn.com/image/2017/12/23/1.png">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="陌路凡歌的个人博客" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="http://ouzdb04w7.bkt.clouddn.com/image/favicon.ico" />
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?3cd4fd73eed7c1d30f5f9caaac658ea5";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+    
+
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">前端的技术分享与个人见解</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">主页</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/前端/">前端</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/文章/">文章</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/journal/">日志</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">关于</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/前端/">前端</a>
+    </h1>
+</div>
+                        <div class="main-body-content">
+                            <article id="post-snow" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Canvas --雪花图
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2017/12/23/snow/" class="article-date">
+            <time datetime="2017-12-23T08:06:41.000Z" itemprop="datePublished">2017-12-23</time>
+        </a>
+    </div>
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Canvas/">Canvas</a>, <a class="tag-link" href="/tags/js/">js</a>, <a class="tag-link" href="/tags/小实例/">小实例</a>
+    </div>
+
+                               阅读数量:<span id="/2017/12/23/snow/" class="leancloud_visitors" data-flag-title="Canvas --雪花图"></span>次
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p><img src="http://ouzdb04w7.bkt.clouddn.com/image/2017/12/23/1.png" alt="雪花图"><br>昨天冬至，又到了白色相簿的季节了，︿(￣︶￣)︿笑，后天就是圣诞了，安安心心做个剩蛋老人吧(ノへ￣、)。<br>好了好了，重庆还是没下雪，冷着不下雪，感觉好亏。既然不下，那就只有自己写点雪花了。<br>canvas这个东西一直是想深入学习的，做出来的东西各种炫酷吊炸天，但是没啥时间，就只会点小东西，大家将就着看吧：<br>首先既然是用canvas，那么结构就非常简单啦，html什么都不用写，用js创建canvas。<br>我们把一张背景图放在body上，然后在canvas上进行雪花的绘制：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">*&#123;</div><div class="line">    <span class="attribute">margin</span>: <span class="number">0</span>;</div><div class="line">    <span class="attribute">padding</span>: <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">html</span>&#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</div><div class="line">    <span class="attribute">height</span>: <span class="number">100%</span>;	</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">body</span>&#123;			</div><div class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</div><div class="line">    <span class="attribute">height</span>: <span class="number">100%</span>;</div><div class="line">    <span class="attribute">background</span>: <span class="built_in">url</span>(<span class="string">"./xh.jpg"</span>) center no-repeat;	</div><div class="line">    <span class="attribute">overflow</span>: hidden;	</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这次就不用es6的写法了，用prototype吧：<br>首先我们用requestAnimationFrame绘制动画的，先把兼容性搞一下，再创建函数snowFall，设置一下默认参数，maxFlake、flakeSize和fallSpeed，在进行初始化时，可以通过new snowFall()传入这三个参数改变雪花的样式。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//兼容写法</span></div><div class="line">requestAnimationFrame = <span class="built_in">window</span>.requestAnimationFrame ||</div><div class="line">    <span class="built_in">window</span>.mozRequestAnimationFrame ||</div><div class="line">    <span class="built_in">window</span>.webkitRequestAnimationFrame ||</div><div class="line">    <span class="built_in">window</span>.msRequestAnimationFrame ||</div><div class="line">    <span class="built_in">window</span>.oRequestAnimationFrame ||</div><div class="line">    <span class="function"><span class="keyword">function</span>(<span class="params">callback</span>) </span>&#123; setTimeout(callback, <span class="number">1000</span> / <span class="number">60</span>); &#125;;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">snowFall</span>(<span class="params">snow</span>) </span>&#123;</div><div class="line">    snow = snow || &#123;&#125;;</div><div class="line">    <span class="keyword">this</span>.maxFlake = snow.maxFlake || <span class="number">500</span>;   <span class="comment">/* 最大片数 */</span></div><div class="line">    <span class="keyword">this</span>.flakeSize = snow.flakeSize || <span class="number">10</span>;  <span class="comment">/* 雪花大小 */</span></div><div class="line">    <span class="keyword">this</span>.fallSpeed = snow.fallSpeed || <span class="number">1</span>;   <span class="comment">/* 坠落速度 */</span></div><div class="line">    <span class="keyword">this</span>.flakes = [];                      <span class="comment">/* 雪花集合 */</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>然后我们在这个函数上添加一个start方法，调用此方法开始创建画布绘制雪花，出现下雪效果：<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 开始绘制雪花</span></div><div class="line">snowFall.prototype.start = <span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="comment">/* 创建画布 */</span></div><div class="line">    snowCanvas.apply(<span class="keyword">this</span>);</div><div class="line">    <span class="comment">/* 创建雪花形状 */</span></div><div class="line">    createFlakes.apply(<span class="keyword">this</span>);</div><div class="line">    <span class="comment">/* 画雪 */</span></div><div class="line">    drawSnow.apply(<span class="keyword">this</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>接下来开始创建画布了,建立一个canvas放入body中：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 创建画布</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">snowCanvas</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> snowcanvas = <span class="built_in">document</span>.createElement(<span class="string">"canvas"</span>);</div><div class="line">    snowcanvas.id = <span class="string">"snowfall"</span>;</div><div class="line">    snowcanvas.width = <span class="built_in">window</span>.innerWidth;</div><div class="line">    snowcanvas.height = <span class="built_in">document</span>.body.clientHeight || <span class="built_in">document</span>.documentElement.clientHeight;</div><div class="line">    <span class="built_in">document</span>.getElementsByTagName(<span class="string">"body"</span>)[<span class="number">0</span>].appendChild(snowcanvas);</div><div class="line">    <span class="keyword">this</span>.canvas = snowcanvas;</div><div class="line">    <span class="keyword">this</span>.ctx = snowcanvas.getContext(<span class="string">"2d"</span>);</div><div class="line">    <span class="comment">/* 窗口大小改变的处理 */</span></div><div class="line">    <span class="built_in">window</span>.onresize = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        snowcanvas.width = <span class="built_in">window</span>.innerWidth;</div><div class="line">        snowcanvas.height = <span class="built_in">window</span>.innerHeight;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>接着创建雪花的形状，这里循环一下要绘制的雪花，用一个雪运动对象设置每个雪花的参数，然后将雪花放入雪花集合中：<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//创建雪花对象</span></div><div class="line">function createFlakes() &#123;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="keyword">this</span>.maxFlake; i++) &#123;</div><div class="line">        <span class="keyword">this</span>.flakes.push(new flakeMove(<span class="keyword">this</span>.canvas.width, <span class="keyword">this</span>.canvas.height, <span class="keyword">this</span>.flakeSize, <span class="keyword">this</span>.fallSpeed))</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>雪花运动对象，用于生成每个雪花的一系列参数：<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//雪运动对象</span></div><div class="line">function flakeMove(canvasWidth, canvasHeight, flakeSize, fallSpeed) &#123;</div><div class="line">    <span class="keyword">this</span>.canvasw = canvasWidth;</div><div class="line">    <span class="keyword">this</span>.canvash = canvasHeight;</div><div class="line">    <span class="keyword">this</span>.x = Math.floor(Math.random() * canvasWidth); <span class="comment">/* x坐标 */</span></div><div class="line">    <span class="keyword">this</span>.y = Math.floor(Math.random() * canvasHeight); <span class="comment">/* y坐标 */</span></div><div class="line">    <span class="keyword">this</span>.size = Math.random() * flakeSize + <span class="number">2</span>; <span class="comment">/* 形状 */</span></div><div class="line">    <span class="keyword">this</span>.maxSize = flakeSize; <span class="comment">/* 最大形状 */</span></div><div class="line">    <span class="keyword">this</span>.speed = Math.random() * <span class="number">1</span> + fallSpeed; <span class="comment">/* 坠落速度 */</span></div><div class="line">    <span class="keyword">this</span>.fallSpeed = fallSpeed; <span class="comment">/* 坠落速度 */</span></div><div class="line">    <span class="keyword">this</span>.velY = <span class="keyword">this</span>.speed; <span class="comment">/* Y方向速度 */</span></div><div class="line">    <span class="keyword">this</span>.velX = <span class="number">0</span>; <span class="comment">/* X方向速度 */</span></div><div class="line">    <span class="keyword">this</span>.stepSize = Math.random() / <span class="number">100</span>; <span class="comment">/* 步长 */</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>在雪的运动对象上添加一个render方法，用于生成雪的形状<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 渲染雪花-随机形状（此处可修改雪花颜色！！！）</span></div><div class="line">flakeMove.prototype.render = function (ctx) &#123;</div><div class="line">    <span class="keyword">var</span> snowFlake = ctx.createRadialGradient(<span class="keyword">this</span>.x, <span class="keyword">this</span>.y, <span class="number">0</span>, <span class="keyword">this</span>.x, <span class="keyword">this</span>.y, <span class="keyword">this</span>.size);</div><div class="line">    snowFlake.addColorStop(<span class="number">0</span>, <span class="string">"rgba(255, 255, 255, 0.9)"</span>); <span class="comment">/* 此处是雪花颜色，默认是白色 */</span></div><div class="line">    snowFlake.addColorStop(<span class="number">.5</span>, <span class="string">"rgba(255, 255, 255, 0.5)"</span>); </div><div class="line">    snowFlake.addColorStop(<span class="number">1</span>, <span class="string">"rgba(255, 255, 255, 0)"</span>); </div><div class="line">    ctx.save();</div><div class="line">    ctx.fillStyle = snowFlake;</div><div class="line">    ctx.beginPath();</div><div class="line">    ctx.arc(<span class="keyword">this</span>.x, <span class="keyword">this</span>.y, <span class="keyword">this</span>.size, <span class="number">0</span>, Math.PI * <span class="number">2</span>);</div><div class="line">    ctx.fill();</div><div class="line">    ctx.restore();</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>在雪的运动对象上添加一个雪花的运动方法，根据传入的参数不同，来让雪向左向右运动，当雪花飞到了边界后，调用reset方法重置这个雪花的状态：<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">flakeMove.prototype.update = function (n) &#123;</div><div class="line">    <span class="keyword">var</span> x = <span class="keyword">this</span>.x,</div><div class="line">        y = <span class="keyword">this</span>.y;</div><div class="line">    <span class="keyword">if</span> (n) &#123;</div><div class="line">        <span class="keyword">this</span>.velX += <span class="keyword">this</span>.stepSize;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">this</span>.velX -= <span class="keyword">this</span>.stepSize;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">this</span>.y += <span class="keyword">this</span>.velY;</div><div class="line">    <span class="keyword">this</span>.x += <span class="keyword">this</span>.velX;</div><div class="line">    <span class="comment">/* 飞出边界的处理 */</span></div><div class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.x &gt;= <span class="keyword">this</span>.canvasw || <span class="keyword">this</span>.x &lt;= <span class="number">0</span> || <span class="keyword">this</span>.y &gt;= <span class="keyword">this</span>.canvaswh || <span class="keyword">this</span>.y &lt;= <span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">this</span>.reset(<span class="keyword">this</span>.canvasw, <span class="keyword">this</span>.canvash)</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"><span class="comment">/* 飞出边界-放置最顶端继续坠落 */</span></div><div class="line">flakeMove.prototype.reset = function (width, height) &#123;</div><div class="line">    <span class="keyword">this</span>.x = Math.floor(Math.random() * width);</div><div class="line">    <span class="keyword">this</span>.y = <span class="number">0</span>;</div><div class="line">    <span class="keyword">this</span>.size = Math.random() * <span class="keyword">this</span>.maxSize + <span class="number">2</span>;</div><div class="line">    <span class="keyword">this</span>.speed = Math.random() * <span class="number">1</span> + <span class="keyword">this</span>.fallSpeed;</div><div class="line">    <span class="keyword">this</span>.velY = <span class="keyword">this</span>.speed;</div><div class="line">    <span class="keyword">this</span>.velX = <span class="number">0</span>;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>雪花对象设置完毕后，我们开始画雪了，每次绘制前我们都要清空一下画布，然后根据雪花的集合进行遍历，调用函数让一部分雪花向左飘，一部分向右飘，然后用requestAnimationFrame继续调用画雪的函数，一帧一帧绘制雪花：<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* 画雪 */</span></div><div class="line">function drawSnow() &#123;</div><div class="line">    <span class="comment">/* 清空雪花 */</span></div><div class="line">    <span class="keyword">this</span>.ctx.clearRect(<span class="number">0</span>, <span class="number">0</span>, <span class="keyword">this</span>.canvas.width, <span class="keyword">this</span>.canvas.height);</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> e = <span class="number">0</span>; e &lt; <span class="keyword">this</span>.maxFlake; e++) &#123;</div><div class="line">        <span class="keyword">if</span> (e % <span class="number">3</span> == <span class="number">0</span>) &#123;</div><div class="line">            <span class="keyword">this</span>.flakes[e].update(<span class="number">0</span>);</div><div class="line">            <span class="keyword">this</span>.flakes[e].render(<span class="keyword">this</span>.ctx);</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">this</span>.flakes[e].update(<span class="number">1</span>);</div><div class="line">            <span class="keyword">this</span>.flakes[e].render(<span class="keyword">this</span>.ctx);</div><div class="line">        &#125;;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">    <span class="comment">/*  一帧一帧的画 */</span></div><div class="line">    <span class="keyword">this</span>.loop = requestAnimationFrame(function () &#123;</div><div class="line">        drawSnow.apply(<span class="keyword">this</span>);</div><div class="line">    &#125;.bind(<span class="keyword">this</span>));</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>最后我们 new snowFall()，最多绘制100个雪花，然后调用start方法，雪花就开始飞舞了：<br><figure class="highlight pony"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* 调用及控制方法 */</span></div><div class="line"><span class="keyword">var</span> snow = <span class="function"><span class="keyword">new</span> <span class="title">snowFall</span>(&#123;</span></div><div class="line"><span class="function">    maxFlake: <span class="number">100</span></span></div><div class="line"><span class="function">&#125;);</span></div><div class="line"><span class="function"><span class="title">snow</span>.<span class="title">start</span>();</span></div></pre></td></tr></table></figure></p>
+<p>效果展示：</p>
+<iframe src="/code/canvas/snow.html" width="100%" height="400px" frameborder="0" allowfullscreen></iframe>
+<p>本文代码地址:<a href="https://github.com/xuxingeren/blog/blob/master/%E5%B0%8F%E5%AE%9E%E4%BE%8B/canvas/snow.html" target="_blank" rel="external">链接</a></p>
+
+        </div>
+        <footer class="article-footer">
+            
+    <div class="jiathis_style">
+    <span class="jiathis_txt">分享到：</span>
+    <a class="jiathis_button_qzone">QQ空间</a>
+    <a class="jiathis_button_tsina">新浪微博</a>
+    <a class="jiathis_button_tqq">腾讯微博</a>
+    <a class="jiathis_button_weixin">微信</a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+    <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<style>
+    .jiathis_style div:first-child:not(.jiadiv_01) {
+        width: auto !important;
+        border: none !important;
+    }
+    .jiathis_style .jiadiv_01 {
+        margin: 10px 0;
+        border-radius: 4px;
+        border: #e1e1e1 solid 1px;
+    }
+    .jiathis_style .jiadiv_01 div:first-child {
+        display: none;
+    }
+    .jiathis_style .jiadiv_02 {
+        padding: 7px 0 !important;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle {
+        width: 85px;
+        border: none;
+        height: auto;
+        margin: 3px 10px;
+        padding: 6px 10px;
+        border-radius: 4px;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:hover {
+        border: none;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:nth-child(even) {
+        margin-left: 0;
+    }
+    .jiathis_style .jtico:hover {
+        opacity: 1;
+    }
+    .jiathis_style .ckepopBottom,
+    .jiathis_style .centerBottom {
+        width: auto !important;
+        padding: 5px;
+        background: #f7f7f7;
+    }
+</style>
+
+
+
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="SOHUCS" sid="http://xuxin123.com/2017/12/23/snow/"></div>
+
+
+    
+    </section>
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>关注我 :</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="globe" href="https://segmentfault.com/u/molufange" target="_blank">
+                        <i class="icon fa fa-globe"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/xuxingeren" target="_blank">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="weibo" href="/" target="_blank">
+                        <i class="icon fa fa-weibo"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/atom.xml" target="_blank">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/12/30/surround/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">下一篇</strong>
+        <p class="article-nav-title">
+        
+            特效篇--图片环绕
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2017/12/17/time1/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">时间--时钟篇</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/12/30/surround/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://ouzdb04w7.bkt.clouddn.com/image/2017/12/30/1.png)" alt="特效篇--图片环绕" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/前端/">前端</a></p>
+                            <p class="item-title"><a href="/2017/12/30/surround/" class="title">特效篇--图片环绕</a></p>
+                            <p class="item-date"><time datetime="2017-12-30T07:37:54.000Z" itemprop="datePublished">2017-12-30</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/12/23/snow/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://ouzdb04w7.bkt.clouddn.com/image/2017/12/23/1.png)" alt="Canvas --雪花图" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/前端/">前端</a></p>
+                            <p class="item-title"><a href="/2017/12/23/snow/" class="title">Canvas --雪花图</a></p>
+                            <p class="item-date"><time datetime="2017-12-23T08:06:41.000Z" itemprop="datePublished">2017-12-23</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/12/17/time1/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://ouzdb04w7.bkt.clouddn.com/image/2017/12/18/1.png)" alt="时间--时钟篇" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/前端/">前端</a></p>
+                            <p class="item-title"><a href="/2017/12/17/time1/" class="title">时间--时钟篇</a></p>
+                            <p class="item-date"><time datetime="2017-12-17T06:20:37.000Z" itemprop="datePublished">2017-12-17</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/12/16/padding/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://ouzdb04w7.bkt.clouddn.com/image/2017/12/16/1.png)" alt="你不知道的padding" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/前端/">前端</a></p>
+                            <p class="item-title"><a href="/2017/12/16/padding/" class="title">你不知道的padding</a></p>
+                            <p class="item-date"><time datetime="2017-12-16T09:40:22.000Z" itemprop="datePublished">2017-12-16</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/12/15/margin/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://ouzdb04w7.bkt.clouddn.com/image/2017/12/15/1.png)" alt="你不知道的margin" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/前端/">前端</a></p>
+                            <p class="item-title"><a href="/2017/12/15/margin/" class="title">你不知道的margin</a></p>
+                            <p class="item-date"><time datetime="2017-12-15T08:10:13.000Z" itemprop="datePublished">2017-12-15</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">20</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/文章/">文章</a><span class="category-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">4</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Canvas/" style="font-size: 10px;">Canvas</a> <a href="/tags/Promise/" style="font-size: 10px;">Promise</a> <a href="/tags/box-shadow/" style="font-size: 10px;">box-shadow</a> <a href="/tags/checkbox/" style="font-size: 10px;">checkbox</a> <a href="/tags/css/" style="font-size: 16.67px;">css</a> <a href="/tags/css3/" style="font-size: 15px;">css3</a> <a href="/tags/css3导航/" style="font-size: 10px;">css3导航</a> <a href="/tags/css3页面滚动/" style="font-size: 10px;">css3页面滚动</a> <a href="/tags/css特效/" style="font-size: 11.67px;">css特效</a> <a href="/tags/js/" style="font-size: 20px;">js</a> <a href="/tags/margin/" style="font-size: 11.67px;">margin</a> <a href="/tags/padding/" style="font-size: 10px;">padding</a> <a href="/tags/radio/" style="font-size: 10px;">radio</a> <a href="/tags/text-align-justify/" style="font-size: 10px;">text-align:justify</a> <a href="/tags/touch/" style="font-size: 10px;">touch</a> <a href="/tags/上传筛选/" style="font-size: 10px;">上传筛选</a> <a href="/tags/上传美化/" style="font-size: 10px;">上传美化</a> <a href="/tags/上传进度/" style="font-size: 10px;">上传进度</a> <a href="/tags/伪元素/" style="font-size: 13.33px;">伪元素</a> <a href="/tags/名人/" style="font-size: 10px;">名人</a> <a href="/tags/图片上传/" style="font-size: 13.33px;">图片上传</a> <a href="/tags/图片加载/" style="font-size: 10px;">图片加载</a> <a href="/tags/图片批量上传/" style="font-size: 10px;">图片批量上传</a> <a href="/tags/图片替换/" style="font-size: 10px;">图片替换</a> <a href="/tags/图片环绕/" style="font-size: 10px;">图片环绕</a> <a href="/tags/图片轮播/" style="font-size: 10px;">图片轮播</a> <a href="/tags/图片预览/" style="font-size: 11.67px;">图片预览</a> <a href="/tags/垂直居中/" style="font-size: 10px;">垂直居中</a> <a href="/tags/复选框美化/" style="font-size: 10px;">复选框美化</a> <a href="/tags/多列均匀布局/" style="font-size: 10px;">多列均匀布局</a> <a href="/tags/小实例/" style="font-size: 18.33px;">小实例</a> <a href="/tags/异步/" style="font-size: 10px;">异步</a> <a href="/tags/拖拽/" style="font-size: 10px;">拖拽</a> <a href="/tags/文字两端对齐/" style="font-size: 10px;">文字两端对齐</a> <a href="/tags/无限加载/" style="font-size: 10px;">无限加载</a> <a href="/tags/时钟/" style="font-size: 10px;">时钟</a> <a href="/tags/时间/" style="font-size: 10px;">时间</a> <a href="/tags/曲面阴影/" style="font-size: 10px;">曲面阴影</a> <a href="/tags/瀑布流/" style="font-size: 10px;">瀑布流</a> <a href="/tags/特效/" style="font-size: 10px;">特效</a> <a href="/tags/移动端图片自适应/" style="font-size: 10px;">移动端图片自适应</a> <a href="/tags/纪念/" style="font-size: 10px;">纪念</a> <a href="/tags/背景裁剪/" style="font-size: 10px;">背景裁剪</a> <a href="/tags/自适应左右布局/" style="font-size: 10px;">自适应左右布局</a> <a href="/tags/计算器/" style="font-size: 10px;">计算器</a> <a href="/tags/负margin/" style="font-size: 10px;">负margin</a> <a href="/tags/转载/" style="font-size: 10px;">转载</a> <a href="/tags/进度环/" style="font-size: 10px;">进度环</a> <a href="/tags/选项卡/" style="font-size: 11.67px;">选项卡</a> <a href="/tags/那些年我们常写的css/" style="font-size: 10px;">那些年我们常写的css</a> <a href="/tags/闲谈/" style="font-size: 10px;">闲谈</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">联系我</h3>
+        <div class="widget">
+            <i class="fa fa-envelope-square" style="margin-right: 5px;"></i>908642754@qq.com
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">友情链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    
+                    <li>
+                        <a target="_blank" rel="external nofollow" href="http://hexo.io">Hexo</a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        <a target="_blank"  href="https://segmentfault.com/u/molufange">Segmentfault</a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        <a target="_blank"  href="http://www.aliken.com.cn">码农面条君</a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        <a target="_blank"  href="http://www.tianjiajie.cn">灵魂收割者</a>
+                    </li>
+                    
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2017 徐新-陌路凡歌</p>
+                <p>备案号：<a href="http://www.miitbeian.gov.cn" target="_blank">渝ICP备17014978号-1</a></p>           		                               	
+             <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script id="cy_cmt_num" src="https://changyan.sohu.com/upload/plugins/plugins.list.count.js?clientId=cytkibOj4"></script>
+    <script type="text/javascript">
+        (function() {
+            var appid = 'cytkibOj4';
+            var conf = 'cc4429eda4f1090e017ec58b900b46e5';
+            var width = window.innerWidth || document.documentElement.clientWidth;
+            if (width < 960) {
+                window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>');
+            } else {
+                var loadJs = function(d, a) {
+                    var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+                    var b = document.createElement("script");
+                    b.setAttribute("type", "text/javascript");
+                    b.setAttribute("charset", "UTF-8");
+                    b.setAttribute("src", d);
+                    if (typeof a === "function") {
+                        if (window.attachEvent) {
+                            b.onreadystatechange = function() {
+                                var e = b.readyState;
+                                if (e === "loaded" || e === "complete") {
+                                    b.onreadystatechange = null;
+                                    a()
+                                }
+                            }
+                        } else {
+                            b.onload = a
+                        }
+                    }
+                    c.appendChild(b)
+                };
+                loadJs("https://changyan.sohu.com/upload/changyan.js", function() {
+                    window.changyan.api.config({
+                        appid: appid,
+                        conf: conf
+                    })
+                });
+            }
+        })();
+    </script>
+
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+    	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+     
+    <script src="//cdn1.lncld.net/static/js/2.5.0/av-min.js"></script>
+		<script>
+		    var APP_ID = 'mTfV9mapGktO4Xqww9CCgj4P-gzGzoHsz';
+		    var APP_KEY = 'zE9b1r6zf9OwaPck1M21M7JI';
+		    AV.init({
+		        appId: APP_ID,
+		        appKey: APP_KEY
+		    });
+		    // 显示次数
+		    function showTime(Counter) {
+		        var query = new AV.Query("Counter");
+		        if($(".leancloud_visitors").length > 0){
+		            var url = $(".leancloud_visitors").attr('id').trim();
+		            // where field
+		            query.equalTo("words", url);
+		            // count
+		            query.count().then(function (number) {
+		                // There are number instances of MyClass where words equals url.
+		                $(document.getElementById(url)).text(number?  number : '--');
+		            }, function (error) {
+		                // error is an instance of AVError.
+		            });
+		        }
+		    }
+		    // 追加pv
+		    function addCount(Counter) {
+		        var url = $(".leancloud_visitors").length > 0 ? $(".leancloud_visitors").attr('id').trim() : 'icafebolger.com';
+		        var Counter = AV.Object.extend("Counter");
+		        var query = new Counter;
+		        query.save({
+		            words: url
+		        }).then(function (object) {
+		        })
+		    }
+		    $(function () {
+		        var Counter = AV.Object.extend("Counter");
+		        addCount(Counter);
+		        showTime(Counter);
+		    });
+		</script>
+  	
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
