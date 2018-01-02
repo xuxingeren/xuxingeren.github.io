@@ -4,8 +4,32 @@
 
     
   <url>
+    <loc>http://xuxin123.com/2017/09/06/imgfile1/</loc>
+    <lastmod>2018-01-02T02:28:46.355Z</lastmod>
+    <data>
+        <display>
+        <title>图片上传那些事-图片预览篇</title>
+        <pubTime>2017-09-06T03:00:54.000Z</pubTime>
+        
+        <tag>js</tag>
+         
+        <tag>图片上传</tag>
+         
+        <tag>图片预览</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="http://xuxin123.com/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://xuxin123.com/2017/12/30/surround/</loc>
-    <lastmod>2017-12-30T09:00:38.347Z</lastmod>
+    <lastmod>2018-01-02T02:24:58.192Z</lastmod>
     <data>
         <display>
         <title>特效篇--图片环绕</title>
@@ -25,6 +49,82 @@
            
              
               <breadCrumb title="前端" url="http://xuxin123.com/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://xuxin123.com/2017/09/21/imgfile3/</loc>
+    <lastmod>2018-01-02T02:23:41.156Z</lastmod>
+    <data>
+        <display>
+        <title>图片上传那些事-总结篇</title>
+        <pubTime>2017-09-21T06:10:20.000Z</pubTime>
+        
+        <tag>js</tag>
+         
+        <tag>图片上传</tag>
+         
+        <tag>上传进度</tag>
+         
+        <tag>上传美化</tag>
+         
+        <tag>上传筛选</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="http://xuxin123.com/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://xuxin123.com/2017/09/09/imgfile2/</loc>
+    <lastmod>2018-01-02T02:16:47.963Z</lastmod>
+    <data>
+        <display>
+        <title>图片上传那些事-图片上传篇</title>
+        <pubTime>2017-09-09T01:40:30.000Z</pubTime>
+        
+        <tag>js</tag>
+         
+        <tag>图片上传</tag>
+         
+        <tag>图片预览</tag>
+         
+        <tag>图片批量上传</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="http://xuxin123.com/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://xuxin123.com/2017/12/31/2017/</loc>
+    <lastmod>2017-12-30T10:36:38.969Z</lastmod>
+    <data>
+        <display>
+        <title>再见2017</title>
+        <pubTime>2017-12-31T02:32:22.000Z</pubTime>
+        
+        <tag>闲谈</tag>
+         
+        <tag>总结</tag>
+         
+         
+           
+             
+              <breadCrumb title="文章" url="http://xuxin123.com/categories/%E6%96%87%E7%AB%A0/"/>
           
         </display>
     </data>
@@ -100,32 +200,6 @@
         <tag>选项卡</tag>
          
         <tag>margin</tag>
-         
-         
-           
-             
-              <breadCrumb title="前端" url="http://xuxin123.com/categories/%E5%89%8D%E7%AB%AF/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://xuxin123.com/2017/09/09/imgfile2/</loc>
-    <lastmod>2017-12-23T07:48:24.207Z</lastmod>
-    <data>
-        <display>
-        <title>图片上传那些事-图片上传篇</title>
-        <pubTime>2017-09-09T01:40:30.000Z</pubTime>
-        
-        <tag>js</tag>
-         
-        <tag>图片上传</tag>
-         
-        <tag>图片预览</tag>
-         
-        <tag>图片批量上传</tag>
          
          
            
@@ -470,58 +544,6 @@
            
              
               <breadCrumb title="文章" url="http://xuxin123.com/categories/%E6%96%87%E7%AB%A0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://xuxin123.com/2017/09/21/imgfile3/</loc>
-    <lastmod>2017-09-21T09:25:21.851Z</lastmod>
-    <data>
-        <display>
-        <title>图片上传那些事-总结篇</title>
-        <pubTime>2017-09-21T06:10:20.000Z</pubTime>
-        
-        <tag>js</tag>
-         
-        <tag>图片上传</tag>
-         
-        <tag>上传进度</tag>
-         
-        <tag>上传美化</tag>
-         
-        <tag>上传筛选</tag>
-         
-         
-           
-             
-              <breadCrumb title="前端" url="http://xuxin123.com/categories/%E5%89%8D%E7%AB%AF/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://xuxin123.com/2017/09/06/imgfile1/</loc>
-    <lastmod>2017-09-06T09:49:37.807Z</lastmod>
-    <data>
-        <display>
-        <title>图片上传那些事-图片预览篇</title>
-        <pubTime>2017-09-06T03:00:54.000Z</pubTime>
-        
-        <tag>js</tag>
-         
-        <tag>图片上传</tag>
-         
-        <tag>图片预览</tag>
-         
-         
-           
-             
-              <breadCrumb title="前端" url="http://xuxin123.com/categories/%E5%89%8D%E7%AB%AF/"/>
           
         </display>
     </data>
