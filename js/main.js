@@ -1,5 +1,5 @@
+window.location.replace("https://xuxin123.com");
 (function ($) {
-    window.location.replace("https://xuxin123.com");
     // To top button
     $("#back-to-top").on('click', function () {
         $('body, html').animate({ scrollTop: 0 }, 600);
