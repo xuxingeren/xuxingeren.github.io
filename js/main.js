@@ -1,4 +1,4 @@
-window.location.replace("https://xuxin123.com");
+// window.location.replace("https://xuxin123.com");
 (function ($) {
     // To top button
     $("#back-to-top").on('click', function () {
